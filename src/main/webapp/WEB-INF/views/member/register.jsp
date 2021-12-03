@@ -33,14 +33,17 @@ function daumPost(){
     }).open();
 }
 	function register() {
-		//birth=birth_year.value+"-"+birth_month.value+"-"+birth_day.value
-		//${"#birth"}.val(birth)
-		
 		addr1 = $("#addr1").val()
 		addr2 = $("#addr2").val()
 		addr3 = $("#addr3").val()
 		addr = addr1 + "/" + addr2 + "/" + addr3
 		$("#addr1").val(addr)
+		
+		birth_year=$("#birth_year").val()
+		birth_month=$("#birth_month").val()
+		birth_day=$("#birth_day").val()
+		birth = birth_year+"-"+birth_month+"-"+birth_day
+		document.getElementById("birth").value = birth;
 		
 		fo.submit()
 	}
