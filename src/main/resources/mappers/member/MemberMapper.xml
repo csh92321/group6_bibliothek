@@ -29,4 +29,8 @@
 	<select id="userCheck" resultMap="checkIdPwd">
 		select id,pwd from membership where id=#{id}
 	</select>
+	
+	<insert id="register">
+		insert into member(id,name,pwd,email,phone,birth,addr) values(#{id},#{name},#{pwd},#{email},#{phone},#{birth},#{addr}) 
+	</insert>
 </mapper>

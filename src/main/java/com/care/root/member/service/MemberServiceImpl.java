@@ -22,4 +22,15 @@ public class MemberServiceImpl implements MemberService {
 		return 0;	//로그인 실패
 	}
 
+	@Override
+	public int register(MemberDTO dto) {
+		int result=0;
+		try {
+			result=mapper.register(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }

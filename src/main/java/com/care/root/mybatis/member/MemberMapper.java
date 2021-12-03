@@ -8,5 +8,6 @@ import com.care.root.member.dto.MemberDTO;
 public interface MemberMapper {
 
 	public MemberDTO userCheck(String id);
+	public int register(MemberDTO dto);
 	
 }

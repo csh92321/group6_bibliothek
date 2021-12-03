@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 
 @Controller
@@ -37,5 +38,19 @@ public class MemberController {
 			System.out.println("로그인 실패");
 			return "redirect:login";
 		}
+	}
+	
+	@GetMapping("register_form")
+	public String registerForm() {
+		return "member/register";
+	}
+	
+	@PostMapping("register")
+	public String register(MemberDTO dto) {
+		int result=ms.register(dto);
+		if(result==1) {
+			return "redirect:login";
+		}
+		return "redirect:";
 	}
 }

@@ -27,7 +27,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<label>회원 가입</label>
+				<label onclick="location.href='register_form'">회원가입</label>
 				<label>아이디/비밀번호 찾기</label>
 			</td>
 		</tr>

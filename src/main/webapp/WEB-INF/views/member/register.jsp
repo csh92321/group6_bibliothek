@@ -8,18 +8,41 @@
 <meta charset="UTF-8">
 <title>register</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	<!-- jquery -->
-<script type="text/javascript">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function daumPost(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+               // R : 도로명, J : 지번
+               console.log("data.userSelectedType : " +data.userSelectedType)
+               console.log("data.roadAddress : " +data.roadAddress)
+               console.log("data.jibunAddress : " +data.jibunAddress)
+               console.log("data.zonecode(우편번호) : " +data.zonecode)
+               var addr=""
+               if(data.userSelectedType ==='R'){
+                  addr = data.roadAddress
+               }else{
+                  addr = data.jibunAddress
+               }
+             $("#addr1").val(data.zonecode)
+             $("#addr2").val(addr)
+             $("#addr3").focus()
+        }
+    }).open();
+}
 	function register() {
-		birth=birth_year.value+"-"+birth_month.value+"-"+birth_day.value;
-		${"#birth"}.val(birth);
+		//birth=birth_year.value+"-"+birth_month.value+"-"+birth_day.value
+		//${"#birth"}.val(birth)
 		
 		addr1 = $("#addr1").val()
 		addr2 = $("#addr2").val()
 		addr3 = $("#addr3").val()
 		addr = addr1 + "/" + addr2 + "/" + addr3
-		$("#addr").val(addr)
+		$("#addr1").val(addr)
 		
-		fo.submit();
+		fo.submit()
 	}
 </script>
 </head>
@@ -76,7 +99,8 @@
 		</tr>
 		<tr>
 			<th rowspan="3">주소</th>
-			<td><input type="text" readonly id="addr1">
+			<td>
+				<input type="text" readonly id="addr1" name="addr">
 				<input type="button" onclick="daumPost()" value="우편번호 검색">
 			</td>
 		</tr>
@@ -86,7 +110,6 @@
 		<tr>
 			<td>
 			<input type="text" id="addr3" placeholder="상세주소 입력">
-			<input type="hidden" id="addr" name="addr">
 			</td>
 		</tr>
 		<tr>
