@@ -1,9 +1,10 @@
 package com.care.root.board.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BoardServiceImpl {
 
-	public BoardServiceImpl() {
-		// TODO Auto-generated constructor stub
-	}
+
 
 }
