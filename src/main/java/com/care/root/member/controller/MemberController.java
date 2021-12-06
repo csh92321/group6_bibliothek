@@ -1,5 +1,10 @@
 package com.care.root.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,11 +51,15 @@ public class MemberController {
 	}
 	
 	@PostMapping("register")
-	public String register(MemberDTO dto) {
+	public String register(MemberDTO dto,HttpServletResponse response) throws IOException {
 		int result=ms.register(dto);
 		if(result==1) {
 			return "redirect:login";
 		}
-		return "redirect:";
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('회원가입 실패');</script>");
+		out.flush();
+		return "redirect:register_form";
 	}
 }

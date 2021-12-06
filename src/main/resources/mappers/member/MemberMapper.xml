@@ -27,7 +27,7 @@
 	</resultMap>
 
 	<select id="userCheck" resultMap="checkIdPwd">
-		select id,pwd from membership where id=#{id}
+		select id,pwd from member where id=#{id}
 	</select>
 	
 	<insert id="register">

@@ -43,7 +43,7 @@ function daumPost(){
 		birth_month=$("#birth_month").val()
 		birth_day=$("#birth_day").val()
 		birth = birth_year+"-"+birth_month+"-"+birth_day
-		document.getElementById("birth").value = birth;
+		document.getElementById("birth").value = birth;	//https://yejip.com/web/2020-11-25-%EA%B2%8C%EC%8B%9C%ED%8C%902/
 		
 		fo.submit()
 	}
@@ -122,3 +122,6 @@ function daumPost(){
 	</form>
 </body>
 </html>
+
+
+<!-- https://upcake.tistory.com/334 --> <!-- https://m.blog.naver.com/heartflow89/221103824012 -->
