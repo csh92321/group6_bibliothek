@@ -6,4 +6,6 @@ public interface MemberService {
 	
 	public int userCheck(String id, String pwd);
 	public int register(MemberDTO dto);
+	
+	public int idCheck(String id);
 }

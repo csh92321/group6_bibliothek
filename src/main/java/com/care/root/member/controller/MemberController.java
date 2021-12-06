@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.care.root.member.dto.MemberDTO;
@@ -62,4 +64,15 @@ public class MemberController {
 		out.flush();
 		return "redirect:register_form";
 	}
+
+	@PostMapping("idCheck")
+	@ResponseBody
+	public int idCheck(@RequestBody String id) throws Exception{
+		int count=0;
+		if(id!=null) {
+			count=ms.idCheck(id);
+		}
+		return count;
+	}
+	
 }

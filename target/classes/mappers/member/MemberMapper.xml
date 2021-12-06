@@ -33,4 +33,8 @@
 	<insert id="register">
 		insert into member(id,name,pwd,email,phone,birth,addr) values(#{id},#{name},#{pwd},#{email},#{phone},#{birth},#{addr}) 
 	</insert>
+
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		select count(id) from member where id=#{id}
+	</select>
 </mapper>

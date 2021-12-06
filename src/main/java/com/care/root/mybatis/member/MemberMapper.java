@@ -9,5 +9,5 @@ public interface MemberMapper {
 
 	public MemberDTO userCheck(String id);
 	public int register(MemberDTO dto);
-	
+	public int idCheck(String id);
 }

@@ -7,7 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>register</title>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	<!-- jquery -->
+<style type="text/css">
+	.id_ok{color:green; display:none;}
+	.id_already{color:red; display:none;}
+</style>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function daumPost(){
@@ -47,6 +51,39 @@ function daumPost(){
 		
 		fo.submit()
 	}
+
+	function idCheck() {    
+	    var id = $("#id").val();    
+	    if(id.search(/\s/) != -1) { 
+	        alert("아이디에는 공백이 들어갈 수 없습니다.");        
+	    } else {             
+	        if(id.trim().length != 0) {
+	            $.ajax({
+	                async : true, 
+	                type : 'POST', 
+	                data: id,
+	                url: "idCheck",
+	                dataType: "json",
+	                contentType: "application/json; charset=UTF-8",
+	                success: function(count) {    
+	                    if(count > 0) {
+	                        alert("해당 아이디 존재");    
+	                        $("#submit").attr("disabled", "disabled");
+	                        window.location.reload();
+	                    } else {
+	                        alert("사용가능 아이디");
+	                        $("#submit").removeAttr("disabled");
+	                    }            
+	                },
+	                error: function(error) {
+	                    alert("아이디를 입력해주세요.");
+	                }        
+	            });
+	        } else {
+	            alert("아이디를 입력해주세요.");
+	        }        
+	    }
+	}
 </script>
 </head>
 <body>
@@ -57,7 +94,9 @@ function daumPost(){
 		</caption>
 		<tr>
 			<th>아이디</th>
-			<td><input type="text" name="id"></td>
+			<td>
+				<input type="text" id="id" name="id" > <input type="button" onclick="idCheck()" value="중복확인">
+			</td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
@@ -116,7 +155,7 @@ function daumPost(){
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"> <input type="button" onclick="register()" value="회원가입">
+			<td colspan="2"> <input type="button" id="submit" onclick="register()" value="회원가입">
 		</tr>
 	</table>	
 	</form>
