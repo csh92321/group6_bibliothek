@@ -11,7 +11,8 @@
 	.id_ok{color:green; display:none;}
 	.id_already{color:red; display:none;}
 </style>
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function daumPost(){
@@ -36,58 +37,42 @@ function daumPost(){
         }
     }).open();
 }
-	function register() {
-		addr1 = $("#addr1").val()
-		addr2 = $("#addr2").val()
-		addr3 = $("#addr3").val()
-		addr = addr1 + "/" + addr2 + "/" + addr3
-		$("#addr1").val(addr)
-		
-		birth_year=$("#birth_year").val()
-		birth_month=$("#birth_month").val()
-		birth_day=$("#birth_day").val()
-		birth = birth_year+"-"+birth_month+"-"+birth_day
-		document.getElementById("birth").value = birth;	//https://yejip.com/web/2020-11-25-%EA%B2%8C%EC%8B%9C%ED%8C%902/
-		
-		fo.submit()
-	}
+  	
+function idCheck(){
+	var id=$("#id").val();
+	$.ajax({
+		type:'POST',
+		url:"idCheck",
+		data:{id:id},
+		success:function(result){
+			if(result==0){
+				$("#check_id").html("사용할 수 있는 아이디입니다").css("color","green")
+			} else {
+				$("#check_id").html("사용중인 아이디입니다").css("color","red")
+			}
+		}
+	})
+}
 
-	function idCheck() {    
-	    var id = $("#id").val();    
-	    if(id.search(/\s/) != -1) { 
-	        alert("아이디에는 공백이 들어갈 수 없습니다.");        
-	    } else {             
-	        if(id.trim().length != 0) {
-	            $.ajax({
-	                async : true, 
-	                type : 'POST', 
-	                data: id,
-	                url: "idCheck",
-	                dataType: "json",
-	                contentType: "application/json; charset=UTF-8",
-	                success: function(count) {    
-	                    if(count > 0) {
-	                        alert("해당 아이디 존재");    
-	                        $("#submit").attr("disabled", "disabled");
-	                        window.location.reload();
-	                    } else {
-	                        alert("사용가능 아이디");
-	                        $("#submit").removeAttr("disabled");
-	                    }            
-	                },
-	                error: function(error) {
-	                    alert("아이디를 입력해주세요.");
-	                }        
-	            });
-	        } else {
-	            alert("아이디를 입력해주세요.");
-	        }        
-	    }
-	}
+function register(){
+	addr1 = $("#addr1").val()
+	addr2 = $("#addr2").val()
+	addr3 = $("#addr3").val()
+	addr = addr1 + "/" + addr2 + "/" + addr3
+	$("#addr1").val(addr)
+	
+	birth_year=$("#birth_year").val()
+	birth_month=$("#birth_month").val()
+	birth_day=$("#birth_day").val()
+	birth = birth_year+"-"+birth_month+"-"+birth_day
+	document.getElementById("birth").value = birth;	//https://yejip.com/web/2020-11-25-%EA%B2%8C%EC%8B%9C%ED%8C%902/
+	
+	$("#register_form").submit()
+}
 </script>
 </head>
 <body>
-	<form action="register" method="post" id="fo">
+	<form action="register" method="post" id="register_form">
 	<table>
 		<caption>
 			<b>회원가입</b>
@@ -95,7 +80,7 @@ function daumPost(){
 		<tr>
 			<th>아이디</th>
 			<td>
-				<input type="text" id="id" name="id" > <input type="button" onclick="idCheck()" value="중복확인">
+				<input type="text" id="id" name="id" onkeyup="idCheck()" > <span id="check_id"></span>
 			</td>
 		</tr>
 		<tr>
@@ -155,12 +140,9 @@ function daumPost(){
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"> <input type="button" id="submit" onclick="register()" value="회원가입">
+			<td colspan="2"> <button type="button" onclick="register()">회원가입</button> </td>
 		</tr>
 	</table>	
 	</form>
 </body>
 </html>
-
-
-<!-- https://upcake.tistory.com/334 --> <!-- https://m.blog.naver.com/heartflow89/221103824012 -->

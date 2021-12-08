@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +49,7 @@ public class MemberController {
 	
 	@GetMapping("register_form")
 	public String registerForm() {
+		System.out.println("회원가입 페이지 연결");
 		return "member/register";
 	}
 	
@@ -67,12 +68,12 @@ public class MemberController {
 
 	@PostMapping("idCheck")
 	@ResponseBody
-	public int idCheck(@RequestBody String id) throws Exception{
-		int count=0;
+	public int idCheck(@RequestParam(value="id", required=false) String id){
+		int cnt=0;
 		if(id!=null) {
-			count=ms.idCheck(id);
+			cnt=ms.idCheck(id);
 		}
-		return count;
+		return cnt;
 	}
 	
 }

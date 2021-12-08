@@ -1,5 +1,7 @@
 package com.care.root.member.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.care.root.member.dto.MemberDTO;
 
 public interface MemberService {
