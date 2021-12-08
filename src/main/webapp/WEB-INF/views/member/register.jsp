@@ -46,12 +46,22 @@ function idCheck(){
 		data:{id:id},
 		success:function(result){
 			if(result==0){
-				$("#check_id").html("사용할 수 있는 아이디입니다").css("color","green")
+				$("#check_id").html("사용 가능한 아이디입니다").css("color","green")
 			} else {
-				$("#check_id").html("사용중인 아이디입니다").css("color","red")
+				$("#check_id").html("이미 사용중인 아이디입니다").css("color","red")
 			}
 		}
 	})
+}
+
+function pwdCheck() {
+	var pwd1=$("#pwd1").val();
+	var pwd2=$("#pwd2").val();
+	if (pwd1 != pwd2) {
+		$("#check_pwd").html("비밀번호가 일치하지 않습니다").css("color","red")
+	} else {
+		$("#check_pwd").html("")
+	}
 }
 
 function register(){
@@ -80,16 +90,18 @@ function register(){
 		<tr>
 			<th>아이디</th>
 			<td>
-				<input type="text" id="id" name="id" onkeyup="idCheck()" > <span id="check_id"></span>
+				<input type="text" id="id" name="id" onkeyup="idCheck()" > <br> <span id="check_id"></span>
 			</td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><input type="password" name="pwd"></td>
+			<td><input type="password" name="pwd" id="pwd1"></td>
 		</tr>
 		<tr>
 			<th>비밀번호 확인</th>
-			<td><input type="password" name="pwd_check"></td>
+			<td>
+				<input type="password" name="pwd_check" id="pwd2" onkeyup="pwdCheck()"> <br> <span id="check_pwd"></span>
+			</td>
 		</tr>
 		<tr>
 			<th>이름</th>
