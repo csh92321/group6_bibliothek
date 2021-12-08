@@ -63,7 +63,16 @@ function pwdCheck() {
 		$("#check_pwd").html("")
 	}
 }
-
+<%--
+function phoneCheck() {
+	if(event.keyCode<48 || event.keyCode>57){
+		$("#check_phone").html("숫자만 작성해주세요").css("color","red")
+		event.returnValue=false;
+	}else{
+		$("#check_phone").html("")
+	}
+}
+--%>
 function register(){
 	addr1 = $("#addr1").val()
 	addr2 = $("#addr2").val()
@@ -130,7 +139,10 @@ function register(){
 		</tr>
 		<tr>
 			<th>전화번호</th>
-			<td><input type="text" name="phone" placeholder="-생략"></td>
+			<td>
+				<input type="text" name="phone" placeholder="-생략" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">  
+				 <!-- <input type="text" name="phone" placeholder="-생략" onkeypress="phoneCheck()" > <br> <span id="check_phone"></span>  -->
+			</td>
 		</tr>
 		<tr>
 			<th>이메일</th>
