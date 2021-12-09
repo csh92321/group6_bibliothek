@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.book.BookMapper">
+
+<resultMap id="book" type="com.care.root.book.dto.BookDTO">
+      <id property="bookNum" column="book_num" />
+      <result property="title" column="title" />
+      <result property="writer" column="writer"/>
+      <result property="company" column="company" />
+      <result property="genre" column="genre" />
+      <result property="hit" column="hit" />
+      <result property="grade" column="grade" />
+      <result property="likeCnt" column="like_cnt" />
+      <result property="totalPage" column="total_page" />
+   </resultMap>
+   
+   <select id="bookList" resultMap="book">
+      select book_num, title, writer, company, genre from book where book_num=#{bookNum}
+   </select>
+
+</mapper>
