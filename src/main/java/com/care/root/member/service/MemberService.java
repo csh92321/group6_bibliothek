@@ -1,7 +1,5 @@
 package com.care.root.member.service;
 
-import javax.servlet.http.HttpServletResponse;
-
 import com.care.root.member.dto.MemberDTO;
 
 public interface MemberService {
@@ -10,4 +8,5 @@ public interface MemberService {
 	public int register(MemberDTO dto);
 	
 	public int idCheck(String id);
+	public int emailCheck(String email);
 }

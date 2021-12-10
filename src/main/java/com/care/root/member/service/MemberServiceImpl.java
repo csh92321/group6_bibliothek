@@ -16,6 +16,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired MemberMapper mapper;
 	
+	
 	@Override
 	public int userCheck(String id, String pwd) {
 		MemberDTO dto = mapper.userCheck(id);
@@ -41,6 +42,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int idCheck(String id) {
 		return mapper.idCheck(id);
+	}
+
+	@Override
+	public int emailCheck(String email) {
+		return mapper.emailCheck(email);
 	}
 
 }

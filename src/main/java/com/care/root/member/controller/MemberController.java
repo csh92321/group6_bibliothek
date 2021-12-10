@@ -76,4 +76,13 @@ public class MemberController {
 		return cnt;
 	}
 	
+	@PostMapping("emailCheck")
+	@ResponseBody
+	public int emailCheck(@RequestParam(value="email", required=false) String email) {
+		int cnt=0;
+		if(email!=null) {
+			cnt=ms.emailCheck(email);
+		}
+		return cnt;
+	}
 }

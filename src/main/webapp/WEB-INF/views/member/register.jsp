@@ -73,6 +73,23 @@ function phoneCheck() {
 	}
 }
 --%>
+
+function emailCheck() {
+	var email=$("#email").val();
+	$.ajax({
+		type:'POST',
+		url:"emailCheck",
+		data:{email:email},
+		success:function(result){
+			if(result==0){
+				$("#check_email").html("사용 가능한 이메일입니다").css("color","green")
+			} else {
+				$("#check_email").html("이미 사용중인 이메일입니다").css("color","red")
+			}
+		}
+	})
+}
+
 function register(){
 	addr1 = $("#addr1").val()
 	addr2 = $("#addr2").val()
@@ -146,7 +163,7 @@ function register(){
 		</tr>
 		<tr>
 			<th>이메일</th>
-			<td><input type="text" name="email"></td>
+			<td><input type="text" id="email" name="email" onkeyup="emailCheck()">  <br> <span id="check_email"></span></td>
 		</tr>
 		<tr>
 			<th rowspan="3">주소</th>
@@ -170,3 +187,5 @@ function register(){
 	</form>
 </body>
 </html>
+
+<!-- 아이디,비밀번호 중복 체크 : https://munhwasudo.tistory.com/entry/%EC%95%84%EC%9D%B4%EB%94%94-%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%B2%B4%ED%81%AC -->
