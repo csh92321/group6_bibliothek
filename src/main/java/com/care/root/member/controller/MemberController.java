@@ -57,6 +57,7 @@ public class MemberController {
 	public String register(MemberDTO dto,HttpServletResponse response) throws IOException {
 		int result=ms.register(dto);
 		if(result==1) {
+			System.out.println("회원가입 성공");
 			return "redirect:login";
 		}
 		response.setContentType("text/html; charset=utf-8");

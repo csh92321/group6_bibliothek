@@ -63,16 +63,6 @@ function pwdCheck() {
 		$("#check_pwd").html("")
 	}
 }
-<%--
-function phoneCheck() {
-	if(event.keyCode<48 || event.keyCode>57){
-		$("#check_phone").html("숫자만 작성해주세요").css("color","red")
-		event.returnValue=false;
-	}else{
-		$("#check_phone").html("")
-	}
-}
---%>
 
 function emailCheck() {
 	var email=$("#email").val();
@@ -90,21 +80,41 @@ function emailCheck() {
 	})
 }
 
-function phoneCheck() {
+function emailFormCheck(email) {
+	var emailForm=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	 return emailForm.test(email);
+}
+
+function phoneCheck(value) {
 	var phone=$("#phone").val();
+	//var phoneOnlyNum=/[^0-9]/g;
 	$.ajax({
 		type:'POST',
 		url:"phoneCheck",
 		data:{phone:phone},
 		success:function(result){
-			if(result==0){
-				$("#check_phone").html("사용 가능한 번호입니다").css("color","green")
-			} else {
-				$("#check_phone").html("이미 사용중인 번호입니다").css("color","red")
-			}
+			//if(phoneOnlyNum.test(phone)) {
+			//	$("#check_phone").html("숫자만 입력해주세요").css("color","red")
+			//} else {
+				if(result==0){
+					$("#check_phone").html("사용 가능한 번호입니다").css("color","green")
+				} else {
+					$("#check_phone").html("이미 사용중인 번호입니다").css("color","red")
+				}
+			//}
 		}
 	})
 }
+<%--
+function phoneCheck() {
+	if(event.keyCode<48 || event.keyCode>57){
+		$("#check_phone").html("숫자만 작성해주세요").css("color","red")
+		event.returnValue=false;
+	}else{
+		$("#check_phone").html("")
+	}
+}
+--%>
 
 function register(){
 	addr1 = $("#addr1").val()
@@ -119,7 +129,14 @@ function register(){
 	birth = birth_year+"-"+birth_month+"-"+birth_day
 	document.getElementById("birth").value = birth;	//https://yejip.com/web/2020-11-25-%EA%B2%8C%EC%8B%9C%ED%8C%902/
 	
-	$("#register_form").submit()
+	
+	if (emailFormCheck(email)==true){
+		$("#register_form").submit()	
+	} else {
+		alert('부적절한 이메일 형식입니다')
+	}
+	
+	
 }
 </script>
 </head>
@@ -173,9 +190,9 @@ function register(){
 		<tr>
 			<th>전화번호</th>
 			<td>
-				<input type="text" id="phone" name="phone" placeholder="-생략" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');phoneCheck();"> <br> <span id="check_phone"></span> 
+				<input type="text" id="phone" name="phone" placeholder="-생략" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');phoneCheck(this.value);"> <br> <span id="check_phone"></span> 
 				 <!-- <input type="text" name="phone" placeholder="-생략" onkeypress="phoneCheck()" > <br> <span id="check_phone"></span>  -->
-				 <!-- "this.value=this.value.replace(/[^0-9]/g,'');" -->
+				 <!-- this.value=this.value.replace(/[^0-9]/g,''); -->
 			</td>
 		</tr>
 		<tr>
