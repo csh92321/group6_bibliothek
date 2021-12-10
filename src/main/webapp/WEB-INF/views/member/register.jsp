@@ -64,6 +64,12 @@ function pwdCheck() {
 	}
 }
 
+function emailFormCheck(email) {
+	var email=$("#email").val();
+	var emailForm=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	 return emailForm.test(email);
+}
+
 function emailCheck() {
 	var email=$("#email").val();
 	$.ajax({
@@ -80,41 +86,21 @@ function emailCheck() {
 	})
 }
 
-function emailFormCheck(email) {
-	var emailForm=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-	 return emailForm.test(email);
-}
-
-function phoneCheck(value) {
+function phoneCheck() {
 	var phone=$("#phone").val();
-	//var phoneOnlyNum=/[^0-9]/g;
 	$.ajax({
 		type:'POST',
 		url:"phoneCheck",
 		data:{phone:phone},
 		success:function(result){
-			//if(phoneOnlyNum.test(phone)) {
-			//	$("#check_phone").html("숫자만 입력해주세요").css("color","red")
-			//} else {
-				if(result==0){
-					$("#check_phone").html("사용 가능한 번호입니다").css("color","green")
-				} else {
-					$("#check_phone").html("이미 사용중인 번호입니다").css("color","red")
-				}
-			//}
+			if(result==0){
+				$("#check_phone").html("사용 가능한 번호입니다").css("color","green")
+			} else {
+				$("#check_phone").html("이미 사용중인 번호입니다").css("color","red")
+			}
 		}
 	})
 }
-<%--
-function phoneCheck() {
-	if(event.keyCode<48 || event.keyCode>57){
-		$("#check_phone").html("숫자만 작성해주세요").css("color","red")
-		event.returnValue=false;
-	}else{
-		$("#check_phone").html("")
-	}
-}
---%>
 
 function register(){
 	addr1 = $("#addr1").val()
@@ -129,9 +115,8 @@ function register(){
 	birth = birth_year+"-"+birth_month+"-"+birth_day
 	document.getElementById("birth").value = birth;	//https://yejip.com/web/2020-11-25-%EA%B2%8C%EC%8B%9C%ED%8C%902/
 	
-	
-	if (emailFormCheck(email)==true){
-		$("#register_form").submit()	
+	if(emailFormCheck(email)==true){
+		$("#register_form").submit()
 	} else {
 		alert('부적절한 이메일 형식입니다')
 	}
@@ -223,3 +208,4 @@ function register(){
 </html>
 
 <!-- 아이디,비밀번호 중복 체크 : https://munhwasudo.tistory.com/entry/%EC%95%84%EC%9D%B4%EB%94%94-%EC%A4%91%EB%B3%B5%EC%B2%B4%ED%81%AC%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%B2%B4%ED%81%AC -->
+<!-- 이메일 유효성 검사 : https://kimvampa.tistory.com/116 -->
