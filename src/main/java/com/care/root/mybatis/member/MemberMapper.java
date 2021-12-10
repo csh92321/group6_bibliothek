@@ -12,4 +12,5 @@ public interface MemberMapper {
 	
 	public int idCheck(String id);
 	public int emailCheck(String email);
+	public int phoneCheck(String phone);
 }

@@ -85,4 +85,14 @@ public class MemberController {
 		}
 		return cnt;
 	}
+	
+	@PostMapping("phoneCheck")
+	@ResponseBody
+	public int phoneCheck(@RequestParam(value="phone", required=false) String phone) {
+		int cnt=0;
+		if(phone!=null) {
+			cnt=ms.phoneCheck(phone);
+		}
+		return cnt;
+	}
 }

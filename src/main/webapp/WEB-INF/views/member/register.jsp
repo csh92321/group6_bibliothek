@@ -90,6 +90,22 @@ function emailCheck() {
 	})
 }
 
+function phoneCheck() {
+	var phone=$("#phone").val();
+	$.ajax({
+		type:'POST',
+		url:"phoneCheck",
+		data:{phone:phone},
+		success:function(result){
+			if(result==0){
+				$("#check_phone").html("사용 가능한 번호입니다").css("color","green")
+			} else {
+				$("#check_phone").html("이미 사용중인 번호입니다").css("color","red")
+			}
+		}
+	})
+}
+
 function register(){
 	addr1 = $("#addr1").val()
 	addr2 = $("#addr2").val()
@@ -157,8 +173,9 @@ function register(){
 		<tr>
 			<th>전화번호</th>
 			<td>
-				<input type="text" name="phone" placeholder="-생략" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">  
+				<input type="text" id="phone" name="phone" placeholder="-생략" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');phoneCheck();"> <br> <span id="check_phone"></span> 
 				 <!-- <input type="text" name="phone" placeholder="-생략" onkeypress="phoneCheck()" > <br> <span id="check_phone"></span>  -->
+				 <!-- "this.value=this.value.replace(/[^0-9]/g,'');" -->
 			</td>
 		</tr>
 		<tr>

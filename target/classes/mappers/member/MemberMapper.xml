@@ -41,4 +41,8 @@
 	<select id="emailCheck" parameterType="String" resultType="Integer">
 		select count(email) from member where email=#{email}
 	</select>
+	
+	<select id="phoneCheck" parameterType="String" resultType="Integer">
+		select count(phone) from member where phone=#{phone}
+	</select>
 </mapper>

@@ -49,4 +49,9 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.emailCheck(email);
 	}
 
+	@Override
+	public int phoneCheck(String phone) {
+		return mapper.phoneCheck(phone);
+	}
+
 }
