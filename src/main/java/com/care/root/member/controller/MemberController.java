@@ -54,17 +54,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("register")
-	public String register(MemberDTO dto,HttpServletResponse response) throws IOException {
+	public String register(MemberDTO dto){
 		int result=ms.register(dto);
 		if(result==1) {
 			System.out.println("회원가입 성공");
 			return "redirect:login";
 		}
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>alert('회원가입 실패');</script>");
-		out.flush();
-		return "redirect:register_form";
+		return "Redirect:register_form";
 	}
 
 	@PostMapping("idCheck")

@@ -50,7 +50,6 @@ function idCheck(){
 	id=id.trim();
 	var id_form =/^[a-z][a-z0-9_]{4,9}$/;
 	if(id_form.test(id)==true){
-		$("#check_id").html("아이디의 첫글자는 영소문자, 총 5-10글자의 영소문자와 숫자,_(언더바)로 생성 가능").css("color","black")
 		$.ajax({
 			type:'POST',
 			url:"idCheck",
@@ -65,7 +64,7 @@ function idCheck(){
 			}
 		})
 	} else {
-		$("#check_id").html("아이디의 첫글자는 영소문자, 총 5-10글자의 영소문자와 숫자,_(언더바)로 생성 가능").css("color","red")
+		$("#check_id").html("아이디의 첫글자는 영소문자, 총 5-10글자의 영소문자와 숫자,_(언더바)로 생성 가능").css("color","black")
 	}
 }
 function pwdCheck() {
@@ -85,7 +84,7 @@ function pwdCheck() {
 			final_pwd="true";
 		}
 	} else {
-		$("#check_pwd1").html("비밀번호는 숫자,문자,특수문자 포함 8-15자리로 생성 가능").css("color","red")
+		$("#check_pwd1").html("비밀번호는 숫자,문자,특수문자 포함 8-15자리로 생성 가능").css("color","black")
 	}
 	
 	

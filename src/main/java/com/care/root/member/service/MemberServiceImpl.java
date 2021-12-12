@@ -1,11 +1,7 @@
 package com.care.root.member.service;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.care.root.member.dto.MemberDTO;
@@ -15,13 +11,17 @@ import com.care.root.mybatis.member.MemberMapper;
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired MemberMapper mapper;
+	BCryptPasswordEncoder encoder;	//비밀번호 암호화
 	
+	public MemberServiceImpl() {
+		encoder = new BCryptPasswordEncoder();
+	}
 	
 	@Override
 	public int userCheck(String id, String pwd) {
 		MemberDTO dto = mapper.userCheck(id);
 		if (dto!=null) {	//아이디 값이 존재한다면
-			if(pwd.equals(dto.getPwd())) {	//비밀번호가 동일하다면
+			if(pwd.equals(dto.getPwd()) || encoder.matches(pwd, dto.getPwd())) {	//비밀번호가 동일하다면
 				return 1;	//로그인 성공	
 			}
 		}
@@ -30,6 +30,10 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int register(MemberDTO dto) {
+		//비밀번호 암호화
+		String securePwd = encoder.encode(dto.getPwd());
+		dto.setPwd(securePwd);
+		
 		int result=0;
 		try {
 			result=mapper.register(dto);
