@@ -19,6 +19,8 @@
 		<result property="meetCnt" column="meet_cnt" />
 		<result property="teamOne" column="team_one" />
 		<result property="teamTwo" column="team_two" />
+		<result property="sessionId" column="session_id" />
+		<result property="limitTime" column="limit_time" />
 	</resultMap>
 	
 	<resultMap id="checkIdPwd" type="com.care.root.member.dto.MemberDTO" >
@@ -33,6 +35,14 @@
 	<insert id="register">
 		insert into member(id,name,pwd,email,phone,birth,addr) values(#{id},#{name},#{pwd},#{email},#{phone},#{birth},#{addr}) 
 	</insert>
+
+	<update id="keepLogin">
+		update member set session_id=#{sessionId}, limit_time=#{limitDate} where id=#{id}
+	</update>
+	
+	<select id="getUserSessionId" resultMap="member">
+		select * from member where session_id=#{sessionId}
+	</select>
 
 	<select id="idCheck" parameterType="String" resultType="Integer">
 		select count(id) from member where id=#{id}
