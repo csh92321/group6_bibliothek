@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -114,5 +116,31 @@ public class MemberController implements MemberSessionName{
 			cnt=ms.phoneCheck(phone);
 		}
 		return cnt;
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session, HttpServletResponse response, @CookieValue(value="loginCookie",required=false) Cookie loginCookie) {
+		if(session.getAttribute(LOGIN)!=null) {
+			if(loginCookie!=null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				ms.keepLogin("nan", new java.sql.Date(System.currentTimeMillis()), (String)session.getAttribute(LOGIN));
+			}
+		}
+		session.invalidate();
+		System.out.println("로그아웃");
+		return "redirect:/";
+	}
+	
+	@GetMapping("modifyForm")
+	public String modifyForm(Model model,HttpSession session) {
+		if(session.getAttribute(LOGIN)!=null) {
+			System.out.println(session.getValue(LOGIN));
+			String id=(String) session.getValue(LOGIN);
+			ms.getMemberData(model,id);
+			return "member/modify";
+		}
+		return "redirect:login";
 	}
 }

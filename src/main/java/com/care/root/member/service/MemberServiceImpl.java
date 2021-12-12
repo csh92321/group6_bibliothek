@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.mybatis.member.MemberMapper;
@@ -74,6 +75,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDTO getUserSessionId(String sessionId) {
 		return mapper.getUserSessionId(sessionId);
+	}
+
+	@Override
+	public void getMemberData(Model model,String id) {
+		model.addAttribute("member",mapper.memberInfo(id));
+		
 	}
 
 }

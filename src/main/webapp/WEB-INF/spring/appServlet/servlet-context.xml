@@ -27,6 +27,11 @@
 	<beans:bean id="autoLoginInterceptor" class="com.care.root.member.interceptor.AutoLoginInterceptor" />
 	
 	<interceptors>
+	<!-- 
+		<interceptor>
+			<beans:ref bean="memberInterceptor" />
+		</interceptor>
+	 -->
 		<interceptor>
 			<mapping path="/" />
 			<beans:ref bean="autoLoginInterceptor" />
