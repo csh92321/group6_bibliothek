@@ -133,11 +133,36 @@ public class MemberController implements MemberSessionName{
 		return "redirect:/";
 	}
 	
+	@GetMapping("beforeModify")
+	public String checkPwd(HttpSession session) {
+		if(session.getAttribute(LOGIN)!=null) {
+			return "member/beforeModify";
+		}
+		return "member/login";
+	}
+	
+	@PostMapping("modify")
+	public String checkPwd(HttpSession session,@RequestParam String pwd) {
+		if(session.getAttribute(LOGIN)!=null) {
+			String id=(String)session.getValue(LOGIN);
+			if(ms.userCheck(id, pwd)==1) {
+				System.out.println("회원 수정/삭제 : 비밀번호 매칭 확인");
+				return "redirect:modifyForm";
+			} else {
+				System.out.println("회원 수정/삭제 : 비밀번호 매칭 실패");
+				return "member/beforeModify";
+			}
+		}
+		System.out.println("회원 수정/삭제 : sessionId 존재無");
+		return "member/login";
+	}
+	
 	@GetMapping("modifyForm")
 	public String modifyForm(Model model,HttpSession session) {
 		if(session.getAttribute(LOGIN)!=null) {
 			System.out.println(session.getValue(LOGIN));
 			String id=(String) session.getValue(LOGIN);
+			System.out.println("id :" + id);
 			ms.getMemberData(model,id);
 			return "member/modify";
 		}
