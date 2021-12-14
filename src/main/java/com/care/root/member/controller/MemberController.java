@@ -181,4 +181,9 @@ public class MemberController implements MemberSessionName{
 		}
 		return "Redirect:modifyForm";
 	}
+	
+	@GetMapping("deleteCheck")
+	public String deleteCheck() {
+		return "member/deleteCheck";
+	}
 }

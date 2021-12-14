@@ -104,6 +104,15 @@ function modify() {
 		modify_form.submit();
 	}
 }
+
+function deleteMember() {
+	var result = confirm("회원 탈퇴하시겠습니까?")
+	if(result){
+		location.href="${contextPath}/member/deleteCheck"
+	} else {
+		location.href="${contextPath}/"
+	}
+}
 </script>
 </head>
 <body>
@@ -165,7 +174,7 @@ function modify() {
 		<tr>
 			<td colspan="2"> 
 				<button type="button" onclick="modify()">수정</button>
-				<button type="button" onclick="withdraw()">탈퇴</button> 
+				<button type="button" onclick="deleteMember()">탈퇴</button> 
 			</td>
 		</tr>
 	</table>	
