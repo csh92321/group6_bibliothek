@@ -83,4 +83,19 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
+	@Override
+	public int modify(MemberDTO dto) {
+		//비밀번호 암호화
+				String securePwd = encoder.encode(dto.getPwd());
+				dto.setPwd(securePwd);
+				
+				int result=0;
+				try {
+					result=mapper.modify(dto);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return result;
+	}
+
 }

@@ -59,4 +59,8 @@
 	<select id="memberInfo" resultMap="member">
 		select * from member where id=#{id}
 	</select>
+	
+	<update id="modify">
+		update member set pwd=#{pwd}, phone=#{phone}, addr=#{addr} where id=#{id}
+	</update>
 </mapper>

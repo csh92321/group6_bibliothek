@@ -85,9 +85,7 @@ function pwdCheck() {
 		}
 	} else {
 		$("#check_pwd1").html("비밀번호는 숫자,문자,특수문자 포함 8-15자리로 생성 가능").css("color","black")
-	}
-	
-	
+	}	
 }
 
 function emailCheck() {

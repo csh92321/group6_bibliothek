@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form action="modify" method="post">
+	<form action="checkPwd" method="post">
 		<table>
 			<tr>
 				<td> <input type="password" id="pwd" name="pwd"> </td>

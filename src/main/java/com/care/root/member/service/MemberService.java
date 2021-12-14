@@ -18,4 +18,6 @@ public interface MemberService {
 	public int phoneCheck(String phone);
 	
 	public void getMemberData(Model model,String id);
+	
+	public int modify(MemberDTO dto);
 }

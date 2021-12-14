@@ -19,4 +19,6 @@ public interface MemberMapper {
 	public int phoneCheck(String phone);
 	
 	public MemberDTO memberInfo(String id);
+	
+	public int modify(MemberDTO dto);
 }

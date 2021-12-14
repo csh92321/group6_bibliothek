@@ -141,7 +141,7 @@ public class MemberController implements MemberSessionName{
 		return "member/login";
 	}
 	
-	@PostMapping("modify")
+	@PostMapping("checkPwd")
 	public String checkPwd(HttpSession session,@RequestParam String pwd) {
 		if(session.getAttribute(LOGIN)!=null) {
 			String id=(String)session.getValue(LOGIN);
@@ -167,5 +167,18 @@ public class MemberController implements MemberSessionName{
 			return "member/modify";
 		}
 		return "redirect:login";
+	}
+	
+	@PostMapping("modify")
+	public String modify(MemberDTO dto){
+		//System.out.println(dto.getPwd());
+		//System.out.println(dto.getPhone());
+		//System.out.println(dto.getAddr());
+		int result=ms.modify(dto);
+		if(result==1) {
+			System.out.println("정보 수정 성공");
+			return "redirect:/";
+		}
+		return "Redirect:modifyForm";
 	}
 }
