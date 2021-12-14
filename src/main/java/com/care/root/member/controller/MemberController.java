@@ -177,7 +177,7 @@ public class MemberController implements MemberSessionName{
 		int result=ms.modify(dto);
 		if(result==1) {
 			System.out.println("정보 수정 성공");
-			return "redirect:/";
+			return "redirect:successLogin";
 		}
 		return "Redirect:modifyForm";
 	}
@@ -185,5 +185,20 @@ public class MemberController implements MemberSessionName{
 	@GetMapping("deleteCheck")
 	public String deleteCheck() {
 		return "member/deleteCheck";
+	}
+	
+	@PostMapping("deleteMember")
+	public String deleteMember(HttpSession session) {
+		//System.out.println("1:"+session.getAttribute(LOGIN));
+		String id=(String)session.getValue(LOGIN);
+		//System.out.println("2:"+id);
+		int result=ms.delete(id);
+		if(result==1) {
+			System.out.println(id+"회원 삭제 완료");
+			return "redirect:/";
+		} else {
+			System.out.println(id+"회원 삭제 실패");
+			return "redirect:successLogin";
+		}
 	}
 }

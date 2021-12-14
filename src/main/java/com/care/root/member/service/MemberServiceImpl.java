@@ -98,4 +98,15 @@ public class MemberServiceImpl implements MemberService {
 				return result;
 	}
 
+	@Override
+	public int delete(String id) {
+		int result=0;
+		try {
+			result=mapper.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form method="post" action="${contextPath }/member/user_check">
+<form method="post" action="user_check">
 	<table>
 		<tr>
 			<td><input type="text" name="id"></td>

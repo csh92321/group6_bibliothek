@@ -63,4 +63,8 @@
 	<update id="modify">
 		update member set pwd=#{pwd}, phone=#{phone}, addr=#{addr} where id=#{id}
 	</update>
+	
+	<delete id="delete">
+		delete from member where id=#{id}
+	</delete>
 </mapper>

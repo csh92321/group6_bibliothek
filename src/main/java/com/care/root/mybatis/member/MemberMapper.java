@@ -21,4 +21,6 @@ public interface MemberMapper {
 	public MemberDTO memberInfo(String id);
 	
 	public int modify(MemberDTO dto);
+	
+	public int delete(String id);
 }
