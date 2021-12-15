@@ -200,7 +200,7 @@ public class MemberController implements MemberSessionName{
 		if(result==1) {
 			System.out.println(id+"회원 삭제 완료");
 			ms.deleteReasonCheck(dr_dto);
-			System.out.println("탈퇴 이유 DB에 추가");
+			session.invalidate();
 			return "redirect:/";
 		} else {
 			System.out.println(id+"회원 삭제 실패");

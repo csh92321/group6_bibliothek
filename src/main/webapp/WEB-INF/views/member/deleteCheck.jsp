@@ -52,7 +52,7 @@
 	<input type="checkbox" name="recentNotUse" value=1>최근들어 이용한 적이 없어서<br>
 	<input type="checkbox" name="nomoreRead" value=1>이용할 컨텐츠 부족 <br>
 	<input type="checkbox" name="otherSite" value=1>타사이트 이용 예정<br>
-	<input type="checkbox" name="etc" value="기타">기타 <br>
+	<input type="checkbox" name="etc" value="1">기타 <br>
 	<input type="hidden" name="id" value="${member.id }">
 	<button type="button" onclick="deleteMember()">탈퇴</button>
 </form>
