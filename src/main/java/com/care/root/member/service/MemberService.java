@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import org.springframework.ui.Model;
 
+import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 
 public interface MemberService {
@@ -22,4 +23,6 @@ public interface MemberService {
 	public int modify(MemberDTO dto);
 	
 	public int delete(String id);
+	
+	public int deleteReasonCheck(DeleteReasonDTO dr_dto);
 }

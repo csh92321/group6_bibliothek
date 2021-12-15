@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.care.root.common.MemberSessionName;
+import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 
@@ -183,18 +184,23 @@ public class MemberController implements MemberSessionName{
 	}
 	
 	@GetMapping("deleteCheck")
-	public String deleteCheck() {
+	public String deleteCheck(Model model,HttpSession session) {
+		String id=(String) session.getAttribute(LOGIN);
+		System.out.println("deleteCheck로 전달(sessionId) : "+id);
+		ms.getMemberData(model, id);
 		return "member/deleteCheck";
 	}
 	
 	@PostMapping("deleteMember")
-	public String deleteMember(HttpSession session) {
-		//System.out.println("1:"+session.getAttribute(LOGIN));
+	public String deleteMember(HttpSession session,DeleteReasonDTO dr_dto) {
+		
 		String id=(String)session.getValue(LOGIN);
-		//System.out.println("2:"+id);
+		//System.out.println("expensive : "+expensive);
 		int result=ms.delete(id);
 		if(result==1) {
 			System.out.println(id+"회원 삭제 완료");
+			ms.deleteReasonCheck(dr_dto);
+			System.out.println("탈퇴 이유 DB에 추가");
 			return "redirect:/";
 		} else {
 			System.out.println(id+"회원 삭제 실패");

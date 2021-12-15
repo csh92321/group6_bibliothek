@@ -67,4 +67,8 @@
 	<delete id="delete">
 		delete from member where id=#{id}
 	</delete>
+	
+	<insert id="deleteReasonCheck">
+		insert into delete_reason(expensive, nomore_read, recent_not_use, other_site, etc, id) values(#{expensive},#{nomoreRead},#{recentNotUse},#{otherSite},#{etc},#{id})
+	</insert>
 </mapper>

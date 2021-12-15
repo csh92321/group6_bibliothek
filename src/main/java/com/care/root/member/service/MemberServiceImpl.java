@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.mybatis.member.MemberMapper;
 
@@ -103,6 +104,17 @@ public class MemberServiceImpl implements MemberService {
 		int result=0;
 		try {
 			result=mapper.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public int deleteReasonCheck(DeleteReasonDTO dr_dto) {
+		int result=0;
+		try {
+			result=mapper.deleteReasonCheck(dr_dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
