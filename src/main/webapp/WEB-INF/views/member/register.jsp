@@ -20,6 +20,7 @@ var final_id = "false";
 var final_pwd = "false";
 var final_addr = "false";
 var final_phone = "false";
+var final_email="false";
 
 
 function daumPost(){

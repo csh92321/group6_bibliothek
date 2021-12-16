@@ -199,7 +199,7 @@ public class MemberController implements MemberSessionName{
 		int result=ms.delete(id);
 		if(result==1) {
 			System.out.println(id+"회원 삭제 완료");
-			ms.deleteReasonCheck(dr_dto);
+			ms.deleteReasonCheck(dr_dto);		
 			session.invalidate();
 			return "redirect:/";
 		} else {
