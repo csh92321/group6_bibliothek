@@ -4,15 +4,22 @@ public class BookDTO {
 	
 	private String bookNum;
 	private String title;
+	private String subtitle;
 	private String writer;
 	private String company;
-	private String genre;
 	private int hit;
 	private int grade;
 	private int likeCnt;
 	private int totalPage;
+
 	
 	
+	public String getSubtitle() {
+		return subtitle;
+	}
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
 	public String getBookNum() {
 		return bookNum;
 	}
@@ -36,12 +43,6 @@ public class BookDTO {
 	}
 	public void setCompany(String company) {
 		this.company = company;
-	}
-	public String getGenre() {
-		return genre;
-	}
-	public void setGenre(String genre) {
-		this.genre = genre;
 	}
 	public int getHit() {
 		return hit;
@@ -67,6 +68,8 @@ public class BookDTO {
 	public void setTotalPage(int totalPage) {
 		this.totalPage = totalPage;
 	}
+	
+
 	
 	
 }

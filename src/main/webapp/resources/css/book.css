@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+hr {
+	border: 0px;
+	height: 2px;
+	background-color: #b8371b;
+}
+
 a:visited {
 	color: #b8371b;
 }

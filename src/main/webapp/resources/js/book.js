@@ -1,16 +1,31 @@
-
-for(var i =1; i<=9;i++){
-	document.write("<div class=\"product-title\">");
-	document.write("<div class=\"product-img-div\">");
-	document.write("<a href=\"\"><img class=\"product-img\" src=\"${ctx }/resources/coverImg/L00"+i+".jpg\" /></a>");
-	document.write("<div class=\"product-letter\">");
-	document.write("<h3> <a href=\"\">달러구트 꿈 백화점 2<br>");
-	document.write("단골손님을 찾습니다<br></a>");
-	document.write("<div class=\"small\">");
-	document.write("이미예/팩토리나인</div></h3>");
-	document.write("</div>");
-	document.write("</div>");
-	document.write("</div>");
-}
-
-document.write("바보");
+	function getBooks() {
+		$
+				.ajax({
+					url : "books",
+					type : "get",
+					dataType : "json",
+					success : function(list) {
+						console.log(list)
+						let html = ""
+						$
+								.each(
+										list,
+										function(index, item) {
+											html += "<div class=\"product-title\">"
+											html += "<div class=\"product-img-div\">"
+											html += "<a href=\"\"><img class=\"product-img\" src=\"/resources/coverImg/"+item.bookNum+".jpg\" /></a>"
+											html += "<div class=\"product-letter\">"
+											html += "<h3> <a href=\"\">"
+													+ item.title + "<br></a>"
+											html += "<div class=\"small\">"
+											html += item.writer + "/"
+													+ item.company
+													+ "</div></h3>"
+											html += "</div>"
+											html += "</div>"
+											html += "</div>"
+										})
+						$("#books").append(html)
+					}
+				})
+	}
