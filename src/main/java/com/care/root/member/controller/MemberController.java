@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -30,7 +31,11 @@ public class MemberController implements MemberSessionName{
 	@Autowired MemberService ms;
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(@CookieValue(value="saveIdCookie", required=false) Cookie saveIdCookie,Model model) {
+		if(saveIdCookie != null) {
+			System.out.println("로그인 전 쿠키 값 확인 : " + saveIdCookie.getValue());
+			model.addAttribute("cookieID", saveIdCookie.getValue());
+		}
 		System.out.println("member/login 페이지 연결");
 		return "member/login";
 	}
@@ -39,12 +44,14 @@ public class MemberController implements MemberSessionName{
 	public String userCheck(@RequestParam String id, @RequestParam String pwd, @RequestParam(required=false) String autoLogin,
 							@RequestParam(required=false) String saveId, RedirectAttributes rs) {
 		System.out.println("member/user_check 로그인 확인");
+		System.out.println("autoLogin : " + autoLogin);
+		System.out.println("saveId : " + saveId);
 		int result = ms.userCheck(id,pwd);
 		if (result==1) {
 			System.out.println("로그인 성공");
 			rs.addAttribute("id",id);
 			rs.addAttribute("autoLogin", autoLogin);
-			//rs.addAttribute("saveId", saveId);
+			rs.addAttribute("saveId", saveId);
 			return "redirect:successLogin";
 		} else {
 			System.out.println("로그인 실패");
@@ -53,9 +60,8 @@ public class MemberController implements MemberSessionName{
 	}
 	
 	@GetMapping("/successLogin")
-	public String successLogin(@RequestParam String id, @RequestParam(required=false) String autoLogin, HttpSession session, HttpServletResponse response) {
+	public String successLogin(@RequestParam String id, @RequestParam(required=false) String autoLogin, @RequestParam(required=false) String saveId, HttpSession session, HttpServletResponse response) {
 		session.setAttribute(LOGIN, id);
-		
 		if(autoLogin!=null) {	//사용자가 자동로그인 체크
 			int limitTime = 60*60*24*90;	//90일
 			Cookie loginCookie = new Cookie("loginCookie",session.getId());
@@ -69,6 +75,12 @@ public class MemberController implements MemberSessionName{
 			java.sql.Date limitDate = new java.sql.Date(cal.getTimeInMillis());
 			
 			ms.keepLogin(session.getId(), limitDate, id);	//DB로 연결
+		} else if(saveId!=null) {
+			int limitTimeId=60*60*24*7;	//7일
+			Cookie saveIdCookie = new Cookie("saveIdCookie",id);
+			saveIdCookie.setPath("/");
+			saveIdCookie.setMaxAge(limitTimeId);
+			response.addCookie(saveIdCookie);
 		}
 		return "member/successLogin";
 	}
