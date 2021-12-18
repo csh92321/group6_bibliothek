@@ -2,6 +2,8 @@ package com.care.root.member.service;
 
 import java.sql.Date;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.ui.Model;
 
 import com.care.root.member.dto.DeleteReasonDTO;
@@ -27,4 +29,6 @@ public interface MemberService {
 	public int deleteReasonCheck(DeleteReasonDTO dr_dto);
 	
 	public MemberDTO findId(MemberDTO dto);
+	public void sendEmail(MemberDTO dto, String div);	//임시 비밀번호 전송
+	public int findPwd(MemberDTO dto) throws Exception;
 }

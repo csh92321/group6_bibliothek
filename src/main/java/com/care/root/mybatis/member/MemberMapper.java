@@ -27,4 +27,5 @@ public interface MemberMapper {
 	public int deleteReasonCheck(DeleteReasonDTO dr_dto);
 	
 	public MemberDTO findId(MemberDTO dto);
+	public int updatePwd(MemberDTO dto);
 }

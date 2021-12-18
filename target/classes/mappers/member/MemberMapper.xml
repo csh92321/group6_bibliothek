@@ -23,13 +23,14 @@
 		<result property="limitTime" column="limit_time" />
 	</resultMap>
 	
-	<resultMap id="checkIdPwd" type="com.care.root.member.dto.MemberDTO" >
+	<resultMap id="checkIdPwdEmail" type="com.care.root.member.dto.MemberDTO" >
 		<id property="id" column="id"/>
 		<result property="pwd" column="pwd" />
+		<result property="email" column="email" />
 	</resultMap>
 
-	<select id="userCheck" resultMap="checkIdPwd">
-		select id,pwd from member where id=#{id}
+	<select id="userCheck" resultMap="checkIdPwdEmail">
+		select id,pwd,email from member where id=#{id}
 	</select>
 	
 	<insert id="register">
@@ -78,4 +79,8 @@
 	<select id="findId" resultMap="findOnlyId">
 		select id from member where name=#{name} and email=#{email}
 	</select>
+	
+	<update id="updatePwd">
+		update member set pwd=#{pwd} where id=#{id}
+	</update>
 </mapper>

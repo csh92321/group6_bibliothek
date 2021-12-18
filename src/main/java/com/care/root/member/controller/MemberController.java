@@ -2,7 +2,6 @@ package com.care.root.member.controller;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -191,7 +190,7 @@ public class MemberController implements MemberSessionName{
 		int result=ms.modify(dto);
 		if(result==1) {
 			System.out.println("정보 수정 성공");
-			return "redirect:successLogin";
+			return "member/successLogin";
 		}
 		return "Redirect:modifyForm";
 	}
@@ -205,14 +204,17 @@ public class MemberController implements MemberSessionName{
 	}
 	
 	@PostMapping("deleteMember")
-	public String deleteMember(HttpSession session,DeleteReasonDTO dr_dto) {
+	public String deleteMember(HttpSession session,DeleteReasonDTO dr_dto, @CookieValue(value="saveIdCookie",required=false) Cookie saveIdCookie,HttpServletResponse response) {
 		
 		String id=(String)session.getValue(LOGIN);
 		//System.out.println("expensive : "+expensive);
 		int result=ms.delete(id);
 		if(result==1) {
 			System.out.println(id+"회원 삭제 완료");
-			ms.deleteReasonCheck(dr_dto);		
+			ms.deleteReasonCheck(dr_dto);
+			saveIdCookie.setPath("/");
+			saveIdCookie.setMaxAge(0);
+			response.addCookie(saveIdCookie);
 			session.invalidate();
 			return "redirect:/";
 		} else {
@@ -242,5 +244,9 @@ public class MemberController implements MemberSessionName{
 		return "member/findPwd";
 	}
 	
-	
+	@PostMapping("findPwd")
+	@ResponseBody
+	public int findPwd(@RequestBody MemberDTO dto) throws Exception {
+		return ms.findPwd(dto);
+	}
 }
