@@ -25,4 +25,6 @@ public interface MemberService {
 	public int delete(String id);
 	
 	public int deleteReasonCheck(DeleteReasonDTO dr_dto);
+	
+	public MemberDTO findId(MemberDTO dto);
 }

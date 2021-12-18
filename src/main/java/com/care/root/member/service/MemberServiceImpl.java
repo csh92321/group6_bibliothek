@@ -121,4 +121,9 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public MemberDTO findId(MemberDTO dto) {
+		return mapper.findId(dto);
+	}
+	
 }

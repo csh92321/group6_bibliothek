@@ -7,10 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>register</title>
-<style type="text/css">
-	.id_ok{color:green; display:none;}
-	.id_already{color:red; display:none;}
-</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

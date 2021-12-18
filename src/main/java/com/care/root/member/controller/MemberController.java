@@ -2,9 +2,9 @@ package com.care.root.member.controller;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -219,4 +220,27 @@ public class MemberController implements MemberSessionName{
 			return "redirect:successLogin";
 		}
 	}
+	
+	@GetMapping("newpage_findId")
+	public String newpage_findId() {
+		System.out.println("아이디 찾기 선택");
+		return "member/findId";
+	}
+	
+	@PostMapping(value="findId", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public MemberDTO findId(@RequestBody MemberDTO dto,Model model) {
+		System.out.println("name:"+dto.getName());
+		System.out.println("email:"+dto.getEmail());
+
+		return ms.findId(dto);
+	}
+	
+	@GetMapping("newpage_findPwd")
+	public String newpage_findPwd() {
+		System.out.println("비밀번호 찾기 선택");
+		return "member/findPwd";
+	}
+	
+	
 }

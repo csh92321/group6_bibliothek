@@ -72,4 +72,10 @@
 		insert into delete_reason(expensive, nomore_read, recent_not_use, other_site, etc, id) values(#{expensive},#{nomoreRead},#{recentNotUse},#{otherSite},#{etc},#{id})
 	</insert>
 	
+	<resultMap id="findOnlyId"  type="com.care.root.member.dto.MemberDTO" >
+		<id property="id" column="id"/>
+	</resultMap>
+	<select id="findId" resultMap="findOnlyId">
+		select id from member where name=#{name} and email=#{email}
+	</select>
 </mapper>

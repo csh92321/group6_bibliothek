@@ -14,17 +14,14 @@ function checkBoxOnlyOne(target) {
     document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
     target.checked = true;
 }
-<%--
-$function() {
-	function getSessionId() {
-		var cookieId="${cookieID}";
-		if(cookieId!=""){
-			$("#id").val(cookieId);
-			$("#saveId").prop("checked",true);
-		}
-	}
+function findId(){
+	var url="newpage_findId"
+	win=window.open(url,"findId","width=400, height=400, left=100, top=100");
 }
---%>
+function findPwd(){
+	var url="newpage_findPwd"
+	win=window.open(url,"findPwd","width=400, height=400, left=100, top=100");
+}
 </script>
 </head>
 <body>
@@ -55,7 +52,7 @@ $function() {
 		<tr>
 			<td colspan="2">
 				<label onclick="location.href='register_form'">회원가입</label>
-				<label>아이디/비밀번호 찾기</label>
+				<label onclick="findId()">아이디</label>/<label onclick="findPwd()">비밀번호</label> 찾기
 			</td>
 		</tr>
 	</table>
