@@ -75,12 +75,19 @@
 		}
 		$("#like").html(html)
 	}
+	
+	var url = 0;
+	
 	function url() {
+		url += 1;
+		if (url==1) {
 		var urlString = window.location.href;
 		html = "<div class = \"rgt\">"
 		html += "<h4> url : "+urlString+"</h4></div>"
+		} else if (url==2) {
+			html = ""
+		}
 		$("#url").html(html)
-		
 	}
     </script>
 </head>
