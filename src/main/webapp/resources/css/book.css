@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+* {font-family: "궁서체" ;}
+
 hr {
 	border: 0px;
 	height: 2px;
@@ -40,11 +42,8 @@ li:not(:first-child) {
 }
 
 .product-img {
-	margin-top : 30px;
-    max-width:180px;
-    max-height:180px;
-}
-.product-letter {
+	margin : 30px;
+	height : 250px;
 }
 
 .small {
@@ -57,4 +56,18 @@ li:not(:first-child) {
 
 .large {
 	font-size:large;
+}
+
+.title-box {
+	float: left;
+	display:inline-block;
+ 	margin-left :70px; 
+ 	margin-top :130px; 
+}
+.title {
+	font-size : 30px;
+}
+.subtitle {
+	font-size:20px;
+	color:gray;
 }

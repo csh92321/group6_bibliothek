@@ -11,9 +11,30 @@ public class BookDTO {
 	private int grade;
 	private int likeCnt;
 	private int totalPage;
+	private String bookIntro;
+	private String contentsTable;
+	private String writerIntro;
 
 	
 	
+	public String getBookIntro() {
+		return bookIntro;
+	}
+	public void setBookIntro(String bookIntro) {
+		this.bookIntro = bookIntro;
+	}
+	public String getContentsTable() {
+		return contentsTable;
+	}
+	public void setContentsTable(String contentsTable) {
+		this.contentsTable = contentsTable;
+	}
+	public String getWriterIntro() {
+		return writerIntro;
+	}
+	public void setWriterIntro(String writerIntro) {
+		this.writerIntro = writerIntro;
+	}
 	public String getSubtitle() {
 		return subtitle;
 	}

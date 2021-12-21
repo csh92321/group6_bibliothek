@@ -27,6 +27,5 @@ function search() {
 	</div>
 </div>
 <div style="text-align: center">
-	<a href="novel">book</a>
 </div>
 </html>

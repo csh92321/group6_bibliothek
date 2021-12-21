@@ -50,7 +50,7 @@
                 <li><a href="#">교육</a></li>
                 <li><a href="#">생활</a></li>
                 <li><a href="#">아동</a></li>
-                <li><a href="#">베스트</a></li>
+                <li><a href="bestSeller">베스트</a></li>
          		<li><a href="#">신간</a></li>
          		<li><a href="#">추천</a></li>
             </ul>

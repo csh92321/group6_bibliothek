@@ -14,14 +14,38 @@
       <result property="grade" column="grade" />
       <result property="likeCnt" column="like_cnt" />
       <result property="totalPage" column="total_page" />
+      <result property="bookIntro" column="BOOK_INTRODUCTION" />
+      <result property="contentsTable" column="TABLE_OF_CONTENTS" />
+      <result property="writerIntro" column="WRITER_INTRODUCTION" />
    </resultMap>
    
    <select id="bookList" resultMap="book">
       select book_num, title, subtitle, writer, company from book where book_num=#{bookNum}
    </select>
    
-   <select id="bookSearch" resultMap="book" resultType="arraylist">
+   <select id="bookSearch" resultMap="book">
       select book_num, title, subtitle, writer, company from book where title LIKE #{search}
    </select>
+
+   <select id="detail" resultMap="book">
+      select book_num, title, subtitle, writer, company, BOOK_INTRODUCTION, TABLE_OF_CONTENTS, WRITER_INTRODUCTION from book where book_num=#{bookNum}
+   </select>
+   
+   <update id="hitPlus">
+      update book set hit=#{hit} where book_num=#{bookNum}
+   </update>
+     
+   <select id="hitLoad" resultType="int">
+      select hit from book where book_num=#{bookNum}
+   </select>
+   
+   <select id="getHit" resultMap="book">
+      select book_num, hit from book where hit=#{num}
+   </select>
+   
+    <select id="getAll" resultMap="book">
+      select * from book where book_num=#{bookNum}
+   </select>
+   
 
 </mapper>
