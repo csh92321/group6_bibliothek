@@ -212,9 +212,11 @@ public class MemberController implements MemberSessionName{
 		if(result==1) {
 			System.out.println(id+"회원 삭제 완료");
 			ms.deleteReasonCheck(dr_dto);
-			saveIdCookie.setPath("/");
-			saveIdCookie.setMaxAge(0);
-			response.addCookie(saveIdCookie);
+			if(saveIdCookie!=null) {
+				saveIdCookie.setPath("/");
+				saveIdCookie.setMaxAge(0);
+				response.addCookie(saveIdCookie);
+			}
 			session.invalidate();
 			return "redirect:/";
 		} else {
