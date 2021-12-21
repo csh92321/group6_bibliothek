@@ -1,11 +1,9 @@
 package com.care.root.member.service;
 
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
