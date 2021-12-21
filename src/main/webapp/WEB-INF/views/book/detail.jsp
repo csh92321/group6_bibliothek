@@ -60,19 +60,43 @@
     image += "<img class=\"product-img\" src=\"/resources/coverImg/"+bookNum+".jpg\" />"
      $("#image").html(image)
 	}
+	var check = 0;
 	function originalImage() {
+		
+	}
+	function like() {
+		html = "<h4>찜하기♡</h4>"
+		check += 1;
+		if (check==2) {
+		html = "<h4>찜하기♥</h4>"
+		} else if(check==3) {
+			html = "<h4>찜하기♡</h4>"
+			check = 1;
+		}
+		$("#like").html(html)
+	}
+	function url() {
+		var urlString = window.location.href;
+		html = "<div class = \"rgt\">"
+		html += "<h4> url : "+urlString+"</h4></div>"
+		$("#url").html(html)
 		
 	}
     </script>
 </head>
-<body onload="detail();">
+<body onload="detail(); like();">
 <%@ include file="menu.jsp" %>
 <main>
 <div class = "main-container">
 	<div class="temp-box box-one">
 	<div class="border-dee3eb"><span id="image" onclick="originalImage();"></span></div>
 	<div class="gap-box"></div>
-	<div class="border-dee3eb"><span id="detail"></span></div>
+	<div class="border-dee3eb"><span id="detail"></span>
+	<button class="btn" onclick="();" type="button">읽기</button>
+	<button class="btn" onclick="like();" type="button"><span id="like"></span></button>
+	<button class="btn" onclick="url();" type="button">공유</button>
+	<span id="url"></span>
+	</div>
 	</div>
 	<div class="temp-box">책소개<span id="bookIntro"></span></div>
 	<div class="temp-box">목차<span id="contentsTable"></span></div>

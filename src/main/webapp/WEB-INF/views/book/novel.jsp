@@ -45,7 +45,6 @@
 	<br>
 	<h3 class="subtitle">소설</h3>
 	<hr>
-		<button class="btn" onclick="getBooks();" type="button">검색</button>
 	<body onload="getBooks();">
 	<span id="books"></span>
 </body>

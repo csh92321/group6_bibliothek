@@ -182,15 +182,13 @@ public class BookServiceImpl implements BookService {
 		try {
 			int num = 0;
 			list = mapper.getHit(num);
-//			Collections.sort(list, Collections.reverseOrder());
+			Collections.sort(list, Collections.reverseOrder());
 			while (it.hasNext()) {
 				BookDTO dto = (BookDTO) it.next();	
+				dto = mapper.getAll(dto.getBookNum());
 				list.add(dto);
 				DBMap.put(dto.getBookNum(), dto);
 			}
-//			list.add(hit);		
-////				BookDTO dto = mapper.getAll(num.getBookNum());
-//				} 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
