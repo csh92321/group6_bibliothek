@@ -31,7 +31,14 @@ ${id}, ${loginUser }<br>
 		<td> ${list-i }</td>
 		<td> ${personalBoardList.savedate }</td>
 		<td> ${personalBoardList.title }</td>
-		<td> ${personalBoardList.replyCheck }</td>
+		<td>
+		 <c:if test="${personalBoardList.replyCheck==0 }">
+		 답변대기
+		 </c:if>
+		 <c:if test="${personalBoardList.replyCheck!=0 }">
+		 답변완료
+		 </c:if>
+		 </td>
 	</tr>
 	</c:forEach>
 </table>
