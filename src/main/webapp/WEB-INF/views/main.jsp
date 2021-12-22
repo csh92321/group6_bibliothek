@@ -32,14 +32,14 @@
         </div>
  
         <div id="top_menu">
-       		<a href="#"><img src="resources/images/mypage.jpg" alt="mypage" width="50"></a>
+       		<a href="member/login"><img src="resources/images/mypage.jpg" alt="mypage" width="50"></a>
        		<a href="#"><img src="resources/images/what.jpg" alt="what" width="50"></a>
        		<a href="#"><img src="resources/images/community.jpg" alt="community" width="50"></a>
        		<a href="#"><img src="resources/images/cash.jpg" alt="cash" width="50"></a>
        	</div>
        	<div id="login">	
-        	<a href="#">로그인</a> | 
-            <a href="#">회원가입</a>
+        	<a href="member/login">로그인</a> | 
+            <a href="member/register_form">회원가입</a>
         </div>
  <hr>
         <nav>
