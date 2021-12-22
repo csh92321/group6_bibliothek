@@ -18,7 +18,7 @@
 	<tr>
 		<td><a href="beforeModify">회원정보수정</a></td>
 		<td><a href="">쪽지</a></td>
-		<td><a href="">1:1문의</a></td>
+		<td><a href="${contextPath }/personalBoard/PBlist?id=${loginUser}">1:1문의</a></td>
 	</tr>
 	<tr>
 		<td><a href="">북리스트</a></td>
