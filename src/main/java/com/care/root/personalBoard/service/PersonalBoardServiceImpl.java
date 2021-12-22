@@ -28,4 +28,9 @@ public class PersonalBoardServiceImpl implements PersonalBoardService {
 		return result;
 	}
 
+	@Override
+	public void pbView(Model model, int writeNum) {
+		model.addAttribute("personalData",mapper.pbView(writeNum));
+	}
+
 }

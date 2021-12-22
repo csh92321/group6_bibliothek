@@ -11,4 +11,5 @@ public interface PersonalBoardMapper {
 
 	public List<PersonalBoardDTO> pbList(String id);
 	public int save(PersonalBoardDTO dto);
+	public PersonalBoardDTO pbView(int writeNum);
 }

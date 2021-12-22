@@ -30,7 +30,7 @@ ${id}, ${loginUser }<br>
 	<tr>
 		<td> ${list-i }</td>
 		<td> ${personalBoardList.savedate }</td>
-		<td> ${personalBoardList.title }</td>
+		<td><a href="PBview?writeNum=${personalBoardList.writeNum}">${personalBoardList.title }</a> </td>
 		<td>
 		 <c:if test="${personalBoardList.replyCheck==0 }">
 		 답변대기

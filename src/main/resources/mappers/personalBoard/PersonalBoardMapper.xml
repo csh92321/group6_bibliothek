@@ -22,6 +22,8 @@
 	insert into personal_board(id, write_num, title, content) values(#{id},personal_board_seq.nextval, #{title}, #{content})
 </insert>
 
-
+<select id="pbView" resultMap="list">
+	select * from personal_board where write_num=#{writeNum}
+</select>
 
 </mapper>

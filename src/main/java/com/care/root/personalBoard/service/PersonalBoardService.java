@@ -8,5 +8,6 @@ public interface PersonalBoardService {
 
 	public void pbList(Model model,String id);
 	public int save(PersonalBoardDTO dto);
+	public void pbView(Model model, int writeNum);
 	
 }

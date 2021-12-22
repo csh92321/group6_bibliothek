@@ -39,4 +39,10 @@ public class PersonalBoardController {
 		}
 		return "redirect:PBform";
 	}
+	
+	@GetMapping("PBview")
+	public String view(@RequestParam int writeNum, Model model) {
+		pbs.pbView(model,writeNum);
+		return "personalBoard/PBview";
+	}
 }
