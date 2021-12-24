@@ -23,4 +23,9 @@
 	select * from note where sender=#{id} order by note_num desc
 </select>
 
+<insert id="msg">
+	insert into note(id, sender, receiver, note_num, content)
+	values(#{id},#{sender},#{receiver},note_seq.nextval,#{content})
+</insert>
+
 </mapper>

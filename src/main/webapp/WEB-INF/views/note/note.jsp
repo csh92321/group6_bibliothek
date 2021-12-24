@@ -82,9 +82,14 @@ ${id}, ${loginUser }<br>
 			<th colspan="4" style="text-align: left;"> 내용 </th>
 		</tr>
 		<tr>
-			<td colspan="4"> <textarea rows="6" cols="65"></textarea> </td>	
+			<td colspan="4"> <textarea rows="6" cols="65" id="content" name="content"></textarea> </td>	
 		</tr>
 		<tr>
+			<td colspan="4">
+				<input type="submit" value="전송">
+				<button type="button" onclick="cancel()">취소</button> 
+			</td>
+		</tr>
 	</table>
 </form>
 

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.care.root.mybatis.note.NoteMapper;
+import com.care.root.note.dto.NoteDTO;
 
 @Service
 public class NoteServiceImpl implements NoteService {
@@ -20,6 +21,18 @@ public class NoteServiceImpl implements NoteService {
 	@Override
 	public void noteList_send(Model model, String id) {
 		model.addAttribute("noteList_send",mapper.noteList_send(id));
+	}
+
+
+	@Override
+	public int msg(NoteDTO dto) {
+		int result=0;
+		try {
+			result=mapper.msg(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

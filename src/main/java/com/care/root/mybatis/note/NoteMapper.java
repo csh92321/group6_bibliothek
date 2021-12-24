@@ -11,6 +11,6 @@ public interface NoteMapper {
 
 	public List<NoteDTO> noteList_rec(String id);
 	public List<NoteDTO> noteList_send(String id);
-	
+	public int msg(NoteDTO dto);
 	
 }
