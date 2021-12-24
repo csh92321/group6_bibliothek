@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.note.NoteMapper">
+
+<resultMap type="com.care.root.note.dto.NoteDTO" id="list">
+	<id property="noteNum" column="note_num" />
+	<result property="id" column="id" />
+	<result property="sender" column="sender" />
+	<result property="receiver" column="receiver" />
+	<result property="content" column="content" />
+	<result property="gubun" column="gubun" />
+	<result property="savedate" column="savedate" />
+	<result property="readYN" column="read_yn" />
+</resultMap>
+
+<select id="noteList_rec" resultMap="list">
+	select * from note where receiver=#{id} order by note_num desc
+</select>
+
+<select id="noteList_send" resultMap="list">
+	select * from note where sender=#{id} order by note_num desc
+</select>
+
+</mapper>
