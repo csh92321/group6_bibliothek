@@ -7,16 +7,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#receive{display: none;}
+	#send{display: none;}
+	#msg{display:none;}
+</style>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+function receive() {
+	$("#send").hide();
+	$("#msg").hide();
+	$("#receive").show();
+}
+
+function send() {
+	$("#msg").hide();
+	$("#receive").hide();
+	$("#send").show();
+}
+
+function msg() {
+	$("#send").hide();
+	$("#receive").hide();
+	$("#msg").show();
+}
+
+</script>
 </head>
 <body>
 쪽지<br>
 ${id}, ${loginUser }<br>
 
-<button type="button" onclick="">받은쪽지</button>
-<button type="button" onclick="">보낸쪽지</button>
-<button type="button" onclick="">쪽지보내기</button>
+<button type="button" onclick="receive()">받은쪽지</button>
+<button type="button" onclick="send()">보낸쪽지</button>
+<button type="button" onclick="msg()">쪽지보내기</button>
 
 <br><hr><br>
+
+<div id="view"></div>
 
 <div id="receive">
 <table border="1">
@@ -42,8 +72,6 @@ ${id}, ${loginUser }<br>
 </table>
 </div>
 
-<br><hr><br>
-
 <div id="send">
 <table border="1">
 	<tr>
@@ -59,7 +87,7 @@ ${id}, ${loginUser }<br>
 	</c:if>
 	<c:forEach var="noteList_send" items="${noteList_send }">
 	<tr>
-		<td> 수신 </td>
+		<td> 발신 </td>
 		<td> ${noteList_send.receiver } </td>
 		<td> <a href="#"> ${noteList_send.content }</a></td>
 		<td> ${noteList_send.savedate } </td>
@@ -68,8 +96,7 @@ ${id}, ${loginUser }<br>
 </table>
 </div>
 
-<br><hr><br>
-
+<div id="msg">
 <form method="post" action="noteMsg">
 	<table>
 		<tr>
@@ -92,6 +119,7 @@ ${id}, ${loginUser }<br>
 		</tr>
 	</table>
 </form>
+</div>
 
 </body>
 </html>
