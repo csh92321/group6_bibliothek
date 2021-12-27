@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,15 +32,32 @@
         </div>
  
         <div id="top_menu">
-       		<a href="#"><img src="resources/images/mypage.jpg" alt="mypage" width="50"></a>
+        	<c:choose>
+        	<c:when test="${loginUser==null }">
+       			<a href="member/login"><img src="resources/images/mypage.jpg" alt="mypage" width="50"></a>
+       		</c:when>
+       		<c:otherwise>
+       			<a href="member/successLogin?id=${loginUser }"><img src="resources/images/mypage.jpg" alt="mypage" width="50"></a>
+       		</c:otherwise>
+       		</c:choose>
        		<a href="#"><img src="resources/images/what.jpg" alt="what" width="50"></a>
        		<a href="#"><img src="resources/images/community.jpg" alt="community" width="50"></a>
        		<a href="#"><img src="resources/images/cash.jpg" alt="cash" width="50"></a>
        	</div>
-       	<div id="login">	
-        	<a href="#">로그인</a> | 
-            <a href="#">회원가입</a>
-        </div>
+       	<c:choose>
+				<c:when test="${loginUser == null }">
+					<div id="login">	
+        				<a href="member/login">로그인</a> | 
+          			  	<a href="member/register_form">회원가입</a>
+       				</div>
+				</c:when>
+				<c:otherwise>
+					<div id="login">
+					${loginUser }	
+        			</div>
+				</c:otherwise>
+			</c:choose>
+       	
  <hr>
         <nav>
         	<ul>

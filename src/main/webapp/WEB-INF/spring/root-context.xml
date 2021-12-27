@@ -9,7 +9,7 @@
    
    <!-- 히카리 커넥션풀 빈 등록 -->
    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <property name="jdbcUrl" value="jdbc:oracle:thin:@210.221.253.215:1521:xe" />
         <property name="username" value="group6" />
         <property name="password" value="group6" />

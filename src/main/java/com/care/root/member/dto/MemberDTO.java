@@ -18,7 +18,21 @@ public class MemberDTO {
 	private int meetCnt;
 	private String teamOne;
 	private String teamTwo;
+	private String sessionId;
+	private Date limitTime;
 	
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+	public Date getLimitTime() {
+		return limitTime;
+	}
+	public void setLimitTime(Date limitTime) {
+		this.limitTime = limitTime;
+	}
 	public String getId() {
 		return id;
 	}

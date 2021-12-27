@@ -88,9 +88,9 @@ function getgenre() {
 	<div class="rgt">
 		<div class="rgtSub">
 			<ul>
-				<li><a href="literature?novel">소설</a>
-				<li><a href="literature?poem">시</a>
-				<li><a href="literature?essay">에세이</a>
+				<li><a href="literature?literature&novel">소설</a>
+				<li><a href="literature?literature&poem">시</a>
+				<li><a href="literature?literature&essay">에세이</a>
 			</ul>
 		</div>
 	</div>
