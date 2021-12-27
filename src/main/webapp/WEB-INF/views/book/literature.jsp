@@ -7,10 +7,48 @@
 <title>Insert title here</title>
 <link href="resources/css/book.css" rel="stylesheet">
 <script type="text/javascript">
+function getgenre() {
+	var urlString = decodeURI(window.location.href);
+    var strArray = urlString.split('?');
+    var genreArray = strArray[1].split('&');
+    var genre = genreArray[0];
+	$
+			.ajax({
+				url : "literatures",
+				type : "post",
+				data : {
+					genre : genre
+				},
+				success : function(list) {
+					let html = ""
+					$
+							.each(
+									list,
+									function(index, item) {
+										html += "<div class=\"product-title\">"
+										html += "<div class=\"product-img-div\">"
+										html += "<a href=\"detail?"+item.bookNum+"\"><img class=\"product-img\" src=\"/resources/coverImg/"+item.bookNum+".jpg\" /></a>"
+										html += "<div class=\"product-letter\">"
+										html += "<h3> <a href=\"detail?"+item.bookNum+"\">"
+												+ item.title + "<br>"
+										html += "<div class=\"small\">"
+										html += item.writer + "/"
+												+ item.company
+												+ "</div></a> </h3>"
+										html += "</div>"
+										html += "</div>"
+										html += "</div>"
+									})
+					$("#books").append(html)
+				}
+			})
+}
 	function getBooks() {
 		var urlString = decodeURI(window.location.href);
 	    var strArray = urlString.split('?');
-	    var genre = strArray[1];
+	    var genreArray = strArray[1].split('&');
+	    var genre = genreArray[1];
+	    alert(genre);
 		$
 				.ajax({
 					url : "literatures",

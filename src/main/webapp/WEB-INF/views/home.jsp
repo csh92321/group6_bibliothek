@@ -49,15 +49,15 @@
 
     <ul class="main">
 
-        <li><a href="#">문학</a>
+        <li><a href="literature?literature&novel">문학</a>
 
             <ul class="sub">
 
-                <li><a href="#">소메뉴1</a></li>
+                <li><a href="literature?literature&novel">소설</a></li>
 
-                <li><a href="#">소메뉴2</a></li>
+                <li><a href="literature?literature&poem">시</a></li>
 
-                <li><a href="#">소메뉴3</a> </li>
+                <li><a href="literature?literature&essay">에세이</a> </li>
 
             </ul>
 
@@ -131,7 +131,7 @@
             </ul>
 
         </li>      
-        <li><a href="#">베스트셀러</a></li> 
+        <li><a href="bestSeller">베스트셀러</a></li> 
         <li><a href="#">신간</a></li>
         <li><a href="#">추천</a></li> 
 
