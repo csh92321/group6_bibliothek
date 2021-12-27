@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function getHit() {
-		alert("bestSeller");
 		$	.ajax({
 					url : "hits",
 					type : "get",
