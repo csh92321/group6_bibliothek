@@ -1,5 +1,7 @@
 package com.care.root.ntboard.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -29,7 +31,7 @@ public class NtBoardServiceImpl implements NtBoardService{
 	@Override
 	public void ntAllList(Model model) {
 		model.addAttribute("ntAllList", mapper.ntAllList());
-		
+		int result = mapper.ntBoardDelete(0);
 	}
 
 	@Override
@@ -37,5 +39,23 @@ public class NtBoardServiceImpl implements NtBoardService{
 		model.addAttribute("detailContent", mapper.ntBoardContentView(ntWriteNo));
 		
 	}
+
+	//test
+	@Override
+	public String ntBoardDelete(int writeNo, HttpServletRequest request) {
+		int result = mapper.ntBoardDelete(writeNo);
+		String message=null;
+//		if(result == 1) { 
+//			message = getMessage(request, "삭제 성공", 
+//					"/ntboard/ntBoardlList" );
+//		}else{
+//			message = getMessage(request, "삭제 실패", 
+//					"/ntboard/ntBoardContentView");
+//		}
+		return "ntboard/ntBoardList";
+		
+
+	}
+
 
 }

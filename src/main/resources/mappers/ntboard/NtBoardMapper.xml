@@ -11,7 +11,7 @@
  	</insert>
  	
  	<resultMap type="com.care.root.ntboard.DTO.NtBoardDTO" id="ntAllList">
- 		<id property="ntWriteNo" column="write_no" />
+ 		<id property="writeNo" column="write_no" />
  		<result property="admin" column="admin" />
  		<result property="title" column="title" />
  		<result property="content" column="content" />
@@ -23,6 +23,10 @@
  	</select>
  	
  	<select id="ntBoardContentView" resultMap="ntAllList">
- 		select * from notice_board where nt_write_no=#{ntWriteNo}
+ 		select * from notice_board where write_no=#{writeNo}
  	</select>
+ 	
+ 	<delete id="ntBoardDelete">
+ 		delete from notice_board where write_no=#{writeNo}
+ 	</delete>
  </mapper> 

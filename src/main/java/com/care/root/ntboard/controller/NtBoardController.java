@@ -1,5 +1,11 @@
 package com.care.root.ntboard.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +25,12 @@ public class NtBoardController {
 	NtBoardService ns;
 	
 	@GetMapping("ntBoardWriteForm")
-	public String ntBoardWriteForm(Model model) {
+	public String ntBoardWriteForm() {
 		return "ntboard/ntBoardWriteForm";
 	}
 	@GetMapping("ntBoardList")
-	public String ntBoardList() {
+	public String ntBoardList(Model model) {
+		ns.ntAllList(model);
 		return "ntboard/ntBoardList";
 	}
 	@PostMapping("ntWriteSave")
@@ -42,4 +49,19 @@ public class NtBoardController {
 		ns.ntBoardContentView(ntWriteNo, model);
 		return "ntboard/ntBoardContentView";
 	}
+	// test 중
+	@GetMapping("delete")
+	public void ntBoardDelete(@RequestParam("writeNo") int write_no,
+				HttpServletResponse response,
+				HttpServletRequest request) throws Exception{
+		
+		String message = ns.ntBoardDelete(write_no, request);
+		
+		PrintWriter out = null;
+		response.setContentType("text/html; charset=utf-8");
+		out = response.getWriter();
+		out.println(message);
+				
+	}
+
 }

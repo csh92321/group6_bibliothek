@@ -15,7 +15,7 @@
 				<th width="70">글 번호</th> <th width="500">제목</th> <th width="100">작성자</th> <th width="100">등록 날짜</th>
 			</tr>
 			<tr>
-			<c:if test="${allList.size() == 0 }">
+			<c:if test="${ntAllList.size() == 0 }">
 			</tr>
 			<tr>
 				<td colspan="4">등록된 글이 없습니다.</td>
@@ -23,7 +23,7 @@
 			</c:if>
 			<c:forEach var="dto" items="${ntAllList }">
 			<tr>
-				<td>${dto.ntWriteNo}</td> <td> <a href="${contextPath}/ntBoardContentView?writeNo=${dto.writeNo}"> ${dto.title }</a></td>
+				<td>${dto.writeNo}</td> <td> <a href="${contextPath}/ntboard/ntBoardContentView?ntWriteNo=${dto.writeNo}"> ${dto.title }</a></td>
 				<td>${dto.admin }</td> <td>${dto.saveDate }</td>
 				</tr>
 			</c:forEach>
