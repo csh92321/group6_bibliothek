@@ -22,10 +22,17 @@
 <select id="noteList_send" resultMap="list">
 	select * from note where sender=#{id} order by note_num desc
 </select>
-
+ 
 <insert id="msg">
 	insert into note(id, sender, receiver, note_num, content)
 	values(#{id},#{sender},#{receiver},note_seq.nextval,#{content})
 </insert>
 
+<select id="noteView" resultMap="list">
+	select * from note where note_num=#{noteNum}
+</select>
+
+<update id="readY">
+	update note set read_yn=1 where note_num=#{noteNum}
+</update>
 </mapper>

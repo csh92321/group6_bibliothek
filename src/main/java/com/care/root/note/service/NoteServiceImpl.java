@@ -23,7 +23,6 @@ public class NoteServiceImpl implements NoteService {
 		model.addAttribute("noteList_send",mapper.noteList_send(id));
 	}
 
-
 	@Override
 	public int msg(NoteDTO dto) {
 		int result=0;
@@ -33,6 +32,16 @@ public class NoteServiceImpl implements NoteService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public void noteView(int noteNum, Model model) {
+		model.addAttribute("noteView",mapper.noteView(noteNum));
+		readY(noteNum);
+	}
+	
+	private void readY(int noteNum) {
+		mapper.readY(noteNum);
 	}
 
 }

@@ -8,9 +8,11 @@ import com.care.root.note.dto.NoteDTO;
 
 @Repository
 public interface NoteMapper {
-
+	
 	public List<NoteDTO> noteList_rec(String id);
 	public List<NoteDTO> noteList_send(String id);
 	public int msg(NoteDTO dto);
+	public NoteDTO noteView(int noteNum);
+	public void readY(int noteNum);
 	
 }

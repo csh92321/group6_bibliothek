@@ -9,4 +9,6 @@ public interface NoteService {
 	public void noteList_rec(Model model, String id);
 	public void noteList_send(Model model, String id);
 	public int msg(NoteDTO dto);
+	public void noteView(int noteNum, Model model);
+	
 }

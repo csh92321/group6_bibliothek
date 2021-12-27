@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	#receive{display: none;}
 	#send{display: none;}
 	#msg{display:none;}
+	#recView{display:none;}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -34,6 +34,36 @@ function msg() {
 	$("#msg").show();
 }
 
+function cancel() {
+	$("#receiver").html("")
+}
+
+function noteView_rec() {
+	var noteNum_rec=$("#noteNum_rec").val();
+	console.log(noteNum_rec)
+	$.ajax({
+		type:'GET',
+		url:"noteView",
+		data:{noteNum:noteNum_rec},
+		success:function(result) {
+			var url="noteView"
+			win=window.open(url+"?noteNum="+noteNum_rec,"noteView","width=400, height=400, left=100, top=100");
+		}
+	})
+}
+
+function noteView_send() {
+	var noteNum_send=$("#noteNum_send").val();
+	$.ajax({
+		type:'GET',
+		url:"noteView",
+		data:{noteNum:noteNum_send},
+		success:function(result) {
+			var url="noteView"
+			win=window.open(url+"?noteNum="+noteNum_send,"noteView","width=400, height=400, left=100, top=100");
+		}
+	})
+}
 </script>
 </head>
 <body>
@@ -45,8 +75,6 @@ ${id}, ${loginUser }<br>
 <button type="button" onclick="msg()">쪽지보내기</button>
 
 <br><hr><br>
-
-<div id="view"></div>
 
 <div id="receive">
 <table border="1">
@@ -65,7 +93,12 @@ ${id}, ${loginUser }<br>
 	<tr>
 		<td> 수신 </td>
 		<td> ${noteList_rec.sender } </td>
-		<td> <a href="#"> ${noteList_rec.content }</a></td>
+		<td>
+			${noteList_rec.noteNum } || 
+			<input type="hidden" id="noteNum_rec" name="noteNum_rec" value="${noteList_rec.noteNum }" >
+		 	<!-- <label onclick="noteView_rec(noteNum_rec)"> ${noteList_rec.content } </label> -->
+		 	<a href="#" onclick="noteView_rec()"> ${noteList_rec.content }</a> 
+		</td>
 		<td> ${noteList_rec.savedate } </td>
 	</tr>
 	</c:forEach>
@@ -89,7 +122,8 @@ ${id}, ${loginUser }<br>
 	<tr>
 		<td> 발신 </td>
 		<td> ${noteList_send.receiver } </td>
-		<td> <a href="#"> ${noteList_send.content }</a></td>
+		<td> <input type="hidden" id="noteNum_send" name="noteNum_send" value="${noteList_send.noteNum }" >
+		 <label onclick="noteView_send()"> ${noteList_send.content }</label> </td>
 		<td> ${noteList_send.savedate } </td>
 	</tr>
 	</c:forEach>
