@@ -61,6 +61,7 @@
      $("#image").html(image)
 	}
 	var check = 0;
+	var urlNum = 0;
 	function originalImage() {
 		
 	}
@@ -75,17 +76,18 @@
 		}
 		$("#like").html(html)
 	}
-	
-	var url = 0;
+
 	
 	function url() {
-		url += 1;
-		if (url==1) {
+		html = ""
+		urlNum += 1;
+		if (urlNum==1) {
 		var urlString = window.location.href;
-		html = "<div class = \"rgt\">"
+		html += "<div class = \"rgt\">"
 		html += "<h4> url : "+urlString+"</h4></div>"
-		} else if (url==2) {
-			html = ""
+		} else if (urlNum==2) {
+			html += "<h3></h3>"
+			urlNum = 0;
 		}
 		$("#url").html(html)
 	}

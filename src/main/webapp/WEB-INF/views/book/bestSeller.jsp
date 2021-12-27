@@ -12,13 +12,12 @@
 					url : "hits",
 					type : "get",
 					dataType : "json",
-					success : function(list) {
-						console.log(list)
+					success : function(best) {
+						console.log(best)
 						let html = ""
-						alert(list)
 						$
 								.each(
-										list,
+										best,
 										function(index, item) {
 											html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"

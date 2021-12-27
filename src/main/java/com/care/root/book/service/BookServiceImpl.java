@@ -1,6 +1,7 @@
 package com.care.root.book.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,29 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.care.root.mybatis.book.BookMapper;
 import com.care.root.book.dto.BookDTO;
-
-class hit implements Comparable<BookDTO> {
-	
-	private String bookNum;
-	private int hit;
-
-	public hit(String bookNum, int hit) {
-		this.bookNum = bookNum;
-		this.hit = hit;
-	}
-
-	@Override
-	public int compareTo(BookDTO dto) {
-		if (dto.getHit() < hit) {
-			return 1;
-		} else if (dto.getHit() > hit) {
-			return -1;
-		}
-		return 0;
-	}
-}
+import com.care.root.book.dto.Common;
+import com.care.root.book.dto.GenreDTO;
+import com.care.root.mybatis.book.BookMapper;
 
 @RestController
 @Service
@@ -44,86 +26,44 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	BookMapper mapper;
-	String genre;
 	int hit;
-	int result;
+	String genre = Common.genre;
 
 	static int cnt = 1;
 	static Map<String, BookDTO> DBMap = new HashMap<String, BookDTO>();
 	ArrayList<BookDTO> listG = new ArrayList<BookDTO>();
 
 	public void bookList(String bookNum) {
+		
+		
 	}
-
-	@GetMapping(value = "novels", produces = "application/json;charset=utf-8")
-	public ArrayList<BookDTO> novels() {
+	
+	@PostMapping("literatures")
+	@ResponseBody
+	public ArrayList<BookDTO> books(@RequestParam(value = "genre", required = false) String genre) {
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
-		genre = "LN";
-		for (int i = cnt; i < cnt + 10; i++) {
-			String.valueOf(i);
+		@SuppressWarnings("rawtypes")
+		Iterator it = list.iterator();
 			try {
-				String code = genre + "00" + i;
-				BookDTO dto = mapper.bookList(code);
-				if (dto.getTitle() != null) {
-					list.add(dto);
-					DBMap.put(code, dto);
-				} else {
+				GenreDTO dtoG = mapper.bookCode(genre);
+				String BookNum = dtoG.getCode()+"%";
+				list = mapper.bookList(BookNum);
+				while (it.hasNext()) {
+					BookDTO dtoB = (BookDTO) it.next();
+					if (dtoB.getTitle() != null) {
+						list.add(dtoB);
+						DBMap.put(dtoB.getBookNum(), dtoB);
+					} else {
+
+					}
 
 				}
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 		return list;
 	}
-
-	@GetMapping(value = "poems", produces = "application/json;charset=utf-8")
-	public ArrayList<BookDTO> poems() {
-		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
-		genre = "LP";
-		for (int i = cnt; i < cnt + 10; i++) {
-			String.valueOf(i);
-			try {
-				String code = genre + "00" + i;
-				BookDTO dto = mapper.bookList(code);
-				if (dto.getTitle() != null) {
-					list.add(dto);
-					DBMap.put(code, dto);
-				} else {
-
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
-
-	@GetMapping(value = "essays", produces = "application/json;charset=utf-8")
-	public ArrayList<BookDTO> essays() {
-		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
-		genre = "LE";
-		for (int i = cnt; i < cnt + 10; i++) {
-			String.valueOf(i);
-			try {
-				String code = genre + "00" + i;
-				BookDTO dto = mapper.bookList(code);
-				if (dto.getTitle() != null) {
-					list.add(dto);
-					DBMap.put(code, dto);
-				} else {
-
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
-
 	@PostMapping("searchPost")
 	@ResponseBody
 	public ArrayList<BookDTO> search(@RequestParam(value = "search", required = false) String search) {
@@ -177,25 +117,52 @@ public class BookServiceImpl implements BookService {
 	@GetMapping(value = "hits", produces = "application/json;charset=utf-8")
 	public ArrayList<BookDTO> bestSeller() {
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
-		@SuppressWarnings("rawtypes")
-		Iterator it = list.iterator();
+		ArrayList<BookDTO> best = new ArrayList<BookDTO>();
 		try {
-			int num = 0;
-			list = mapper.getHit(num);
-			Collections.sort(list, Collections.reverseOrder());
-			while (it.hasNext()) {
-				BookDTO dto = (BookDTO) it.next();	
-				dto = mapper.getAll(dto.getBookNum());
-				list.add(dto);
-				DBMap.put(dto.getBookNum(), dto);
+			list = mapper.getHit();
+			Book[] book = new Book[list.size()];
+			for(int i=0; i<list.size();i++) {
+				BookDTO dto = list.get(i);
+				book[i] = new Book(dto.getBookNum(), dto.getHit());
+			}	
+			Arrays.sort(book, Collections.reverseOrder());
+			for(Book result:book) {
+				BookDTO dtoB = mapper.getAll(result.toString());
+				best.add(dtoB);
+				DBMap.put(dtoB.getBookNum(), dtoB);
 			}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
-		return list;
+		return best;
 	}
-
+	
+	public static class Book implements Comparable<Object> {
+		String bookNum;
+		int hit;
+		
+		public Book(String bookNum, int hit) {
+			this.bookNum = bookNum;
+			this.hit = hit;
+		}
+		
+		public String toString() {
+			return bookNum;
+		}
+		
+		@Override
+		public int compareTo(Object o) {
+			if (this.hit < ((Book) o).hit) {
+				return -1;
+			} else if (this.hit == ((Book) o).hit) {
+				return 0;
+			} else {
+				return 1;
+			}
+		}
+	}
 }
+
 
 

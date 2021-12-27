@@ -44,7 +44,7 @@
  <hr>
         <nav>
         	<ul>
-            	<li><a href="novel">문학</a></li>
+            	<li ><a href="literature?novel">문학</a></li>
                 <li><a href="#">자기개발</a></li>
                 <li><a href="#">문화</a></li>
                 <li><a href="#">교육</a></li>
