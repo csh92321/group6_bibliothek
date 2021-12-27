@@ -13,8 +13,10 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String main(Model model) {
-		model.addAttribute("message","í™ˆí˜ì´ì§€ ë°©ë¬¸ì„ í™˜ì˜í•©ë‹ˆë‹¤.");
+		model.addAttribute("message","¸ŞÀÎ ÆäÀÌÁöÀÔ´Ï´Ù.");
 		return "main";
 	}
+	
 
+	
 }
