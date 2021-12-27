@@ -19,7 +19,7 @@
  	</resultMap>
  	
  	<select id="ntAllList" resultMap="ntAllList">
- 		select * from notice_board
+ 		select * from notice_board order by write_no desc
  	</select>
  	
  	<select id="ntBoardContentView" resultMap="ntAllList">
@@ -29,4 +29,6 @@
  	<delete id="ntBoardDelete">
  		delete from notice_board where write_no=#{writeNo}
  	</delete>
+ 	
+ 	
  </mapper> 

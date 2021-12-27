@@ -44,7 +44,7 @@ public class NtBoardServiceImpl implements NtBoardService{
 	@Override
 	public String ntBoardDelete(int writeNo, HttpServletRequest request) {
 		int result = mapper.ntBoardDelete(writeNo);
-		String message=null;
+		String message= "삭제 성공";
 //		if(result == 1) { 
 //			message = getMessage(request, "삭제 성공", 
 //					"/ntboard/ntBoardlList" );
@@ -52,7 +52,7 @@ public class NtBoardServiceImpl implements NtBoardService{
 //			message = getMessage(request, "삭제 실패", 
 //					"/ntboard/ntBoardContentView");
 //		}
-		return "ntboard/ntBoardList";
+		return message;
 		
 
 	}

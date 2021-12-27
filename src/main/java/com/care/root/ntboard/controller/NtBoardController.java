@@ -51,7 +51,7 @@ public class NtBoardController {
 	}
 	// test 중
 	@GetMapping("delete")
-	public void ntBoardDelete(@RequestParam("writeNo") int write_no,
+	public String ntBoardDelete(@RequestParam("writeNo") int write_no,
 				HttpServletResponse response,
 				HttpServletRequest request) throws Exception{
 		
@@ -61,7 +61,8 @@ public class NtBoardController {
 		response.setContentType("text/html; charset=utf-8");
 		out = response.getWriter();
 		out.println(message);
-				
+		
+		return "redirect:ntBoardList";
 	}
 
 }
