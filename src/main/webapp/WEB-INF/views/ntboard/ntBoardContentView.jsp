@@ -45,7 +45,7 @@
 
 				<input type="button" onclick="" value="리스트로 돌가가기">
 			<hr>
-			
+			<br>
 				
 			</td>
 		</tr>
