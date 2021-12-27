@@ -30,5 +30,6 @@
  		delete from notice_board where write_no=#{writeNo}
  	</delete>
  	
+ 	<select id=""></select>
  	
  </mapper> 
