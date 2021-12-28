@@ -94,10 +94,7 @@ ${id}, ${loginUser }<br>
 		<td> 수신 </td>
 		<td> ${noteList_rec.sender } </td>
 		<td>
-			${noteList_rec.noteNum } || 
-			<input type="hidden" id="noteNum_rec" name="noteNum_rec" value="${noteList_rec.noteNum }" >
-		 	<!-- <label onclick="noteView_rec(noteNum_rec)"> ${noteList_rec.content } </label> -->
-		 	<a href="#" onclick="noteView_rec()"> ${noteList_rec.content }</a> 
+		 	<a href="noteView?noteNum=${noteList_rec.noteNum }" onclick="window.open(this.href,'noteView','width=400, height=400, left=100, top=100'); return false;"> ${noteList_rec.content }</a> 
 		</td>
 		<td> ${noteList_rec.savedate } </td>
 	</tr>
@@ -122,8 +119,9 @@ ${id}, ${loginUser }<br>
 	<tr>
 		<td> 발신 </td>
 		<td> ${noteList_send.receiver } </td>
-		<td> <input type="hidden" id="noteNum_send" name="noteNum_send" value="${noteList_send.noteNum }" >
-		 <label onclick="noteView_send()"> ${noteList_send.content }</label> </td>
+		<td>  
+			<a href="noteView?noteNum=${noteList_send.noteNum }" onclick="window.open(this.href,'noteView','width=400, height=400, left=100, top=100'); return false;">${noteList_send.content } </a>
+		</td>
 		<td> ${noteList_send.savedate } </td>
 	</tr>
 	</c:forEach>
