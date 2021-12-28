@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,14 +36,28 @@
         </div>
  
         <div id="top_menu">
-       		<a href="#"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+        	<c:choose>
+        		<c:when test="${loginUser==null }">
+	       			<a href="member/login"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+    	   		</c:when>
+       			<c:otherwise>
+       				<a href="member/successLogin?id=${loginUser }"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+       			</c:otherwise>
+       		</c:choose>
        		<a href="#"><img src="resources/images/h_what.jpg" alt="h_what" width="50px"></a>
        		<a href="#"><img src="resources/images/h_community.jpg" alt="h_community" width="50px"></a>
        		<a href="#"><img src="resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
        	</div>
        	<div id="login">	
-        	<a href="#">로그인</a> | 
-            <a href="#">회원가입</a>
+       		<c:choose>
+       			<c:when test="${loginUser == null }">
+        			<a href="member/login">로그인</a> | 
+            		<a href="member/register_form">회원가입</a>
+            	</c:when>
+            	<c:otherwise>
+            		${loginUser }
+            	</c:otherwise>
+            </c:choose>
         </div>
 
 <!--메인 메뉴창 -->
