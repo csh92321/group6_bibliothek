@@ -1,37 +1,39 @@
 @charset "UTF-8";
 
+body{font-family: 'Nanum Gothic', sans-serif;}
+
 *{margin: 0px; padding: 0px;}
 ul{list-style: none;} 
 a{text-decoration: none;} 
  
 
  
-header{
-    width: 1900px; /*메인 이미지의 너비 사이즈와 같음*/
-    height: 195px; /*숫자가 클 수록 내려감*/
+/*header{
+    width: 1900px;
+    height: 195px; 
     background-color: #fff;
     position: relative;
-}
+}*/
  
 /* 제목영역안에 있는 메인 로고 이미지 위치 지정 */
 #logo{
     position: absolute;
-    top: 30px;
-    left: 80px;
+    top: 40px;
+    left: 18%;
  
 }
  
 /* 제목영역안에 오른쪽 상단에 top_menu 배치 */
 #top_menu{
     position: absolute;
-    top: 30px;
-    right: 10px;
-    
+    top: 40px;
+    right: 18%;
+    float:right;
 }
 #login{
-	right: 90px;
+	right: 18%;
 	position: absolute;
-	top:80px;
+	top:100px;
 	color: black;
 }
  
@@ -39,21 +41,55 @@ header{
 #top_menu a{color: black;}
  
 /* 헤더 영역안에 네비게이션 메뉴 배치 */
-nav{
-    position: absolute;
-    bottom: 10px;
-    left: 500px;
-    font-size: 25px;
-}
- 
-nav li{
-    display: inline;
-    margin-left: 30px;
-}
- 
-nav li a{color: black;}
- 
 
+#menu1{
+	background:#fff;
+	height:50px;
+	color: black;
+	margin-top: 120px;
+	border: 1px #f5f5f5;
+	font-weight:bold;
+	font-size:17px;
+}
+#menu1 ul{
+	width:1000px;
+	margin:0 auto;
+}
+#menu1 .main>li{
+	float: left;
+	width:10%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	background:#fff;
+	position:relative;
+
+}
+#menu1 .main>li:hover .sub{
+	display:block;
+}
+#menu1 .main>li a{
+	display:block;
+}
+#menu1 .main>li a:hover{
+	background: #b8371b;
+	color: #fff;
+	font-weight:100;
+}
+#menu1 .main .sub{
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	display: none;
+	font-weight:100;
+}
+#menu1 .main .sub li{
+	background: #fff;
+}
+menu1 .main .sub li a:hover{
+	background: orange;
+}
 
 #content li{
     display: inline;
@@ -63,7 +99,9 @@ nav li a{color: black;}
 #event{
 	text-align: center;
 	height: 300px;
+	margin-top:20px;
 }
 
-/* 전체 페이지가 가운데로 오도록 */
-#page{width: 820px; margin: 0px auto;}
+#more{
+	float:right;
+}
