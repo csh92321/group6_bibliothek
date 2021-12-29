@@ -11,4 +11,7 @@ public interface BoardMapper {
 	public int writeSave(BoardDTO dto);
 	public List<BoardDTO> allList();
 	public BoardDTO contentView(int writeNo);
+	
+	public int boardDelete(int writeNo);
+	public int modify(BoardDTO dto);
 }

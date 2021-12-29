@@ -45,11 +45,11 @@ ContentView<br>
 				<input type="button" value="수정하기"
 					onclick="location.href='${contextPath}/board/modify_form?writeNo=${detailContent.writeNo }'">
 				<input type="button" value="삭제하기"
-					inclick="location.href='${contextPath }/board/delete?writeNo=${detailContent.writeNo }'">
+					onclick="location.href='${contextPath }/board/delete?writeNo=${detailContent.writeNo }'">
 
 				
 				<input type="button" onclick="slideClick()" value="답글달기">
-				<input type="button" conclick="" value="리스트로 돌가가기">
+				<input type="button" onclick="" value="리스트로 돌가가기">
 			<hr>
 			<div id="reply"></div>
 				
