@@ -23,12 +23,15 @@ import com.care.root.common.MemberSessionName;
 import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
+import com.care.root.note.service.NoteService;
+import com.care.root.note.service.NoteServiceImpl;
 
 @Controller
 @RequestMapping("member")
 public class MemberController implements MemberSessionName{
 
 	@Autowired MemberService ms;
+	@Autowired NoteService ns;
 	
 	@GetMapping("/login")
 	public String login(@CookieValue(value="saveIdCookie", required=false) Cookie saveIdCookie,Model model) {
@@ -104,6 +107,7 @@ public class MemberController implements MemberSessionName{
 	@PostMapping("idCheck")
 	@ResponseBody
 	public int idCheck(@RequestParam(value="id", required=false) String id){
+		System.out.println("idCheck");
 		int cnt=0;
 		if(id!=null) {
 			cnt=ms.idCheck(id);

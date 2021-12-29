@@ -11,70 +11,72 @@
 	#send{display: none;}
 	#msg{display:none;}
 	#recView{display:none;}
+	
+	table tr td a {color: blue;}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
-function receive() {
+function receive(){
 	$("#send").hide();
 	$("#msg").hide();
 	$("#receive").show();
 }
 
 function send() {
-	$("#msg").hide();
 	$("#receive").hide();
+	$("#msg").hide();
 	$("#send").show();
 }
 
-function msg() {
-	$("#send").hide();
+function msg(){
 	$("#receive").hide();
+	$("#send").hide();
 	$("#msg").show();
 }
+
+
+
+function noteMsg() {
+	var id=$("#receiver").val()
+	if(id != "") {
+		$.ajax({
+			type:'POST',
+			url:"${contextPath}/member/idCheck",
+			data:{id:id},
+			success:function(result){
+				if(result==0) {
+					alert('존재하는 사용자가 아닙니다')
+				} else {
+					noteMsg_form.submit()
+				}
+			}
+		})	
+	} else {
+		alert('쪽지 받을 사용자를 입력해주세요')
+		$("#receiver").focus()
+	}
+}
+
 
 function cancel() {
 	$("#receiver").html("")
 }
 
-function noteView_rec() {
-	var noteNum_rec=$("#noteNum_rec").val();
-	console.log(noteNum_rec)
-	$.ajax({
-		type:'GET',
-		url:"noteView",
-		data:{noteNum:noteNum_rec},
-		success:function(result) {
-			var url="noteView"
-			win=window.open(url+"?noteNum="+noteNum_rec,"noteView","width=400, height=400, left=100, top=100");
-		}
-	})
-}
-
-function noteView_send() {
-	var noteNum_send=$("#noteNum_send").val();
-	$.ajax({
-		type:'GET',
-		url:"noteView",
-		data:{noteNum:noteNum_send},
-		success:function(result) {
-			var url="noteView"
-			win=window.open(url+"?noteNum="+noteNum_send,"noteView","width=400, height=400, left=100, top=100");
-		}
-	})
-}
 </script>
 </head>
 <body>
 쪽지<br>
 ${id}, ${loginUser }<br>
+<input type="hidden" id="sessionId" name="sessionId" value="${id }">
 
 <button type="button" onclick="receive()">받은쪽지</button>
 <button type="button" onclick="send()">보낸쪽지</button>
 <button type="button" onclick="msg()">쪽지보내기</button>
 
 <br><hr><br>
+
 
 <div id="receive">
 <table border="1">
@@ -129,7 +131,7 @@ ${id}, ${loginUser }<br>
 </div>
 
 <div id="msg">
-<form method="post" action="noteMsg">
+<form id="noteMsg_form" method="post" action="noteMsg">
 	<table>
 		<tr>
 			<th> 받는사람 </th>
@@ -145,7 +147,8 @@ ${id}, ${loginUser }<br>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<input type="submit" value="전송">
+				<button type="button" onclick="noteMsg()">전송</button>
+				<!-- <input type="submit" value="전송"> -->
 				<button type="button" onclick="cancel()">취소</button> 
 			</td>
 		</tr>

@@ -1,5 +1,11 @@
 package com.care.root.note.controller;
 
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +26,19 @@ public class NoteController implements MemberSessionName{
 
 	@Autowired NoteService ns;
 	
+//	@GetMapping("note")
+//	public String list(@RequestParam String id, Model model) {
+//		ns.noteList_rec(model,id);
+//		ns.noteList_send(model,id);
+//		model.addAttribute("id",id);
+//		return "note/note";
+//	}
+	
 	@GetMapping("note")
 	public String list(@RequestParam String id, Model model) {
-		ns.noteList_rec(model,id);
-		ns.noteList_send(model,id);
-		model.addAttribute("id",id);
+		ns.noteList_rec(model, id);
+		ns.noteList_send(model, id);
+		model.addAttribute("id", id);
 		return "note/note";
 	}
 	
@@ -43,12 +57,30 @@ public class NoteController implements MemberSessionName{
 	public String view(@RequestParam int noteNum, Model model, HttpSession session) {
 		System.out.println(noteNum);
 		model.addAttribute("sessionId", session.getAttribute(LOGIN));
-		ns.noteView(noteNum, model);
+		ns.noteView(noteNum, model,session);
 		return "note/noteView";
 	}
 	
 	@GetMapping("noteReply")
-	public String reply(@RequestParam int noteNum, Model model) {
+	public String reply(@RequestParam int noteNum ,Model model, HttpSession session) {
+		model.addAttribute("sessionId", session.getAttribute(LOGIN));
+		ns.noteView(noteNum, model,session);
 		return "note/noteReply";
+	}
+	
+	//@PostMapping(value="noteReplyMsg", produces="application/json; charset=utf-8")
+	//@ResponseBody
+	@PostMapping("noteReplyMsg")
+	public void replyMsg(NoteDTO dto,HttpServletResponse response) throws Exception {
+		int result = ns.msg(dto);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		if(result==1) {
+			System.out.println("답장 쪽지 보내기 성공");
+			out.println("<script>close()</script>");
+		} else {
+			out.println("<script>alert('답장 전송 실패')</script>");
+		}
+		out.flush();
 	}
 }

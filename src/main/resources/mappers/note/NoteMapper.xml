@@ -15,9 +15,11 @@
 	<result property="readYN" column="read_yn" />
 </resultMap>
 
+
 <select id="noteList_rec" resultMap="list">
-	select * from note where receiver=#{id} order by note_num desc
+	select * from note where receiver=#{id} order by note_num desc 
 </select>
+
 
 <select id="noteList_send" resultMap="list">
 	select * from note where sender=#{id} order by note_num desc
@@ -35,4 +37,13 @@
 <update id="readY">
 	update note set read_yn=1 where note_num=#{noteNum}
 </update>
+
+<select id="noteRecCount" resultType="Integer">
+	select count(*) from note where receiver=#{id}
+</select>
+
+<select id="noteSendCount" resultType="Integer">
+	select count(*) from note where sender=#{id}
+</select>
+
 </mapper>
