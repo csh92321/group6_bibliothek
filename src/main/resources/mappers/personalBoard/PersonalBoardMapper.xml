@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.personalBoard.PersonalBoardMapper">
+
+<resultMap type="com.care.root.personalBoard.dto.PersonalBoardDTO" id="list">
+	<id property="writeNum" column="write_num"/>
+	<result property="id" column="id" />
+	<result property="title" column="title" />
+	<result property="content" column="content" />
+	<result property="savedate" column="savedate" />
+	<result property="replyCheck" column="reply_check" />
+	<result property="reply" column="reply" />
+</resultMap>
+
+<select id="pbList" resultMap="list">
+	select * from personal_board where id=#{id} order by write_num desc
+</select>
+
+<insert id="save">
+	insert into personal_board(id, write_num, title, content) values(#{id},personal_board_seq.nextval, #{title}, #{content})
+</insert>
+
+<select id="pbView" resultMap="list">
+	select * from personal_board where write_num=#{writeNum}
+</select>
+
+</mapper>

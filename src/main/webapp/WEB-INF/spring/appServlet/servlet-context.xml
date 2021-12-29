@@ -16,6 +16,7 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -24,6 +25,26 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.care.root" />
+	
+	<beans:bean id="memberInterceptor" class="com.care.root.member.interceptor.MemberInterceptor" />
+	<beans:bean id="autoLoginInterceptor" class="com.care.root.member.interceptor.AutoLoginInterceptor" />
+	
+	<interceptors>
+	<!-- 
+		<interceptor>
+			<beans:ref bean="memberInterceptor" />
+		</interceptor>
+	 -->
+		<interceptor>
+			<mapping path="/" />
+			<beans:ref bean="autoLoginInterceptor" />
+		</interceptor>
+	</interceptors>
+
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/script/**" location="/resources/script/" />
+	<resources mapping="/images/**" location="/resources/images/" />
+	<resources mapping="/resources/**" location="/resources/" />
 	
 	
 	

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.care.root.mybatis.member.MemberMapper">
+<!-- MemberDAO클래스와 연결 -->
+
+<resultMap type="com.care.root.member.dto.MemberDTO" id="member">
+<id column="id" property="id"/>
+<result column="name" property="name"/>
+<result column="pwd" property="pwd"/>
+<result column="email" property="email"/>
+<result column="phone" property="phone"/>
+<result column="birth" property="birth"/>
+<result column="addr" property="addr"/>
+<result column="payment" property="payment"/>
+<result column="ticket" property="ticket"/>
+<result column="pay_day" property="payDay"/>
+<result column="savedate" property="savedate"/>
+<result column="meet_cnt" property="meetCnt"/>
+<result column="team_one" property="teamOne"/>
+<result column="team_two" property="teamTwo"/>
+<result column="session_id" property="sessionId"/>
+<result column="limit_time" property="limitTime"/>
+</resultMap>
+
+<resultMap type="com.care.root.member.dto.MemberDTO" id="checkIdPwdEmail">
+<id column="id" property="id"/>
+<result column="pwd" property="pwd"/>
+<result column="email" property="email"/>
+</resultMap>
+
+<select id="userCheck" resultMap="checkIdPwdEmail">
+select id,pwd,email from member where id=#{id} 
+</select>
+
+<insert id="register">
+insert into member(id,name,pwd,email,phone,birth,addr) values(#{id},#{name},#{pwd},#{email},#{phone},#{birth},#{addr}) 
+</insert>
+
+<update id="keepLogin">
+update member set session_id=#{sessionId}, limit_time=#{limitDate} where id=#{id} 
+</update>
+
+<select id="getUserSessionId" resultMap="member">
+select * from member where session_id=#{sessionId} 
+</select>
+
+<select id="idCheck" resultType="Integer" parameterType="String">
+select count(id) from member where id=#{id} 
+</select>
+
+<select id="emailCheck" resultType="Integer" parameterType="String">
+select count(email) from member where email=#{email} 
+</select>
+
+<select id="phoneCheck" resultType="Integer" parameterType="String">
+select count(phone) from member where phone=#{phone} 
+</select>
+
+<select id="memberInfo" resultMap="member">
+select * from member where id=#{id}
+</select>
+
+<update id="modify">
+update member set pwd=#{pwd}, phone=#{phone}, addr=#{addr} where id=#{id} 
+</update>
+
+<delete id="delete">
+delete from member where id=#{id} 
+</delete>
+
+<insert id="deleteReasonCheck">
+insert into delete_reason(expensive, nomore_read, recent_not_use, other_site, etc, id) values(#{expensive},#{nomoreRead},#{recentNotUse},#{otherSite},#{etc},#{id})
+</insert>
+
+<resultMap type="com.care.root.member.dto.MemberDTO" id="findOnlyId">
+<id column="id" property="id"/>
+</resultMap>
+
+<select id="findId" resultMap="findOnlyId">
+select id from member where name=#{name} and email=#{email} 
+</select>
+
+<update id="updatePwd">
+update member set pwd=#{pwd} where id=#{id} 
+</update>
+
+</mapper>

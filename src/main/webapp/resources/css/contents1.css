@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body{font-family: 'Nanum Gothic', sans-serif;}
+
+.title{
+	margin-top:230px;
+	font-size: 20px;
+    font-weight: bold;
+    padding-left: 20%;
+	
+}
+
+
+.contents::after {
+	content: "";
+	clear: both;
+	display: table;
+	
+}
+
+.bl1{
+	text-align:cneter; /*제목*/
+    padding:30px;
+    margin-top:250px;
+    width:250px;
+    height:250px;
+    float:right;
+    margin:0 auto;
+    
+    }
+.more{
+	float: right;
+	padding-right: 280px;
+	margin:0 auto;
+}
+
+
+a{ text-decoration: none; color: black; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+
+
