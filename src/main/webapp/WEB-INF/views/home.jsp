@@ -32,7 +32,7 @@
         	<a href="${contextPath}"><img src="resources/images/logo.png" alt="Logo"></a>
         </div>
  
-        <div id="top_menu">
+        <div class="top_menu">
         	<c:choose>
         		<c:when test="${loginUser==null }">
 	       			<a href="${contextPath}/member/login"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
@@ -45,7 +45,7 @@
        		<a href="#"><img src="resources/images/h_community.jpg" alt="h_community" width="50px"></a>
        		<a href="#"><img src="resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
        	</div>
-       	<div id="login">	
+       	<div class="login">	
        		<c:choose>
        			<c:when test="${loginUser == null }">
         			<a href="${contextPath}/member/login">로그인</a> | 
@@ -59,7 +59,7 @@
         </div>
 
 <!--메인 메뉴창 -->
-<div id="menu1">
+<div class="menu1">
 
     <ul class="main">
 
