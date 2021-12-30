@@ -165,6 +165,5 @@ function search() {
 
 </div>
 </header>
-
 </body>
 </html>

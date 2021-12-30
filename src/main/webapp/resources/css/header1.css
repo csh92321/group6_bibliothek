@@ -22,7 +22,8 @@ a{text-decoration: none;}
     left: 18%;
  
 }
- 
+
+
 /* 제목영역안에 오른쪽 상단에 top_menu 배치 */
 .top_menu{
     position: absolute;
@@ -36,9 +37,13 @@ a{text-decoration: none;}
 	top:100px;
 	color: black;
 }
+
+.login a{
+	color:black;
+}
  
 /* top_menu a의 폰트색 블랙 */
-#top_menu a{color: black;}
+.top_menu a{color: black;}
  
 /* 헤더 영역안에 네비게이션 메뉴 배치 */
 

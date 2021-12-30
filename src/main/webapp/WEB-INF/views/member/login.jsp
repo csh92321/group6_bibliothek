@@ -12,9 +12,9 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 .wrap{width:1200px; margin:0 auto; text-align:center;}
-.login form table{margin:0 auto; margin-top:120px;}
-.login table tr{padding:2px;}
-.login table tr td{padding:2px;}
+.loginform form table{margin:0 auto; margin-top:120px;}
+.loginform table tr{padding:2px;}
+.loginform table tr td{padding:2px;}
 .input{border:2px solid #ffb532;}
 .loginBtn{border:2px solid #b8371b; padding:13px; background-color:#C35134; color:white; }
 </style>
@@ -40,7 +40,7 @@ function findPwd(){
 
 <div class="wrap">
 <hr>
-	<div class="login">
+	<div class="loginform">
 	<form method="post" action="user_check">
 		<table>
 			<tr>
