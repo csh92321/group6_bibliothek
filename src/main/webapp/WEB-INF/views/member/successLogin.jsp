@@ -7,9 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>successLogin</title>
+<link rel="stylesheet" href="resources/css/header1.css">
+<link rel="stylesheet" href="resources/css/search1.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 </head>
 <body>
-
+<c:import url="../default/header.jsp" />
 <h3> LOGIN SUCCESS </h3>
 <label> Welcome, ${loginUser }! </label>
 <br>

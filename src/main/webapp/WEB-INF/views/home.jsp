@@ -15,9 +15,6 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
-
-
-
 </head>
 <body>
 <!-- 검색창--> 
@@ -32,16 +29,16 @@
 <!--  메뉴바  -->
 <header>
     	<div id="logo">
-        	<a href="http://localhost:8081/root/"><img src="resources/images/logo.png" alt="Logo"></a>
+        	<a href="${contextPath}"><img src="resources/images/logo.png" alt="Logo"></a>
         </div>
  
         <div id="top_menu">
         	<c:choose>
         		<c:when test="${loginUser==null }">
-	       			<a href="member/login"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+	       			<a href="${contextPath}/member/login"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
     	   		</c:when>
        			<c:otherwise>
-       				<a href="member/successLogin?id=${loginUser }"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+       				<a href="${contextPath}/member/successLogin?id=${loginUser }"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
        			</c:otherwise>
        		</c:choose>
        		<a href="#"><img src="resources/images/h_what.jpg" alt="h_what" width="50px"></a>
@@ -51,8 +48,8 @@
        	<div id="login">	
        		<c:choose>
        			<c:when test="${loginUser == null }">
-        			<a href="member/login">로그인</a> | 
-            		<a href="member/register_form">회원가입</a>
+        			<a href="${contextPath}/member/login">로그인</a> | 
+            		<a href="${contextPath}/member/register_form">회원가입</a>
             	</c:when>
             	<c:otherwise>
             		${loginUser }
@@ -150,7 +147,7 @@
         <li><a href="bestSeller">베스트셀러</a></li> 
         <li><a href="#">신간</a></li>
         <li><a href="#">추천</a></li> 
-
+</ul>
 
 </div>
 </header>

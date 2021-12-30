@@ -33,6 +33,12 @@ public class MemberController implements MemberSessionName{
 	@Autowired MemberService ms;
 	@Autowired NoteService ns;
 	
+	
+	@GetMapping("header")
+	public String header() {
+		return "default/header";
+	}
+	
 	@GetMapping("/login")
 	public String login(@CookieValue(value="saveIdCookie", required=false) Cookie saveIdCookie,Model model) {
 		if(saveIdCookie != null) {
