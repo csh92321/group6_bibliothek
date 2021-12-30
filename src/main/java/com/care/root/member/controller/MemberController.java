@@ -91,7 +91,12 @@ public class MemberController implements MemberSessionName{
 			saveIdCookie.setMaxAge(limitTimeId);
 			response.addCookie(saveIdCookie);
 		}
-		return "member/successLogin";
+		return "redirect:/";
+	}
+	
+	@GetMapping("mypage")
+	public String mypage() {
+		return "member/mypage";
 	}
 	
 	@GetMapping("register_form")
@@ -200,7 +205,7 @@ public class MemberController implements MemberSessionName{
 		int result=ms.modify(dto);
 		if(result==1) {
 			System.out.println("정보 수정 성공");
-			return "member/successLogin";
+			return "member/mypage";
 		}
 		return "Redirect:modifyForm";
 	}
@@ -231,7 +236,7 @@ public class MemberController implements MemberSessionName{
 			return "redirect:/";
 		} else {
 			System.out.println(id+"회원 삭제 실패");
-			return "redirect:successLogin";
+			return "redirect:mypage";
 		}
 	}
 	
