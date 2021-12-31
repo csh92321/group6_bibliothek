@@ -31,7 +31,7 @@ function findId(){
 }
 function findPwd(){
 	var url="newpage_findPwd"
-	win=window.open(url,"findPwd","width=400, height=400, left=100, top=100");
+	win=window.open(url,"findPwd","width=500, height=400, left=100, top=100");
 }
 </script>
 </head>
