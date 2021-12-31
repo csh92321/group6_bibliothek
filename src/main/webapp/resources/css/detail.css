@@ -6,11 +6,31 @@ main {
 /* 	background : #f2f4f7; */
 	min-height : 700px;
 }
+
+.button{
+	color : #b8371b;
+	background-color:white;
+	font-size:13px;
+	font-weight:bold;
+	border: 2px solid #b8371b;
+	height :60px;
+	width : 70px;
+	border-radius:5px;
+	opacity:0.6;
+	transition:0.3s;
+}
+.button:hover{
+	border:2px solid white;
+	background : #b8371b;
+	color:white;
+	opacity:1
+}
+
 .main-container {
 	width:1080px;
 	margin:auto;
 	display:grid;
-	grid-template-rows: 600px 310px 450px 500px; /*가로줄 길이*/
+	grid-template-rows: 400px 310px 450px 500px; /*가로줄 길이*/
 	gap:10px; /*자식요소간 간격*/
 }
 .temp-box{
@@ -27,6 +47,8 @@ main {
 .box-one > div:first-child{
 	width:100%;
 	flex:3; /*공간 차지 비율*/
+	justify-content:center;
+	align-items:center;
 }
 .box-one > div:last-child{
 	width:100%;
@@ -36,8 +58,43 @@ main {
 /* 	background:#f2f4f7; */
 	height:10px;
 }
-.border-dee3eb {
-/* 	border:1px solid #dee3eb; */
+.imageArea {
+	display : flex;
+	justify-content:center;
+	align-items:center;
+}
+.textButtonArea {
+	display : flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+.container-contents {	
+	width : 100%;
+	align-items:center;
+}
+.item-detail{
+	width:100%;
+	display : flex;
+	flex-direction : column;
+}
+.item-detail1 {
+	margin-top : 30px;
+	height : 55%;
+	justify-content:center;
+	align-items:center;
+}
+.item-detail2 {
+	height : 60px;
+	flex-direction : row;
+	justify-content:center;
+/* 	align-items:center; */
+}
+.item-detail3 {
+	height : auto;
+	flex-direction : row;
+	justify-content:center;
+/* 	align-items:center; */
 }
 span img {
    resize: both; /* 이미지 최대 사이즈에 적용 */

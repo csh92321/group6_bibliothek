@@ -44,9 +44,16 @@
 </head>
 <body onload="getHit();">
 <%@ include file="../header.jsp" %>
-	<div class="subtitle">
+	<div class="container">
+	<div class="item item1">
+	<div class="subtitle" style="margin-left:30px">
+	<br>
 		베스트 셀러
 	</div>
-	<span id="best"></span>		
+	</div>
+	<div class="item item2">
+	<span id="best"></span>	
+	</div>
+	</div>	
 </body>
 </html>

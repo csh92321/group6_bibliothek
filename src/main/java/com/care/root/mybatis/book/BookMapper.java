@@ -24,7 +24,9 @@ public interface BookMapper {
 	public ArrayList<GenreDTO> codeGenre(String code);
 	public ArrayList<BookDTO> getAllBook();
 	public BookDTO getRecommend(String bookNum);
-	public int gradeUpdate(@Param("bookNum")String bookNum, @Param("gradeLevel")float gradeLevel);
-	public int gradeLoad(String bookNum);
+	public int gradeUpdate(@Param("bookNum")String bookNum, @Param("gradeLevel")double gradeLevel);
+	public double gradeLoad(String bookNum);
+	public void likePush(@Param("id")String id, @Param("bookNum")String bookNum);
+	public void likeCancel(@Param("id")String id, @Param("bookNum")String bookNum);
 
 }

@@ -255,17 +255,50 @@ public class BookServiceImpl implements BookService {
 	
 	@PostMapping("gradePost")
 	@ResponseBody
-	public float gradePost(@RequestParam(value = "gradeLevel", required = false) String bookNum, float gradeLevel) {
-			try {
-				float gradeAvg = mapper.gradeLoad(bookNum);
+	public double gradePost(@RequestParam(value = "array", required = false) ArrayList<String> array) {
+		String bookNum = array.get(0);
+		double gradeLevel = Double.parseDouble(array.get(1));	
+		double gradeL = 0;
+		try {
+				double gradeAvg = mapper.gradeLoad(bookNum);
+				System.out.println(gradeAvg);
 				gradeLevel = (gradeAvg+gradeLevel)/2;
-				Math.round((gradeLevel*10)/10);
+				System.out.println(gradeLevel*10);
+				gradeLevel = Math.round(gradeLevel*10);
+				gradeLevel = gradeLevel/10;
+				System.out.println(gradeLevel);
 				mapper.gradeUpdate(bookNum, gradeLevel);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		return gradeLevel;
+		gradeL= gradeLevel;
+		return gradeL;
 	}
+	
+	@PostMapping("likePush")
+	@ResponseBody
+	public void likePush(@RequestParam(value = "arrayL", required = false) ArrayList<String> arrayL) {
+		String id = arrayL.get(0);
+		String bookNum = arrayL.get(1);	
+		try {
+				mapper.likePush(id,bookNum);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	@PostMapping("likeCancel")
+	@ResponseBody
+	public void likeCancel(@RequestParam(value = "arrayL", required = false) ArrayList<String> arrayL) {
+		String id = arrayL.get(0);
+		String bookNum = arrayL.get(1);	
+		try {
+				mapper.likeCancel(id,bookNum);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
 }
 
 

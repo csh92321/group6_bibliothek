@@ -26,6 +26,11 @@
       <result property="division" column="division" />
    </resultMap>
    
+     <resultMap id="like_book"  type="com.care.root.book.dto.LikeDTO">
+      <id property="id" column="id" />
+      <result property="bookNum" column="book_num" />
+   </resultMap>
+   
    <select id="bookList" resultMap="book">
       select book_num, title, subtitle, writer, company from book where book_num LIKE #{bookNum}
    </select>
@@ -79,8 +84,16 @@
       update book set grade=#{gradeLevel} where book_num=#{bookNum}
    </update>
    
-   <select id="gradeLoad" resultType="int">
+   <select id="gradeLoad" resultType="double">
       select grade from book where book_num=#{bookNum}
+   </select>
+      
+   <select id="likePush" resultMap="like_book">
+      insert into like_book (id, book_num) values (#{id}, #{bookNum})
+   </select>
+   
+   <select id="likeCancel" resultMap="like_book">
+      delete from like_book where id=#{id} and book_num=#{bookNum}
    </select>
 
 </mapper>

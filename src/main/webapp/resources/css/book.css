@@ -46,6 +46,7 @@ hr {
 #book {
 	height: 100px;
 	border: 2px solid #b8371b;
+	border-radius: 10px;
 	width : 100%;
 }
 
@@ -64,7 +65,7 @@ hr {
     text-align:center;
     display:table;
     width:280px;
-    height:250px;
+    height:410px;
 }
 
 .product-img-div {
@@ -90,10 +91,7 @@ hr {
 }
 
 .title-box {
-	float: left;
 	display:inline-block;
- 	margin-left :70px; 
- 	margin-top :130px; 
 }
 .title {
 	font-size : 30px;
