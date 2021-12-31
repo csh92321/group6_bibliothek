@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-* {font-family: "궁서체" ;}
+body{font-family: 'Nanum Gothic', sans-serif;}
 
 hr {
 	border: 0px;
@@ -8,22 +8,53 @@ hr {
 	background-color: #b8371b;
 }
 
-a:visited {
-	color: #b8371b;
-}
 .subtitle {
 	color: #b8371b;
 }
-.rgt {
+
+.container {
+	height : 100vh;		
+	display : flex;
+	width : 100%;
+	flex-direction : column;
+	align-items:center;
+}
+.item {
+	height : 100%;
+	width : 100%;
+}
+
+.item1{	
+	height : 100px;
+}
+
+.item2 {
+	height : 200px;
+}
+
+.item3{
+	height : 100px;
+}
+
+.item4{
+	height : 100vh;
+}
+
+.bookList {
+}
+
+#book {
 	height: 100px;
 	border: 2px solid #b8371b;
+	width : 100%;
 }
 
-ul li {
-	list-style-type: none; float: left; margin-top:5px; font-size: large;
+#book ul li {
+	list-style-type: none; float: left; margin-top:15px; font-size: large;
+	margin-left:25px;
 }
 
-li:not(:first-child) {
+#book li:not(:first-child) {
 	margin-left:50px;
 }
 

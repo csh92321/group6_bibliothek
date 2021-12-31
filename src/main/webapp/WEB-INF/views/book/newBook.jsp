@@ -5,22 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <link href="resources/css/book.css" rel="stylesheet">
+<title>Insert title here</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
-<title>Insert title here</title>
 <script type="text/javascript">
-	function getHit() {
+	function getNew() {
 		$	.ajax({
-					url : "hits",
+					url : "news",
 					type : "get",
 					dataType : "json",
-					success : function(best) {
-						console.log(best)
+					success : function(newBook) {
+						console.log(newBook)
 						let html = ""
 						$
 								.each(
-										best,
+										newBook,
 										function(index, item) {
 											html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"
@@ -36,17 +36,17 @@
 											html += "</div>"
 											html += "</div>"
 										})
-						$("#best").append(html)
+						$("#new").append(html)
 					}
 				})
 	}
 </script>
 </head>
-<body onload="getHit();">
+<body onload="getNew();">
 <%@ include file="../header.jsp" %>
 	<div class="subtitle">
-		베스트 셀러
+		신간
 	</div>
-	<span id="best"></span>		
+	<span id="new"></span>		
 </body>
 </html>

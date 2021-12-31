@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 	<link href="resources/css/book.css" rel="stylesheet">
 	<link href="resources/css/detail.css" rel="stylesheet">
+	<link rel="stylesheet" href="resources/css/header1.css">
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 <script type = "text/javascript">
+
+	let gradeLevel = 0;	
+	let gradeClick = 0;
+
 	function detail() {
 	var urlString = window.location.href;
     var strArray = urlString.split('?');
@@ -65,11 +73,13 @@
 	function originalImage() {
 		
 	}
+	
 	function like() {
 		html = "<h4>찜하기♡</h4>"
 		check += 1;
 		if (check==2) {
 		html = "<h4>찜하기♥</h4>"
+		
 		} else if(check==3) {
 			html = "<h4>찜하기♡</h4>"
 			check = 1;
@@ -91,20 +101,69 @@
 		}
 		$("#url").html(html)
 	}
+	
+	function gradePost1() {
+		gradeLevel = 1;
+		gradePost(gradeLevel);
+	}
+	
+	function gradePost(gradeLevel) {
+		var urlString = window.location.href;
+	    var strArray = urlString.split('?');
+	    var bookNum = strArray[1];
+// 		$
+// 				.ajax({
+// 					url : "gradePost",
+// 					type : "post",
+// 					data : {
+// 						gradeLevel : gradeLevel
+//     					bookNum : bookNum
+// 					},
+// 					success : function(gradeLevel) {
+// 						let html = ""
+// 						html += "<h3>"+gradeLevel+"</h3>"
+						
+
+// 					}
+// 				})
+// 				$("#gradeLevel").html(html)
+	}
+	
+	function grade() {
+		gradeClick += 1;
+		let html=""
+		if (gradeClick==1) {
+		 html += "<div id=\"btn_group\">"
+		 html += "<button onclick=\"gradePost1();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star1.png\"></button>"
+		 html += "<button onclick=\"gradePost2();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star2.png\"></button>"
+		 html += "<button onclick=\"gradePost3();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star3.png\"></button>"
+		 html += "<button onclick=\"gradePost4();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star4.png\"></button>"
+		 html += "<button onclick=\"gradePost5();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star5.png\"></button>"
+		 html += "</div>"
+		} else {
+			gradeClick = 0;
+			html = "";
+		}
+		$("#gradeSelect").html(html)
+	}
+	
     </script>
 </head>
 <body onload="detail(); like();">
-<%@ include file="menu.jsp" %>
+<%@ include file="../header.jsp" %>
 <main>
 <div class = "main-container">
 	<div class="temp-box box-one">
 	<div class="border-dee3eb"><span id="image" onclick="originalImage();"></span></div>
 	<div class="gap-box"></div>
 	<div class="border-dee3eb"><span id="detail"></span>
-	<button class="btn" onclick="();" type="button">읽기</button>
+	<a href="eBook?1"><button class="btn" type="button">읽기</button></a>
 	<button class="btn" onclick="like();" type="button"><span id="like"></span></button>
 	<button class="btn" onclick="url();" type="button">공유</button>
-	<span id="url"></span>
+	<button class="btn" onclick="grade();" type="button">평점 주기</button>
+		<span id="url"></span>
+		<span id="gradeSelect"></span>
+		<span id="gradeLevel"></span>
 	</div>
 	</div>
 	<div class="temp-box">책소개<span id="bookIntro"></span></div>

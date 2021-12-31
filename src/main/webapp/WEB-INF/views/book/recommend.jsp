@@ -5,22 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <link href="resources/css/book.css" rel="stylesheet">
+<title>Insert title here</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
-<title>Insert title here</title>
 <script type="text/javascript">
-	function getHit() {
+	function getRecommend() {
 		$	.ajax({
-					url : "hits",
+					url : "recommends",
 					type : "get",
 					dataType : "json",
-					success : function(best) {
-						console.log(best)
+					success : function(list) {
+						console.log(list)
 						let html = ""
 						$
 								.each(
-										best,
+										list,
 										function(index, item) {
 											html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"
@@ -36,17 +36,17 @@
 											html += "</div>"
 											html += "</div>"
 										})
-						$("#best").append(html)
+						$("#recommend").append(html)
 					}
 				})
 	}
 </script>
 </head>
-<body onload="getHit();">
+<body onload="getRecommend();">
 <%@ include file="../header.jsp" %>
 	<div class="subtitle">
-		베스트 셀러
+		추천
 	</div>
-	<span id="best"></span>		
+	<span id="recommend"></span>		
 </body>
 </html>
