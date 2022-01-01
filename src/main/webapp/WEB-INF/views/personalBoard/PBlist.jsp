@@ -57,6 +57,11 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<div align="center" style="margin-top:15px;">
+			<c:forEach var="num" begin="1" end="${repeat}">	<!-- repeat:전체 페이지 갯수 -->
+				<a href="PBlist?id=${loginUser }&num=${num }" style="color:#183755;"> [${num }]</a>
+			</c:forEach>
+		</div>
 	</div>
 </div>
 </body>
