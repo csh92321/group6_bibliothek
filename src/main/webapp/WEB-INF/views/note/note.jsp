@@ -95,7 +95,7 @@ function cancel() {
 
 <div class="wrap">
 	<hr>
-	<div class="mypage_title"> <label>1:1문의</label> </div>
+	<div class="mypage_title"> <label>쪽지</label> </div>
 	<input type="hidden" id="sessionId" name="sessionId" value="${id }">
 	<div class="Btns">
 		<button type="button" onclick="receive()">받은 쪽지함</button> <br>

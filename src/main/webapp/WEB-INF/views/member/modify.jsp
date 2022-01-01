@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${contextPath}resources/css/header1.css">
-<link rel="stylesheet" href="${contextPath}resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 .wrap{width:1200px; margin:0 auto; text-align:center;}
@@ -18,7 +18,7 @@
 .modify table tr th{font-size:16px;text-align:right;width:700px; padding:3px 10px 3px 0px;}
 .modify table tr td{padding:3px 0px 3px 10px; text-align:left; width:700px;}
 .modify table tr td input{width:190px; text-align:center;}
-.modify table tr td button{width:60px; height:30px; border:2px solid #b8371b; background-color:#b8371b; color:white;}
+.modify table tr td button{width:60px; height:30px; border:2px solid #b8371b; background-color:#b8371b; color:white; margin-left:15px;}
 #addr1{width:115px;}
 #zoneCodeBtn{width:70px; border:2px solid #ffb532; background-color:#FFDA98;}
 #modifyTd{padding-top:40px; text-align:center; padding-left:135px;}
@@ -129,6 +129,10 @@ function deleteMember() {
 		location.href="${contextPath}/"
 	}
 }
+
+function cancel() {
+	location.href="${contextPath }/member/mypage?id=${loginUser}"
+}
 </script>
 </head>
 <body>
@@ -191,8 +195,9 @@ function deleteMember() {
 			</tr>
 			<tr>
 				<td colspan="2" id="modifyTd"> 
-					<button type="button" onclick="modify()">수정</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					
-					<button type="button" onclick="deleteMember()">탈퇴</button> 
+					<button type="button" onclick="modify()">수정</button>					
+					<button type="button" onclick="deleteMember()">탈퇴</button>
+					<button type="button" onclick="cancel()">취소</button> 
 				</td>
 			</tr>
 		</table>	

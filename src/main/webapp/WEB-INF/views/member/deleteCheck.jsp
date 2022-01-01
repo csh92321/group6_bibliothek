@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${contextPath}resources/css/header1.css">
-<link rel="stylesheet" href="${contextPath}resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 .wrap{width:1200px; margin:0 auto; text-align:center;}
@@ -16,7 +16,8 @@
 .dc_title label{border:2px solid #ffb532; background-color:#ffb532; padding:5px 7px; font-size:20px;}
 .delete form{margin:0 auto; margin-top:70px;}
 .inputList{width:220px; text-align:left; margin:0 auto; font-size:17px;}
-.delete button{margin-top:70px; border:1px solid #b8371b; background-color:#b8371b; color:white; padding:3px 5px;}
+.delete button{margin-top:70px; border:1px solid #b8371b; background-color:#b8371b; color:white; padding:3px 5px; margin-left:15px;}
+
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -54,6 +55,9 @@
 			location.href="${contextPath}/"
 		}
 	}
+	function cancel(){
+		location.href="${contextPath }/member/mypage?id=${loginUser}"
+	}
 </script>
 </head>
 <body>
@@ -74,6 +78,7 @@
 		<input type="hidden" name="id" value="${member.id }">
 		</div>
 		<button type="button" onclick="deleteMember()">탈퇴</button>
+		<button type="button" onclick="cancel()">취소</button>
 	</form>
 	</div>
 </div>

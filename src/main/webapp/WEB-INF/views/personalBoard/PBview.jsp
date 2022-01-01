@@ -27,7 +27,7 @@
 
 <div class="wrap">
 	<hr>
-	<div class="mypage_title"> <label>1:1문의</label> </div>
+	<div class="mypage_title"> <a href="${contextPath }/personalBoard/PBlist?id=${loginUser }" style="color:black;"> <label> 1:1문의 </label></a> </div>
 	<div class="pbBoard">
 		<table>
 			<tr>
