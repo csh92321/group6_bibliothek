@@ -126,10 +126,10 @@ function cancel() {
 						<div class="txt_line"> 
 						<c:choose>
 							<c:when test="${noteList_rec.readYN==0 }">
-			 					<a style="color: black;" href="noteView?noteNum=${noteList_rec.noteNum }" onclick="window.open(this.href,'noteView','width=400, height=400, left=100, top=100'); return false;"> ${noteList_rec.content } </a>
+			 					<a style="color: black;" href="noteView?noteNum=${noteList_rec.noteNum }" onclick="window.open(this.href,'noteView','width=500, height=400, left=100, top=100'); return false;"> ${noteList_rec.content } </a>
 			 				</c:when> 
 			 				<c:otherwise>
-			 					<a style="color: gray;" href="noteView?noteNum=${noteList_rec.noteNum }" onclick="window.open(this.href,'noteView','width=400, height=400, left=100, top=100'); return false;"> ${noteList_rec.content } </a>
+			 					<a style="color: gray;" href="noteView?noteNum=${noteList_rec.noteNum }" onclick="window.open(this.href,'noteView','width=500, height=400, left=100, top=100'); return false;"> ${noteList_rec.content } </a>
 			 				</c:otherwise>
 			 			</c:choose>
 						</div>
@@ -159,7 +159,7 @@ function cancel() {
 						<td> ${noteList_send.receiver } </td>
 						<td style="padding-left:20px;">  
 						<div class="txt_line">
-							<a href="noteView?noteNum=${noteList_send.noteNum }" onclick="window.open(this.href,'noteView','width=400, height=400, left=100, top=100'); return false;">${noteList_send.content } </a>
+							<a href="noteView?noteNum=${noteList_send.noteNum }" onclick="window.open(this.href,'noteView','width=500, height=400, left=100, top=100'); return false;">${noteList_send.content } </a>
 						</div>
 						</td>
 						<td> ${noteList_send.savedate } </td>
