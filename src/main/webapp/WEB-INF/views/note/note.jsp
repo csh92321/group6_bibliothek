@@ -39,12 +39,16 @@
 <script>
 
 function receive(){
+	$("#receiver").val("");
+	$("#content").val("");	
 	$("#send").hide();
 	$("#msg").hide();
 	$("#receive").show();
 }
 
 function send() {
+	$("#receiver").val("");
+	$("#content").val("");	
 	$("#receive").hide();
 	$("#msg").hide();
 	$("#send").show();
