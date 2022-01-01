@@ -9,9 +9,7 @@
 	<link href="resources/css/detail.css" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/header1.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/resources/css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="resources/js/bootstrap.js"></script>
 	<style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
@@ -175,7 +173,10 @@
 						array : array
 					},
 					success : function(gradeL) {
-						let htmlGrade = "<h3>"+gradeL+"</h3>"	
+						let htmlGrade = "<div>"
+						htmlGrade += "<progress value=\""+gradeL+"\" max=\"5\"></progress>"
+						htmlGrade += "</div>"
+					    htmlGrade += "<h3>"+gradeL+"</h3>"	
 						$("#gradeLevel").html(htmlGrade)
 					}
 				})
@@ -201,7 +202,7 @@
 	
     </script>
 </head>
-<body onload="detail(); like();">
+<body onload="detail(); like(); ">
 <%@ include file="../header.jsp" %>
 <main>
 <div class = "main-container">
@@ -227,7 +228,7 @@
 	<div class="temp-box">목차	<div class="gap-box"></div><span id="contentsTable"></span></div>
 	<div class="temp-box">저자소개	<div class="gap-box"></div><span id="writerIntro"></span></div>
 	<div class="temp-box">리뷰	<div class="gap-box"></div></div>
-	<div class="temp-box">E-BOOK 이용안내	<div class="gap-box"></div><br>
+	<div class="temp-box">E-BOOK 이용안내	<div class="gap-box"></div>
 	<div class="subtitle">본 상품은 별도로 배송되지 않는 전자책 서비스입니다.<br>
 본 상품은 인쇄/저장/편집 기능이 불가합니다.<br>
 2014년 11월 21일부터 ‘개정 도서정가제’ 시행에 따라 신구간 구분 없이 기본 이벤트 할인과 적립을 포함하여 최대 15%까지만 제공됩니다.</div></div>

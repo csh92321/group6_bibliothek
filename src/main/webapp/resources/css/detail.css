@@ -1,10 +1,53 @@
 @charset "UTF-8";
 
-body{font-family: 'Nanum Gothic', sans-serif;}
+body{font-family: 'Nanum Gothic', sans-serif;  width : 1024px;   margin-left: auto;
+  margin-right: auto;}
 
 main {
 /* 	background : #f2f4f7; */
 	min-height : 700px;
+}
+
+select {
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	appearance : none;
+	font-size:1rem;
+	font-weight:400;
+	line-height:1.5;
+	
+	color : #b8371b;
+	background-color: white;
+	
+	padding:0.6em 1.4em 0.5em 0.8em;
+	margin:0;
+	
+	border : 1px solid black;
+	border-radius : 0.5em;
+	box-shadow:0 1px 0 1px rgba(0,0,0,0.04);
+}
+
+select:hover {
+	border-color: #b8371b;
+}
+
+select:focus {
+	border-color: black;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color : black;
+	outline : none;
+}
+
+select:disabled {
+	opacity:0.5;
+}
+
+form {
+	display : flex;
+	justify-content : center;
+	align-items:center;
+	height:100vh;
 }
 
 .button{

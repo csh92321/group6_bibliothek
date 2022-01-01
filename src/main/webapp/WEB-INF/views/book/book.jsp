@@ -4,9 +4,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/resources/css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="resources/js/bootstrap.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -131,6 +129,7 @@ function getgenre() {
 	<%@ include file="../header.jsp" %>
 	<div class="container">
 	<div class="item item1">
+	<div class="gap-box-book"></div>
 	<span id="korean"></span></div>
 	<div class="item item2">
 	<div id="book">
@@ -138,12 +137,32 @@ function getgenre() {
 		<li><span id="genre"></span>
 		</ul>
 	</div>
+			<div class="gap-box-book"></div>
 	</div>
+
 	<div class="item item3">
+	<div class="item item3-box1">
 	<span id="koreanD"></span>
-	<hr>
+	</div>
+	<div class="item item3-box2">
+	<form>
+		<select id="range" name="range">
+		<option value="">인기순▲</option>
+		<option value="">인기순▽</option>
+		<option value="">신작순▲</option>
+		<option value="">신작순▽</option>
+		<option value="">평점순▲</option>
+		<option value="">평점순▽</option>
+		<option value="">이름순▲</option>
+		<option value="">이름순▽</option>
+		</select>
+	</form>
+
+	</div>
 	</div>
 	<div class="item item4">
+	<hr>
+					<div class="gap-box-book"></div>
 	<div class="bookList">
 	<span id="books"></span>
 	</div>
