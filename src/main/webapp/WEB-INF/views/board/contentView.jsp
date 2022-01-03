@@ -22,6 +22,12 @@ input{
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 <script type="text/javascript">
 function replyMsg() {
 	$("#replyMsg").show();
@@ -29,7 +35,7 @@ function replyMsg() {
 </script>
 </head>
 <body>
-ContentView<br>
+<c:import url="../default/header.jsp" />
 <!--  
 아이디 : ${detailContent.id } <br>
 글번호 : ${detailContent.writeNo }<br>
@@ -38,7 +44,7 @@ ContentView<br>
 제목 : ${detailContent.title }<br>
 내용 : ${detailContent.content }<br>
 -->
-${id }, ${loginUser }<br>
+
 	<div id="content">
 	<font size="5" ><b>랜선 모임</b></font>
 	<table border="1" align="center" style="margin-top: 30px;">	
@@ -98,5 +104,6 @@ ${id }, ${loginUser }<br>
 					</table>
 				</form>
 			</div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>

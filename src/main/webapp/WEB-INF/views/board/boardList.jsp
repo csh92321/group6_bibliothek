@@ -30,11 +30,22 @@ button {
 	font-size: 15px;
 	padding: 5px;
 }
-a:hover {text-decoration: none; }
+.aa a{
+color: #b8371b;
+}
+.aa a:hover {text-decoration:none; color: black;}
+
 </style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -51,11 +62,13 @@ a:hover {text-decoration: none; }
 	}
 </script>
 </head>
-<body>boardList<br>
-${id}, ${loginUser }<br>
+<body>
+<c:import url="../default/header.jsp" />
+
+
 <input type="hidden" name="loginUser" id="loginUser" value="${loginUser }">
 <div align="center">
-<table border="1" align="center">
+<table class="aa" border="1" align="center">
 			<tr>
 				<th width="70" height="40">글 번호</th> <th width="500">제목</th> <th width="100">작성자 ID</th> <th width="100">등록 날짜</th>
 			</tr>
@@ -80,5 +93,6 @@ ${id}, ${loginUser }<br>
 			<button type="button" onclick="writeForm()">새글 작성하기</button>
 		
 	</div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>

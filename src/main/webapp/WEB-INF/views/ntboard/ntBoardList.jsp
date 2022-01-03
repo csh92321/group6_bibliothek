@@ -34,10 +34,23 @@ a:hover {text-decoration: none; }
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+.aa a{
+color: #b8371b;
+}
+.aa a:hover {text-decoration:none; color: black;}
+
+ }
+</style>
 </head>
-<body>ntBoardList<br>
+<body>
+<c:import url="../default/header.jsp" />
 <div align="center">
-	<table border="1" align="center">
+	<table class="aa" border="1" align="center" color="black">
 			<tr>
 				<th width="70" height="40">글 번호</th> <th width="500">제목</th> <th width="100">작성자</th> <th width="100">등록 날짜</th>
 			</tr>
@@ -59,5 +72,6 @@ a:hover {text-decoration: none; }
 		<button type="button" onclick="location.href='${contextPath}/ntboard/ntBoardWriteForm'">새 글 작성하기</button>
 	</c:if>
 	</div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>

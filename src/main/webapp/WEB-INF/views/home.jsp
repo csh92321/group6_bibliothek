@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,139 +15,11 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
-
-
-
 </head>
 <body>
-<!-- 검색창--> 
-<div class="container">
-      <form action="/" method="GET" class="form">
-        <input type="search" placeholder="Search" class="search-field" />
-<!--        <button type="submit" class="search-button">
-            <img src="search.png">
-        </button>-->
-      </form>
-    </div>
-<!--  메뉴바  -->
-<header>
-    	<div id="logo">
-        	<a href="http://localhost:8081/root/"><img src="resources/images/logo.png" alt="Logo"></a>
-        </div>
- 
-        <div id="top_menu">
-       		<c:choose>
-              <c:when test="${loginUser==null }">
-                   <a href="member/login"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
-                </c:when>
-                <c:otherwise>
-                   <a href="member/successLogin?id=${loginUser }"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
-                </c:otherwise>
-             </c:choose>
-             
-       		<a href="#"><img src="resources/images/h_what.jpg" alt="h_what" width="50px"></a>
-       		<a href="board/boardList"><img src="resources/images/h_community.jpg" alt="h_community" width="50px"></a>
-       		<a href="pay/payMain"><img src="resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
-       	</div>
-       	<div id="login">	
-        	<a href="#">로그인</a> | 
-            <a href="#">회원가입</a>
-        </div>
 
-<!--메인 메뉴창 -->
-<div id="menu1">
+<%@ include file="default/header.jsp" %>
 
-    <ul class="main">
-
-        <li><a href="literature?literature&novel">문학</a>
-
-            <ul class="sub">
-
-                <li><a href="literature?literature&novel">소설</a></li>
-
-                <li><a href="literature?literature&poem">시</a></li>
-
-                <li><a href="literature?literature&essay">에세이</a> </li>
-
-            </ul>
-
-        </li>
-
-        <li><a href="#">자기개발</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a> </li>
-
-            </ul>
-
-        </li>
-
-        <li><a href="#">문화</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a> </li>
-
-            </ul>
-
-        </li>
-
-        <li><a href="#">교육</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a></li>
-
-            </ul>
-
-        </li>
-       <li><a href="#">생활</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a></li>
-
-            </ul>
-
-        </li>
-        
-       <li><a href="#">아동</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a></li>
-
-            </ul>
-
-        </li>      
-        <li><a href="bestSeller">베스트셀러</a></li> 
-        <li><a href="#">신간</a></li>
-        <li><a href="#">추천</a></li> 
-
-
-</div>
-</header>
 <!-- 이벤트 -->
 <section id='event'>
 	<a href="#"><img src="resources/images/event.jpg" width="1200"></a>
@@ -258,44 +131,10 @@
 		
 </div>
 
-		
-
-
-
-
+<%@ include file="default/footer.jsp" %>
 <!-- 푸터 -->
 
 <div class='footer'></div><!--  float속성 해제 -->
-<footer>
-	<!--  <div id="address">
-		<li><a href="#">공지사항 +</a></li>
-	</div>
-	-->
-	<div id="footer_box" style="width: 60%; float:left;">
-		<ul>
-			
-			<li>회사소개    |    이용약관    |   개인정보처리방침</a></li>
-			<li>(주) Bibliothek 서울시 종로구 종로 3 대표이사 : 홍준모 사업자등록번호 : 123-45-67891
-					<br>대표전화 : 1111-2222 (발신자 부담전화)
-					<br>팩스 : 0101-010-1010 (지역번호공통) 서울시
-							통신판매업신고번호 제 653호 ▶ 사업자정보확인
-					<br>COPYRIGHT(C) Bibliothek CENTER ALL RIGHTS RESERVED</li>
-			</ul>					
-	</div>
-	
-	
-	<div id="notice" style="width:40%; float:right;">
-		<ul>
-			<li style="text-align: center; font-size:18px"><a href="ntboard/ntBoardList"><b>공지 사항 바로가기 >> </b></a></li><br>
-			<hr>
-			<li style="text-align: center;">[고객센터] <br>
-			TEL. 1544-0011	<br>
-			- 평일 09:00 ~ 18:00 (점심 12:00 ~ 13:30) <br>
-			- 토, 일, 공휴일 휴무</li>
-			
-		</ul>
-	</div>		
 
-</footer>
 </body>
 </html>

@@ -10,6 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 <script type="text/javascript">
 function clickCheck(select) {
     if(select.chkButton.disabled == true)
@@ -25,7 +31,8 @@ function pop(){
 }
 </script>
 </head>
-<body>payMonth<br>
+<body>
+<c:import url="../default/header.jsp" />
 	<div class="wrap" align="center">
 		
 		<h1 style= "text-align:center; color:#b8371b;">[약관]</h1>
@@ -87,6 +94,6 @@ function pop(){
 				</form>
 			</table>
 	</div>
-
+<c:import url="../default/footer.jsp" />
 </body>
 </html>

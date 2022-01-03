@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <link href="resources/css/book.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 <title>Insert title here</title>
 <script type="text/javascript">
 	function getHit() {
@@ -40,7 +43,7 @@
 </script>
 </head>
 <body onload="getHit();">
-	<%@ include file="menu.jsp"%>
+<%@ include file="../header.jsp" %>
 	<div class="subtitle">
 		베스트 셀러
 	</div>

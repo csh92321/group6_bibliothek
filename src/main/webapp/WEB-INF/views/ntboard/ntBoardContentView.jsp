@@ -22,9 +22,15 @@ input{
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 </head>
-<body>ntBoardContentView<br>
-
+<body>
+<c:import url="../default/header.jsp" />
 <!--  
 아이디 : ${detailContent.admin } <br>
 글번호 : ${detailContent.writeNo }<br>
@@ -33,7 +39,7 @@ input{
 내용 : ${detailContent.content }<br>
 -->
 
-
+<div align="center" text-color="black">
 	<table border="1" align="center" style="margin-top: 30px;">
 		<font size="5"><b>공지사항</b></font>	
 		<tr>
@@ -69,5 +75,7 @@ input{
 		
 		
 		</table>
+	</div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>

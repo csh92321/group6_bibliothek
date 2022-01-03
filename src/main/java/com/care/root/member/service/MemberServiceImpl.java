@@ -183,8 +183,10 @@ public class MemberServiceImpl implements MemberService {
 		//PrintWriter out = resp.getWriter();
 		
 		if(mapper.idCheck(dto.getId())==0) {	//가입된 아이디가 없으면
+			result=0;
 			return result;
 		} else if (mapper.emailCheck(dto.getEmail())==0) {	//가입된 이메일이 없으면
+			result=-1;
 			return result;
 		} else {	
 			String pwd = "";
