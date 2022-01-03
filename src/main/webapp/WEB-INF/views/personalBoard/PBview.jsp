@@ -20,7 +20,8 @@
 .pbBoard_admin{width:750px; text-align:left; margin:0 auto;}
 .pbBoard_admin hr{border: 0; height: 3px; background-color:#b8371b; width:750px; margin:30px auto;}
 .pbBoard_admin b{font-size:16px; margin-left:45px; padding:7px 2px; border-bottom-color:#ffb532; border-bottom-style: solid; border-bottom-width: 2px; }
-.ans_admin{margin-left:120px; font-weight:normal;}
+.div_ansAdmin{width:550px; margin:0 auto; margin-top:20px; text-align:left;}
+.ans_admin{font-weight:normal}
 </style>
 </head>
 <body>
@@ -49,11 +50,15 @@
 		<c:choose>
 		<c:when test="${personalData.replyCheck == 1 }">
 			<b>관리자</b> <br> 
+			<div class="div_ansAdmin">
 			<label class="ans_admin"> ${personalData.reply } </label>
+			</div>
 		</c:when>
 		<c:when test="${personalData.replyCheck == 0 }">
 			<b>관리자</b> <br>
+			<div class="div_ansAdmin">
 			<label class="ans_admin"> 답변이 아직 작성되지 않았습니다 </label>
+			</div>
 		</c:when>
 		</c:choose>
 	</div>

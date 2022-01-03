@@ -89,8 +89,8 @@
 					<span id="recommend"></span>
 					</div>
 </div>
-<%@ include file="default/footer.jsp" %>
-<!-- 푸터 -->
-
 </body>
+<footer>
+<%@ include file="default/footer.jsp" %>
+</footer>
 </html>

@@ -12,11 +12,14 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+.wrap{width:1200px; margin:0 auto; text-align:center;}
 </style>
 </head>
 <body>
 <c:import url="../default/header.jsp" />
-	<div align="center" style="width:300px; margin: 0 auto;">
+<div class="wrap">
+<hr style="margin-top:30px;">
+	<div align="center" style="width:300px; margin: 0 auto; margin-top:40px;">
 		<form action="${contextPath}/board/modify" method="post">
 			<input type="hidden" name="writeNo" value="${detailContent.writeNo }">
 			
@@ -29,6 +32,7 @@
 			<input type="button" onclick="history.back()" value="돌아가기">
 		</form>
 	</div>
+</div>
 <c:import url="../default/footer.jsp" />
 </body>
 </html>

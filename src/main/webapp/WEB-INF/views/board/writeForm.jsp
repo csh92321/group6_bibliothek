@@ -8,6 +8,9 @@
 submit{
 background-color: red;
 }
+
+.wrap{width:1200px; margin:0 auto; text-align:center;}
+
 </style>
 <head>
 <meta charset="UTF-8">
@@ -21,7 +24,9 @@ background-color: red;
 </head>
 <body>
 <c:import url="../default/header.jsp" />
-<div align="center">
+<div class="wrap">
+<hr style="margin-top:30px;">
+<div align="center" style="margin-top:40px;">
 	<table border="1">
 	<form action="writeSave" method="POST">
 	
@@ -48,6 +53,7 @@ background-color: red;
 	
 	</form>
 	</table>
+</div>
 </div>
 <c:import url="../default/footer.jsp" />
 </body>

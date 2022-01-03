@@ -6,18 +6,21 @@
 <html>
 <style>
 th {
-	background-color: #b8371b;
-	color: white;
+   background-color: #b8371b;
+   color: white;
 }
 
 
 
-input{
-	background-color: #b8371b;
-	color: white;
-	font-size: 13px;
-	padding: 5px;
+.boardView input{
+   background-color: #b8371b;
+   color: white;
+   font-size: 13px;
+   padding: 5px;
 }
+
+
+.wrap{width:1200px; margin:0 auto; text-align:center;}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -30,7 +33,7 @@ input{
 </style>
 <script type="text/javascript">
 function replyMsg() {
-	$("#replyMsg").show();
+   $("#replyMsg").show();
 }
 </script>
 </head>
@@ -44,66 +47,68 @@ function replyMsg() {
 제목 : ${detailContent.title }<br>
 내용 : ${detailContent.content }<br>
 -->
+<div class="wrap">
+<hr style="margin-top:30px;">
 
-	<div id="content">
-	<font size="5" ><b>랜선 모임</b></font>
-	<table border="1" align="center" style="margin-top: 30px;">	
-		<tr>
-			<th width="70">작성자 </th>
-			<td width="150">${detailContent.id }</td>
-			<th width="70">등록일자</th>
-			<td width="150">${detailContent.saveDate }</td>
-			<th width="70">모임 인원</th>
-			<td width="150">${detailContent.mCnt }</td>
-		</tr>
-		
-		<tr>
-			<th width="100">제목</th>
-			<td colspan="5">${detailContent.title }</td>			
-		</tr>
-		
-		<tr height="300">
-			<th>내 용</th>
-			<td colspan="5">${detailContent.content }</td>
-		</tr>
-		<tr> 
-			<td colspan="6" align="center">
-			<c:if test="${loginUser == detailContent.id }">
-				
-					<input type="button" value="수정하기"
-						onclick="location.href='${contextPath}/board/modify_form?writeNo=${detailContent.writeNo }'">
-					<input type="button" value="삭제하기"
-						onclick="location.href='${contextPath }/board/delete?writeNo=${detailContent.writeNo }'">
-			</c:if> 
-					<input type="button" onclick="replyMsg()" value="답글달기">
-					<input type="button" onclick="location.href='${contextPath}/board/boardList'" value="리스트로 돌가가기">
-			<hr>
-			
-				
-			</td>
-		</tr>
-		
-		
-		</table>
-		</div>
-		<div id="replyMsg" >
-				<form action="reply" method="post">
-					<table border="1" align="center" style="margin-top: 30px;">
-						<tr>
-							<td> 작성자 </td>
-							<td> <input style="background-color: white" type="text" id="writer" name="writer" value="${loginUser }" readonly> </td>
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align: left;"> 내용</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<textarea style="width:500px" hight="300px" name="content" id="content"></textarea>
-							</td>
-						</tr>
-					</table>
-				</form>
-			</div>
+   <div id="content" align="center">
+   <table border="1" align="center" style="margin-top: 30px;" class="boardView">   
+      <tr>
+         <th width="70">작성자 </th>
+         <td width="150">${detailContent.id }</td>
+         <th width="70">등록일자</th>
+         <td width="150">${detailContent.saveDate }</td>
+         <th width="70">모임 인원</th>
+         <td width="150">${detailContent.mCnt }</td>
+      </tr>
+      
+      <tr>
+         <th width="100">제목</th>
+         <td colspan="5">${detailContent.title }</td>         
+      </tr>
+      
+      <tr height="300">
+         <th>내 용</th>
+         <td colspan="5">${detailContent.content }</td>
+      </tr>
+      <tr> 
+         <td colspan="6" align="center">
+         <c:if test="${loginUser == detailContent.id }">
+            
+               <input type="button" value="수정하기"
+                  onclick="location.href='${contextPath}/board/modify_form?writeNo=${detailContent.writeNo }'">
+               <input type="button" value="삭제하기"
+                  onclick="location.href='${contextPath }/board/delete?writeNo=${detailContent.writeNo }'">
+         </c:if> 
+               <input type="button" onclick="replyMsg()" value="답글달기">
+               <input type="button" onclick="location.href='${contextPath}/board/boardList'" value="리스트로 돌가가기">
+         <hr>
+         
+            
+         </td>
+      </tr>
+      
+      
+      </table>
+      </div>
+      <div id="replyMsg" align="center">
+            <form action="reply" method="post">
+               <table border="1" align="center" style="margin-top: 30px;">
+                  <tr>
+                     <td> 작성자 </td>
+                     <td> <input style="background-color: white" type="text" id="writer" name="writer" value="${loginUser }" readonly> </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" style="text-align: left;"> 내용</td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <textarea style="width:500px" hight="300px" name="content" id="content"></textarea>
+                     </td>
+                  </tr>
+               </table>
+            </form>
+         </div>
+</div>         
 <c:import url="../default/footer.jsp" />
 </body>
 </html>

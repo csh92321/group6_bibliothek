@@ -15,11 +15,18 @@
 .nt {
 align: center;
 }
+.wrap {
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
 </style>
 </head>
 <body>
 <c:import url="../default/header.jsp" />
-<div id="nt" align="center">
+<div class="wrap">
+		<hr style="margin-top: 30px;">
+<div id="nt" align="center" style="margin-top: 40px;">
 	<table border="1">
 	<form action="ntWriteSave" method="POST">
 		<b>작성자</b> <input type="text" name="admin" id="admin" value="${loginUser }" readonly/>
@@ -36,6 +43,7 @@ align: center;
 				onClick="location.href='${contextPath}/ntboard/ntBoardList'" />
 	</form>
 	</table>
+</div>
 </div>
 <c:import url="../default/footer.jsp" />
 </body>

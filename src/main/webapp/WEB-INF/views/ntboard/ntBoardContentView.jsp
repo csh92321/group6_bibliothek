@@ -12,12 +12,19 @@ th {
 
 
 
-input{
+.boardView input{
 	background-color: #b8371b;
 	color: white;
 	font-size: 13px;
 	padding: 5px;
 }
+
+.wrap {
+	width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
+
 </style>
 <head>
 <meta charset="UTF-8">
@@ -38,10 +45,11 @@ input{
 제목 : ${detailContent.title }<br>
 내용 : ${detailContent.content }<br>
 -->
+<div class="wrap">
+		<hr style="margin-top: 30px;">
+<div align="center" text-color="black" style="margin-top: 40px;">
+	<table border="1" align="center" style="margin-top: 30px;" class="boardView">
 
-<div align="center" text-color="black">
-	<table border="1" align="center" style="margin-top: 30px;">
-		<font size="5"><b>공지사항</b></font>	
 		<tr>
 			<th width="70">작성자</th>
 			<td width="150">${detailContent.admin }</td>
@@ -76,6 +84,7 @@ input{
 		
 		</table>
 	</div>
+</div>
 <c:import url="../default/footer.jsp" />
 </body>
 </html>
