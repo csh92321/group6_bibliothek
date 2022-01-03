@@ -1,5 +1,12 @@
 package com.care.root.board.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,23 +14,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.board.DTO.BoardDTO;
 import com.care.root.board.service.BoardService;
+import com.care.root.common.MemberSessionName;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("board")
-public class BoardController {
+public class BoardController implements MemberSessionName{
 	
 	@Autowired
 	BoardService bs;
 	
 	@GetMapping("writeForm")
-	public String writeForm() {
+	public String writeForm(@RequestParam String id, Model model) {
+		model.addAttribute("id", id);
 		return "board/writeForm";
 	}
 	@GetMapping("boardList")
-	public String boardList(Model model) {
+	public String boardList(Model model, HttpSession session) { //로그인 하면 세션값이 등록 되는데 그 로그인값(세션값)을 가져오기 위함
+		model.addAttribute("sessionId", session.getAttribute(LOGIN)); //sessionId값이 로그인을 하면 agetattribute를 통해 가져와
 		bs.allList(model); //이걸로 서비스에서 불러오는거
 		return "board/boardList";
 	} 
@@ -45,6 +58,46 @@ public class BoardController {
 		bs.contentView(writeNo,model);
 		return "board/contentView";
 	}
-	// 여기까지 이용자가 사용하는 랜선모임 게시판 
-
+	// test
+	@GetMapping("delete")
+	public String boardDelete(@RequestParam("writeNo") int write_no,
+				HttpServletResponse response,
+				HttpServletRequest request) throws Exception{
+		String message = bs.boardDelete(write_no, request);
+		
+		PrintWriter out = null;
+		response.setContentType("text/html; charset=utf-8");
+		out = response.getWriter();
+		out.println(message);
+		
+		return "redirect:boardList";
+	}
+	@GetMapping("modify_form")
+	public String modify_form(@RequestParam int writeNo, Model model) {
+		//bs.getData(writeNo, model);
+		bs.contentView(writeNo, model);
+		return "board/modify_form";
+	}
+//	@PostMapping("modify")
+//	public void modify(MultipartHttpServletRequest mul,
+//						HttpServletResponse response,
+//						HttpServletRequest request) throws IOException{
+//		String message = bs.modify(mul, request);
+//		
+//		PrintWriter out = null;
+//		response.setContentType("text:html; charset=utf-8");
+//		out = response.getWriter();
+//		out.println(message);
+//	}
+	
+	@PostMapping("modify")
+	public String modify(BoardDTO dto) {
+		System.out.println("dto.getWriteNo : " + dto.getWriteNo());
+		int result = bs.modify(dto);
+		if (result==1) {
+			return "redirect:boardList";
+		} else {
+			return "board/modify_form";
+		}
+	}
 }

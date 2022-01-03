@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.care.root.mybatis.board.BoardMapper">   <!-- MemberDAO클래스와 연결 -->
+
+<insert id="writeSave">
+	insert into meet_board(id, title, content, m_cnt,write_no)
+	values(#{id}, #{title}, #{content}, #{mCnt}, meet_board_sequence.nextval)
+</insert>
+
+<resultMap type="com.care.root.board.DTO.BoardDTO" id="allList">
+	<id property="writeNo" column="write_no"/>
+	<result property="id" column="id"/> 
+	<result property="title" column="title"/> 
+	<result property="content" column="content"/> 
+	<result property="mCnt" column="m_cnt"/>  
+	<result property="saveDate" column="savedate"/>  
+	</resultMap>
+	
+	<select id="allList" resultMap="allList">
+	select * from meet_board order by write_no desc
+	</select>
+	
+	<select id="contentView" resultMap="allList">
+		select * from meet_board where write_no=#{writeNo}
+	</select>
+	
+	<delete id="boardDelete">
+		delete from meet_board where write_no=#{writeNo}
+	</delete>
+
+	<update id="modify">
+		update meet_board set content=#{content} where write_no=#{writeNo}
+	</update>
+	
+	
+</mapper>
