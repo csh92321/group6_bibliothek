@@ -3,7 +3,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/resources/css/bootstrap.css">
+<link rel="stylesheet" href="resources/css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="resources/js/bootstrap.js"></script>
 <link href="resources/css/book.css" rel="stylesheet">
@@ -34,7 +34,7 @@ function searchPost() {
 									function(index, item) {
 										html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"
-											html += "<a href=\"detail?"+item.bookNum+"\"><img class=\"product-img\" src=\"/resources/coverImg/"+item.bookNum+".jpg\" /></a>"
+											html += "<a href=\"detail?"+item.bookNum+"\"><img class=\"product-img\" src=\"resources/coverImg/"+item.bookNum+".jpg\" /></a>"
 											html += "<div class=\"product-letter\">"
 											html += "<h3> <a href=\"detail?"+item.bookNum+"\">"
 													+ item.title + "<br></a>"

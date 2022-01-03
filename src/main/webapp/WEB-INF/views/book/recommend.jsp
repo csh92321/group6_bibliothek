@@ -24,7 +24,7 @@
 										function(index, item) {
 											html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"
-											html += "<a href=\"detail?"+item.bookNum+"\"><img class=\"product-img\" src=\"/resources/coverImg/"+item.bookNum+".jpg\" /></a>"
+											html += "<a href=\"detail?"+item.bookNum+"\"><img class=\"product-img\" src=\"resources/coverImg/"+item.bookNum+".jpg\" /></a>"
 											html += "<div class=\"product-letter\">"
 											html += "<h3> <a href=\"detail?"+item.bookNum+"\">"
 													+ item.title + "<br></a>"

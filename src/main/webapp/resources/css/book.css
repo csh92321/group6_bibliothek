@@ -88,6 +88,11 @@ hr {
     display:table;
     width:280px;
     height:410px;
+
+}
+
+.product-title a:hover {
+	color : #ffb532;
 }
 
 .product-img-div {
@@ -102,6 +107,8 @@ hr {
 
 .small {
 	font-size:small;
+	color: black;
+ 	text-shadow: none;
 }
 
 .middle {

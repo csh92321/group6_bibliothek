@@ -67,7 +67,7 @@
     				}
     			})
     let image =""
-    image += "<img class=\"product-img\" src=\"/resources/coverImg/"+bookNum+".jpg\" />"
+    image += "<img class=\"product-img\" src=\"resources/coverImg/"+bookNum+".jpg\" />"
      $("#image").html(image)
 	}
 	let check = 0;
@@ -229,11 +229,11 @@
 		let html=""
 		if (gradeClick==1) {
 		 html += "<div id=\"btn_group\">"
-		 html += "<button onclick=\"gradePost1();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star1.png\"></button>"
-		 html += "<button onclick=\"gradePost2();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star2.png\"></button>"
-		 html += "<button onclick=\"gradePost3();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star3.png\"></button>"
-		 html += "<button onclick=\"gradePost4();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star4.png\"></button>"
-		 html += "<button onclick=\"gradePost5();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"/resources/images/star5.png\"></button>"
+		 html += "<button onclick=\"gradePost1();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"resources/images/star1.png\"></button>"
+		 html += "<button onclick=\"gradePost2();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"resources/images/star2.png\"></button>"
+		 html += "<button onclick=\"gradePost3();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"resources/images/star3.png\"></button>"
+		 html += "<button onclick=\"gradePost4();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"resources/images/star4.png\"></button>"
+		 html += "<button onclick=\"gradePost5();\" id= \"gradeBtn\" type=\"button\" class=\"btm_image\" id=\"img_btn\"><img id=\"gradeImg\" src=\"resources/images/star5.png\"></button>"
 		 html += "</div>"
 		} else {
 			gradeClick = 0;

@@ -23,11 +23,15 @@
 
 <%@ include file="default/header.jsp" %>
 
+<div class="container-main">
+
 <!-- 이벤트 -->
+	<div class = "item-main">
 <div class="contents">
 <section id='event'>
 	<a href="#"><img src="resources/images/event.jpg" width="1024px"></a>
 </section>	
+</div>
 </div>
 
 
@@ -35,6 +39,7 @@
 
 
 <div class="contents">
+	<div class = "item-main">
 	<div class = "item-main item1">
 		<div class="title">
 			베스트셀러
@@ -46,28 +51,42 @@
 			<div class = "item-main item2">
 	<span id="best"></span>
 			</div>
+			</div>
 
 </div>
 <div class="contents">
+	<div class = "item-main">
+		<div class = "item-main item1">
+				<div class = "item-main item1-1">
 		<div class="title">
 			신간 도서
 		</div>
+				<div class = "item-main item1-2">		
 		<div class="more">
 			<a href="${contextPath}/newBook">더보기</a>
 		</div>
-			<span id="new"></span>		
+		</div>
+		</div>
+					<div class = "item-main item2">
+			<span id="new"></span>
+			</div>
+			</div>		
 </div>
 <div class="contents">
+	<div class = "item-main">
+		<div class = "item-main item1">
 		<div class="title">
 			MD 추천
 		</div>
 		<div class="more">
 			<a href="${contextPath}/recommend">더보기</a>
 		</div>
+		</div>
+				<div class = "item-main item2">
 					<span id="recommend"></span>
-		
+					</div>
 </div>
-
+</div>
 <%@ include file="default/footer.jsp" %>
 		
 </body>
