@@ -4,7 +4,8 @@ body {
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
-footer {
+.footer {
+	display:flex;
 	top: 50px;
 	height: 230px;
 	padding: 2% 18%;
@@ -14,9 +15,20 @@ footer {
 	color: white;
 	list-style: none;
 	line-height: 25px;
+	width:100%;
+}
+
+.footer-foot_box{	
+	width: 60%;
+
+}
+
+.footer-notice{
+	 width:40%;
 }
 
 a{
+	color: #ffb532;
 	text-decoration: none;
 }
 

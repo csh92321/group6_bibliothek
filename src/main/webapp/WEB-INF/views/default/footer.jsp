@@ -13,13 +13,12 @@
 </style>
 </head>
 
-<div class='footer'></div><!--  float속성 해제 -->
-<footer>
+<div class='footer'><!--  float속성 해제 -->
 	<!--  <div id="address">
 		<li><a href="#">공지사항 +</a></li>
 	</div>
 	-->
-	<div class="footer_box" style="width: 60%; float:left;">
+	<div class="footer-foot_box">
 		<ul>
 			
 			<li>회사소개    |    이용약관    |   개인정보처리방침</li>
@@ -32,7 +31,7 @@
 	</div>
 	
 	
-	<div class="notice" style="width:40%; float:right;">
+	<div class="footer-notice">
 		<ul>
 			<li style="text-align: center; font-size:18px">
 				<a href="ntboard/ntBoardList">
@@ -47,6 +46,6 @@
 			
 		</ul>
 	</div>		
-</footer>
+	</div>
 </body>
 </html>

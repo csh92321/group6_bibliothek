@@ -27,7 +27,17 @@ function search() {
 </script>
 </head>
 <body>
-<!-- 검색창-->
+<!--  메뉴바  -->
+	<div class="header-container">
+	<div class="header-item">
+	<div class="header-item-item1">
+       <div id="logo">
+           <a href="/root"><img src="${contextPath }/resources/images/logo.png" alt="Logo"></a>
+        </div>
+        </div>
+        <div class="header-item-item3">
+        <!-- 검색창-->
+		<div class="item_search">
 	<div class="container-search">
 		<input class="search-field" id="search" placeholder="Search Book"
 				onKeypress="javascript:if(event.keyCode==13) {search();}"
@@ -40,12 +50,10 @@ function search() {
 <!--         </button>--> 
 <!--       </form> -->
     </div>
-<!--  메뉴바  -->
-<header>
-       <div id="logo">
-           <a href="/root"><img src="${contextPath }/resources/images/logo.png" alt="Logo"></a>
+    </div>
         </div>
- 
+ 	<div class="header-item-item2">
+ 	 	<div class="header-item-item2-item1">
         <div id="top_menu">
            <c:choose>
               <c:when test="${loginUser==null }">
@@ -59,6 +67,8 @@ function search() {
              <a href="#"><img src="${contextPath}/resources/images/h_community.jpg" alt="h_community" width="50px"></a>
              <a href="#"><img src="${contextPath}/resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
           </div>
+          </div>
+           <div class="header-item-item2-item2">
           <div id="login">   
              <c:choose>
                 <c:when test="${loginUser == null }">
@@ -70,9 +80,14 @@ function search() {
             		<a href="${contextPath }/member/logout">로그아웃</a>
                </c:otherwise>
             </c:choose>
+            </div>
+            </div>
+        </div>
         </div>
 
+
 <!--메인 메뉴창 -->
+	<div class="header-item">
 <div id="menu1">
 
     <ul class="main">
@@ -161,9 +176,10 @@ function search() {
         <li><a href="${contextPath}/newBook">신간</a></li>
         <li><a href="${contextPath}/recommend">추천</a></li> 
 	</ul>
+	</div>
 
 </div>
-</header>
+        </div>
 
 </body>
 </html>

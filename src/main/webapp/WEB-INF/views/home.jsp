@@ -26,8 +26,8 @@
 <div class="container-main">
 
 <!-- 이벤트 -->
-	<div class = "item-main">
-<div class="contents">
+	<div class = "item-main" style="height:450px;">
+		<div class = "item-main-item1">
 <section id='event'>
 	<a href="#"><img src="resources/images/event.jpg" width="1024px"></a>
 </section>	
@@ -37,55 +37,57 @@
 
 <!-- 본문 -->
 
-
-<div class="contents">
-	<div class = "item-main">
-	<div class = "item-main item1">
+	<div class = "item-main" >
+	<div class = "item-main-item1">
+					<div class = "item1-it1">
 		<div class="title">
 			베스트셀러
 		</div>
+		</div>
+						<div class = "item1-it2">	
 		<div class="more">
 			<a href="${contextPath}/bestSeller">더보기</a>
 		</div>
 		</div>
-			<div class = "item-main item2">
+		</div>
+			<div class = "item-main-item2">
 	<span id="best"></span>
-			</div>
 			</div>
 
 </div>
-<div class="contents">
 	<div class = "item-main">
-		<div class = "item-main item1">
-				<div class = "item-main item1-1">
+		<div class = "item-main-item1">
+				<div class = "item1-it1">
 		<div class="title">
 			신간 도서
 		</div>
-				<div class = "item-main item1-2">		
+		</div>
+				<div class = "item1-it2">		
 		<div class="more">
 			<a href="${contextPath}/newBook">더보기</a>
 		</div>
 		</div>
 		</div>
-					<div class = "item-main item2">
+					<div class = "item-main-item2">
 			<span id="new"></span>
 			</div>
 			</div>		
-</div>
-<div class="contents">
 	<div class = "item-main">
-		<div class = "item-main item1">
+		<div class = "item-main-item1">
+						<div class = "item1-it1">
 		<div class="title">
 			MD 추천
 		</div>
+				</div>
+								<div class = "item1-it2">	
 		<div class="more">
 			<a href="${contextPath}/recommend">더보기</a>
 		</div>
+				</div>
 		</div>
-				<div class = "item-main item2">
+				<div class = "item-main-item2">
 					<span id="recommend"></span>
 					</div>
-</div>
 </div>
 <%@ include file="default/footer.jsp" %>
 		
