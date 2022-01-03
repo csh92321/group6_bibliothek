@@ -7,6 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>register</title>
+<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+.wrap{width:1200px; margin:0 auto; text-align:center;}
+
+.register form table{margin:0 auto; margin-top:100px;}
+.register table tr th{font-size:16px;text-align:right;width:700px; padding:3px 10px 3px 0px;}
+.register table tr td{padding:3px 0px 3px 10px; text-align:left; width:700px;}
+.register table tr td input{width:190px;}
+.register table tr td button{width:100px; height:30px; border:2px solid #b8371b; background-color:#b8371b; color:white;}
+#addr1{width:115px;}
+#zoneCodeBtn{width:70px; border:2px solid #ffb532; background-color:#FFDA98;}
+#regTd{padding-top:40px; text-align:center;}
+
+</style>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -185,11 +204,13 @@ function register(){
 </script>
 </head>
 <body>
+<c:import url="../default/header.jsp" />
+
+<div class="wrap">
+<hr style="margin-top:30px;">
+<div class="register">
 	<form action="register" method="post" id="register_form">
 	<table>
-		<caption>
-			<b>회원가입</b>
-		</caption>
 		<tr>
 			<th>아이디</th>
 			<td>
@@ -246,8 +267,8 @@ function register(){
 		<tr>
 			<th rowspan="3">주소</th>
 			<td>
-				<input type="text" readonly id="addr1" name="addr1">
-				<input type="button" onclick="daumPost()" value="우편번호 검색">
+				<input class="zonecode" type="text" readonly id="addr1" name="addr1">
+				<input type="button" onclick="daumPost()" id="zoneCodeBtn"value="우편번호">
 			</td>
 		</tr>
 		<tr>
@@ -260,10 +281,13 @@ function register(){
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"> <button type="button" onclick="register()">회원가입</button> </td>
+			<td colspan="2" id="regTd"> <button type="button" onclick="register()">회원가입</button> </td>
 		</tr>
 	</table>	
 	</form>
+	</div>
+</div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>
 

@@ -17,10 +17,18 @@ public class PersonalBoardController {
 
 	@Autowired PersonalBoardService pbs;
 	
+//	@GetMapping("PBlist")
+//	public String list(@RequestParam String id, Model model) {
+//		pbs.pbList(model,id);
+//		model.addAttribute("id", id);
+//		return "personalBoard/PBlist";
+//	}
+
 	@GetMapping("PBlist")
-	public String list(@RequestParam String id, Model model) {
-		pbs.pbList(model,id);
-		model.addAttribute("id", id);
+	public String list(@RequestParam("id") String id, Model model, @RequestParam(required=false, defaultValue="1") int num ) {
+		pbs.pbList(model, id,num);
+		System.out.println("controller id : " + id);
+		model.addAttribute("id",id);
 		return "personalBoard/PBlist";
 	}
 	
