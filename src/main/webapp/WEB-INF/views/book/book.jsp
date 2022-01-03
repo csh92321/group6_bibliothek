@@ -4,9 +4,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/resources/css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="resources/js/bootstrap.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -89,23 +87,27 @@ function getgenre() {
 				}
 			})
 }
-	function getBooks() {
+	function getBooks(criterion) {
 		var urlString = decodeURI(window.location.href);
 	    var strArray = urlString.split('?');
 	    var genreArray = strArray[1].split('&');
 	    var genre = genreArray[1];
+	    var arrayBook = new Array();
+	    arrayBook[0] = genre;
+	    arrayBook[1] = criterion;
 		$
 				.ajax({
 					url : "books",
 					type : "post",
+					traditional : true,
 					data : {
-						genre : genre
+						arrayBook : arrayBook
 					},
-					success : function(list) {
+					success : function(range) {
 						let html = ""
 						$
 								.each(
-										list,
+										range,
 										function(index, item) {
 											html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"
@@ -121,16 +123,23 @@ function getgenre() {
 											html += "</div>"
 											html += "</div>"
 										})
-						$("#books").append(html)
+						$("#books").html(html)
 					}
 				})
 	}
+	
+	let criterion = "popularityAsc";
+	
+	function rangePost(criterionV) {
+		getBooks(criterionV);
+	}
 </script>
 </head>
-<body onload="getBooks(); getgenre(); getKoreanD(); getKorean();">
-	<%@ include file="../header.jsp" %>
+<body onload="getBooks(criterion); getgenre(); getKoreanD(); getKorean();">
+<%@ include file="../default/header.jsp" %>
 	<div class="container">
 	<div class="item item1">
+	<div class="gap-box-book"></div>
 	<span id="korean"></span></div>
 	<div class="item item2">
 	<div id="book">
@@ -138,12 +147,32 @@ function getgenre() {
 		<li><span id="genre"></span>
 		</ul>
 	</div>
+			<div class="gap-box-book"></div>
 	</div>
+
 	<div class="item item3">
+	<div class="item item3-box1">
 	<span id="koreanD"></span>
-	<hr>
+	</div>
+	<div class="item item3-box2">
+	<form>
+		<select id="range" name="range" onchange="rangePost(this.value);">
+		<option value="popularityAsc">인기순▲</option>
+		<option value="popularityDes">인기순▽</option>
+		<option value="releaseAsc">신작순▲</option>
+		<option value="releaseDes">신작순▽</option>
+		<option value="gradeAsc">평점순▲</option>
+		<option value="gradeDes">평점순▽</option>
+		<option value="nameAsc">이름순▲</option>
+		<option value="nameDes">이름순▽</option>
+		</select>
+	</form>
+
+	</div>
 	</div>
 	<div class="item item4">
+	<hr>
+					<div class="gap-box-book"></div>
 	<div class="bookList">
 	<span id="books"></span>
 	</div>

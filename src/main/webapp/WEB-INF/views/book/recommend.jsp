@@ -43,10 +43,17 @@
 </script>
 </head>
 <body onload="getRecommend();">
-<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
+	<div class="container">
+	<div class="item item1" style="margin-left:30px">
 	<div class="subtitle">
+	<br>
 		추천
 	</div>
-	<span id="recommend"></span>		
+	</div>
+	<div class="item item2">
+	<span id="recommend"></span>
+	</div>
+	</div>		
 </body>
 </html>

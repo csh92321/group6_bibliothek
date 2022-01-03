@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.care.root.board.DTO.BoardDTO;
 import com.care.root.ntboard.DTO.NtBoardDTO;
 
 @Repository
@@ -16,6 +17,6 @@ public interface NtBoardMapper {
 	
 	//test
 	public int ntBoardDelete(int writeNo);
-	
+	public int ntModify(BoardDTO dto);
 	
 }

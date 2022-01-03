@@ -43,10 +43,17 @@
 </script>
 </head>
 <body onload="getNew();">
-<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
+	<div class="container">
+	<div class="item item1" style="margin-left:30px">
 	<div class="subtitle">
+	<br>
 		신간
 	</div>
-	<span id="new"></span>		
+	</div>
+	<div class="item item2">
+	<span id="new"></span>	
+	</div>
+	</div>	
 </body>
 </html>

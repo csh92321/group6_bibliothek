@@ -1,6 +1,5 @@
 package com.care.root.ntboard.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.care.root.board.DTO.BoardDTO;
 import com.care.root.ntboard.DTO.NtBoardDTO;
 import com.care.root.ntboard.service.NtBoardService;
 
@@ -64,5 +64,19 @@ public class NtBoardController {
 		
 		return "redirect:ntBoardList";
 	}
-
+	@GetMapping("ntModify_form")
+	public String ntModify_form(@RequestParam int writeNo, Model model) {
+		ns.ntBoardContentView(writeNo, model);
+		return "ntboard/ntModify_form";
+	}
+	@PostMapping("ntModify")
+	public String ntModify(BoardDTO dto) {
+		System.out.println("dto.getWriteNo : " + dto.getWriteNo());
+		int result = ns.ntModify(dto);
+		if(result == 1) {
+			return "redirect:ntBoardList";
+		}else {
+			return "ntboard/ntModify_form";
+		}
+	}
 }

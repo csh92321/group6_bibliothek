@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.care.root.board.DTO.BoardDTO;
 import com.care.root.mybatis.ntboard.NtBoardMapper;
 import com.care.root.ntboard.DTO.NtBoardDTO;
 
@@ -53,9 +54,23 @@ public class NtBoardServiceImpl implements NtBoardService{
 //					"/ntboard/ntBoardContentView");
 //		}
 		return message;
-		
-
 	}
 
+	@Override
+	public void getData(int writeNo, Model model) {
+		model.addAttribute("detailContent", mapper.ntAllList());
+		
+	}
 
+	@Override
+	public int ntModify(BoardDTO dto) {
+		int result = 0;
+		try {
+			result = mapper.ntModify(dto);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }

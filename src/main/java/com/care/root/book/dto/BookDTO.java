@@ -8,7 +8,7 @@ public class BookDTO {
 	private String writer;
 	private String company;
 	private int hit;
-	private int grade;
+	private double grade;
 	private int likeCnt;
 	private int totalPage;
 	private String bookIntro;
@@ -71,10 +71,10 @@ public class BookDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public int getGrade() {
+	public double getGrade() {
 		return grade;
 	}
-	public void setGrade(int grade) {
+	public void setGrade(double grade) {
 		this.grade = grade;
 	}
 	public int getLikeCnt() {

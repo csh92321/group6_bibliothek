@@ -56,8 +56,8 @@ function search() {
                 </c:otherwise>
              </c:choose>
              <a href="#"><img src="${contextPath}/resources/images/h_what.jpg" alt="h_what" width="50px"></a>
-             <a href="#"><img src="${contextPath}/resources/images/h_community.jpg" alt="h_community" width="50px"></a>
-             <a href="#"><img src="${contextPath}/resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
+             <a href="${contextPath }/board/boardList"><img src="${contextPath}/resources/images/h_community.jpg" alt="h_community" width="50px"></a>
+             <a href="${contextPath }/pay/payMain"><img src="${contextPath}/resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
           </div>
           <div id="login">   
              <c:choose>
