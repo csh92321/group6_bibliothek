@@ -43,7 +43,7 @@
 </script>
 </head>
 <body onload="getNew();">
-<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
 	<div class="container">
 	<div class="item item1" style="margin-left:30px">
 	<div class="subtitle">

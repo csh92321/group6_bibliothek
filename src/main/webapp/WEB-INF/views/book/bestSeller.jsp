@@ -43,7 +43,7 @@
 </script>
 </head>
 <body onload="getHit();">
-<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
 	<div class="container">
 	<div class="item item1">
 	<div class="subtitle" style="margin-left:30px">

@@ -14,10 +14,20 @@
 	<result property="reply" column="reply" />
 </resultMap>
 
+<!-- 
 <select id="pbList" resultMap="list">
 	select * from personal_board where id=#{id} order by write_num desc
 </select>
-
+ -->
+ 
+<select id="pbList" resultMap="list">
+ 	 select B.* from(select rownum rn, A.* from(select * from personal_board where id=#{id} order by write_num desc)A)B where rn between #{s} and #{e} 
+</select>
+ 
+ <select id="PBCount" resultType="Integer">
+ 	select count(*) from personal_board where id=#{id}
+ </select>
+ 
 <insert id="save">
 	insert into personal_board(id, write_num, title, content) values(#{id},personal_board_seq.nextval, #{title}, #{content})
 </insert>

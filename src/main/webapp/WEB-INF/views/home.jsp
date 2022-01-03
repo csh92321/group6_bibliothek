@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,14 +18,10 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
-
-
-
 </head>
 <body onload="getHit(); getNew(); getRecommend();">
-<%@ include file="header.jsp" %>
 
-
+<%@ include file="default/header.jsp" %>
 
 <!-- 이벤트 -->
 <div class="contents">
@@ -70,32 +68,7 @@
 		
 </div>
 
+<%@ include file="default/footer.jsp" %>
 		
-
-
-
-
-<!-- 푸터 -->
-
-<div class='footer'></div><!--  float속성 해제 -->
-<footer>
-	<!--  <div id="address">
-		<li><a href="#">공지사항 +</a></li>
-	</div>
-	-->
-	<div id="footer_box">
-		<ul>
-			<li><a href="#">공지사항 +</a></li>
-			<li>회사소개    |    이용약관    |   개인정보처리방침</a></li>
-			<li>(주) Bibliothek 서울시 종로구 종로 3 대표이사 : 홍준모 사업자등록번호 : 123-45-67891
-					<br>대표전화 : 1111-2222 (발신자 부담전화)
-					<br>팩스 : 0101-010-1010 (지역번호공통) 서울시
-							통신판매업신고번호 제 653호 ▶ 사업자정보확인
-					<br>COPYRIGHT(C) Bibliothek CENTER ALL RIGHTS RESERVED</li>
-			</ul>					
-		</div>
-			
-	
-</footer>
 </body>
 </html>

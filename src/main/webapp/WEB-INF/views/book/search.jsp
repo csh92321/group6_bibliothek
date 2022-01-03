@@ -56,7 +56,7 @@ function searchPost() {
 </script>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
 	<body onload="searchPost();">
 		<h3 class="subtitle">검색</h3>
 		<span id="searchs"></span>

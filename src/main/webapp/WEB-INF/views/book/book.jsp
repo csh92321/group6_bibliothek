@@ -123,7 +123,6 @@ function getgenre() {
 											html += "</div>"
 											html += "</div>"
 										})
-											    alert(html);
 						$("#books").html(html)
 					}
 				})
@@ -132,13 +131,12 @@ function getgenre() {
 	let criterion = "popularityAsc";
 	
 	function rangePost(criterionV) {
-		alert(criterionV);
 		getBooks(criterionV);
 	}
 </script>
 </head>
 <body onload="getBooks(criterion); getgenre(); getKoreanD(); getKorean();">
-	<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
 	<div class="container">
 	<div class="item item1">
 	<div class="gap-box-book"></div>

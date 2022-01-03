@@ -36,7 +36,14 @@ a{text-decoration: none;}
 	right: 18%;
 	position: absolute;
 	top:100px;
-	color: black;
+}
+
+#login a{
+	color:black;
+}
+
+#login a:hover{
+	color: #ffb532;
 }
  
 /* top_menu a의 폰트색 블랙 */
@@ -72,6 +79,7 @@ a{text-decoration: none;}
 }
 #menu1 .main>li a{
 	display:block;
+	color:black;
 }
 #menu1 .main>li a:hover{
 	background: #b8371b;

@@ -90,7 +90,6 @@
 				arrayL : arrayL
 			},
 			success : function(result) {
-				alert(result);
 				if (result==1) {
 					check=1;
 					htmlL = "<h4>찜하기♥</h4>"
@@ -246,7 +245,7 @@
     </script>
 </head>
 <body onload="detail(); like(); gradeOriginal();">
-<%@ include file="../header.jsp" %>
+<%@ include file="../default/header.jsp" %>
 <main>
 <div class = "main-container">
 	<div class="temp-box box-one">

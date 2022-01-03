@@ -23,12 +23,21 @@ import com.care.root.common.MemberSessionName;
 import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
+import com.care.root.note.service.NoteService;
+import com.care.root.note.service.NoteServiceImpl;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController implements MemberSessionName{
 
 	@Autowired MemberService ms;
+	@Autowired NoteService ns;
+	
+	
+	@GetMapping("header")
+	public String header() {
+		return "default/header";
+	}
 	
 	@GetMapping("/login")
 	public String login(@CookieValue(value="saveIdCookie", required=false) Cookie saveIdCookie,Model model) {
@@ -82,7 +91,12 @@ public class MemberController implements MemberSessionName{
 			saveIdCookie.setMaxAge(limitTimeId);
 			response.addCookie(saveIdCookie);
 		}
-		return "member/successLogin";
+		return "redirect:/";
+	}
+	
+	@GetMapping("mypage")
+	public String mypage() {
+		return "member/mypage";
 	}
 	
 	@GetMapping("register_form")
@@ -104,6 +118,7 @@ public class MemberController implements MemberSessionName{
 	@PostMapping("idCheck")
 	@ResponseBody
 	public int idCheck(@RequestParam(value="id", required=false) String id){
+		System.out.println("idCheck");
 		int cnt=0;
 		if(id!=null) {
 			cnt=ms.idCheck(id);
@@ -190,7 +205,7 @@ public class MemberController implements MemberSessionName{
 		int result=ms.modify(dto);
 		if(result==1) {
 			System.out.println("정보 수정 성공");
-			return "member/successLogin";
+			return "member/mypage";
 		}
 		return "Redirect:modifyForm";
 	}
@@ -221,7 +236,7 @@ public class MemberController implements MemberSessionName{
 			return "redirect:/";
 		} else {
 			System.out.println(id+"회원 삭제 실패");
-			return "redirect:successLogin";
+			return "redirect:mypage";
 		}
 	}
 	
