@@ -5,7 +5,14 @@ public class GenreDTO {
 	private String genre;
 	private String code;
 	private String korean;
+	private String division;
 	
+	public String getDivision() {
+		return division;
+	}
+	public void setDivision(String division) {
+		this.division = division;
+	}
 	public String getGenre() {
 		return genre;
 	}

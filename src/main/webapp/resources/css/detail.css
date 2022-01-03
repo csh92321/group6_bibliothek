@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+body{font-family: 'Nanum Gothic', sans-serif;}
+
 main {
 /* 	background : #f2f4f7; */
 	min-height : 700px;
@@ -8,8 +10,7 @@ main {
 	width:1080px;
 	margin:auto;
 	display:grid;
-	grid-template-columns:740px 330px; /*세로줄 길이*/
-	grid-template-rows: 120px 310px 890px 130px; /*가로줄 길이*/
+	grid-template-rows: 600px 310px 450px 500px; /*가로줄 길이*/
 	gap:10px; /*자식요소간 간격*/
 }
 .temp-box{
@@ -51,4 +52,26 @@ span img {
 	float: left;
 	margin : 10px;
 	border: 2px solid #b8371b;
+}
+
+#gradeBtn {
+border : 0px;
+background-color : white;
+height : 70px;
+width : 70px;
+}
+
+#gradeImg {
+border : 0px;
+background-color : white;
+padding:5px;
+border-radius:5px;
+height : 70px;
+width : 70px;
+border-radius:5px;
+margin-right: -4px;
+}
+
+#gradeImg:hover {
+background-color:skyblue;
 }

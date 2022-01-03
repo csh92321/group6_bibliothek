@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.care.root.mybatis.ntboard.NtBoardMapper">
+ 
+ 	<insert id="ntWriteSave">
+ 		insert into notice_board(admin, title, content, write_no)
+ 		values(#{admin}, #{title}, #{content}, notice_board_sequence.nextval) 
+ 	</insert>
+ 	
+ 	<resultMap type="com.care.root.ntboard.DTO.NtBoardDTO" id="ntAllList">
+ 		<id property="writeNo" column="write_no" />
+ 		<result property="admin" column="admin" />
+ 		<result property="title" column="title" />
+ 		<result property="content" column="content" />
+ 		<result property="saveDate" column="savedate" />
+ 	</resultMap>
+ 	
+ 	<select id="ntAllList" resultMap="ntAllList">
+ 		select * from notice_board order by write_no desc
+ 	</select>
+ 	
+ 	<select id="ntBoardContentView" resultMap="ntAllList">
+ 		select * from notice_board where write_no=#{writeNo}
+ 	</select>
+ 	
+ 	<delete id="ntBoardDelete">
+ 		delete from notice_board where write_no=#{writeNo}
+ 	</delete>
+ 	
+ 	<select id=""></select>
+ 	
+ </mapper> 

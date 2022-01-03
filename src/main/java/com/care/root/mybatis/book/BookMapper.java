@@ -21,5 +21,10 @@ public interface BookMapper {
 	public ArrayList<BookDTO> getHit();
 	public GenreDTO bookCode(String genre);
 	public GenreDTO bookCodeKr(String genre);
+	public ArrayList<GenreDTO> codeGenre(String code);
+	public ArrayList<BookDTO> getAllBook();
+	public BookDTO getRecommend(String bookNum);
+	public int gradeUpdate(@Param("bookNum")String bookNum, @Param("gradeLevel")float gradeLevel);
+	public int gradeLoad(String bookNum);
 
 }

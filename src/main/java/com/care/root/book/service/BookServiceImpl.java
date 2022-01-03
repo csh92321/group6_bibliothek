@@ -38,7 +38,7 @@ public class BookServiceImpl implements BookService {
 		
 	}
 	
-	@PostMapping("literatures")
+	@PostMapping("books")
 	@ResponseBody
 	public ArrayList<BookDTO> books(@RequestParam(value = "genre", required = false) String genre) {
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
@@ -161,6 +161,110 @@ public class BookServiceImpl implements BookService {
 				return 1;
 			}
 		}
+	}
+	
+	@PostMapping("genre")
+	@ResponseBody
+	public ArrayList<GenreDTO> genre(@RequestParam(value = "genre", required = false) String genre) {
+		ArrayList<GenreDTO> list = new ArrayList<GenreDTO>();
+		ArrayList<GenreDTO> dtoL = new ArrayList<GenreDTO>();
+			try {
+				 GenreDTO dtoG = mapper.bookCodeKr(genre);
+				 String code = dtoG.getCode().substring(0);
+				 code = code+"%";
+				 dtoL = mapper.codeGenre(code);
+				 dtoL.remove(dtoL.size()-1);
+				@SuppressWarnings("rawtypes")
+				Iterator it = dtoL.iterator();
+				while (it.hasNext()) {
+					GenreDTO dtoB = (GenreDTO) it.next();
+					if (dtoB.getKorean() != null) {
+						System.out.println(dtoB);
+						list.add(dtoB);
+						} else {
+
+					}
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return list;
+	}
+	
+	@GetMapping(value = "news", produces = "application/json;charset=utf-8")
+	public ArrayList<BookDTO> newBook() {
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		ArrayList<BookDTO> newBook = new ArrayList<BookDTO>();
+		try {
+			list = mapper.getAllBook();
+			Collections.reverse(list);
+			for(int i=0; i<9;i++) {
+				BookDTO dto = list.get(i);
+				newBook.add(dto);
+				DBMap.put(dto.getBookNum(), dto);
+			}	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return newBook;
+	}
+	
+	@GetMapping(value = "recommends", produces = "application/json;charset=utf-8")
+	public ArrayList<BookDTO> newRecommend() {
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		ArrayList<String> recommend = new ArrayList<>(Arrays.asList("LN001","LE002","LP003"));
+		try {
+			for(int i=0; i<recommend.size();i++) {
+				BookDTO dto = mapper.getRecommend(recommend.get(i));
+				list.add(dto);
+			}	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		return list;
+	}
+	
+	@PostMapping("korean")
+	@ResponseBody
+	public ArrayList<GenreDTO> getKorean(@RequestParam(value = "genre", required = false) String genre) {
+		ArrayList<GenreDTO> list = new ArrayList<GenreDTO>();
+			try {
+				 GenreDTO dto = mapper.bookCodeKr(genre);
+						list.add(dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return list;
+	}
+	
+	@PostMapping("koreanD")
+	@ResponseBody
+	public ArrayList<GenreDTO> getKoreanD(@RequestParam(value = "genre", required = false) String genre) {
+		ArrayList<GenreDTO> list = new ArrayList<GenreDTO>();
+			try {
+				 GenreDTO dto = mapper.bookCodeKr(genre);
+						list.add(dto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return list;
+	}
+	
+	@PostMapping("gradePost")
+	@ResponseBody
+	public float gradePost(@RequestParam(value = "gradeLevel", required = false) String bookNum, float gradeLevel) {
+			try {
+				float gradeAvg = mapper.gradeLoad(bookNum);
+				gradeLevel = (gradeAvg+gradeLevel)/2;
+				Math.round((gradeLevel*10)/10);
+				mapper.gradeUpdate(bookNum, gradeLevel);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return gradeLevel;
 	}
 }
 

@@ -4,9 +4,13 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header1.css">
 <head>
 <meta charset="UTF-8">
 <title>login</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -25,7 +29,7 @@ function findPwd(){
 </script>
 </head>
 <body>
-
+<%@ include file="../header.jsp" %>
 <form method="post" action="user_check">
 	<table>
 		<tr>

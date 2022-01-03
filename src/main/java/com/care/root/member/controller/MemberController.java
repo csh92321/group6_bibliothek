@@ -25,7 +25,7 @@ import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 
 @Controller
-@RequestMapping("member")
+@RequestMapping("/member")
 public class MemberController implements MemberSessionName{
 
 	@Autowired MemberService ms;
