@@ -61,6 +61,9 @@ public class MemberController implements MemberSessionName{
 			rs.addAttribute("id",id);
 			rs.addAttribute("autoLogin", autoLogin);
 			rs.addAttribute("saveId", saveId);
+			if(id.equals("group6")) {
+				return "member/adminSuccessLogin";
+			}
 			return "redirect:successLogin";
 		} else {
 			System.out.println("로그인 실패");
