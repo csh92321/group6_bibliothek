@@ -52,30 +52,16 @@ public class MemberController implements MemberSessionName{
 			rs.addAttribute("id",id);
 			rs.addAttribute("autoLogin", autoLogin);
 			rs.addAttribute("saveId", saveId);
+			if(id.equals("group6")) {
+				return "member/adminSuccessLogin";
+			}
 			return "redirect:successLogin";
 		} else {
 			System.out.println("로그인 실패");
 			return "redirect:login";
 		}
 	}
-	@PostMapping("/admin_check") //관리자 로그인
-	public String adminCheck(@RequestParam String id, @RequestParam String pwd, @RequestParam(required=false) String autoLogin,
-							 @RequestParam(required=false) String saveId, RedirectAttributes rs) {
-		System.out.println("member/admin_check 로그인 확인");
-		System.out.println("autoLogin :" + autoLogin);
-		System.out.println("saveId : " + saveId);
-		int result = ms.adminCheck(id,pwd);
-		if(result==2) {
-			System.out.println("관리자로 로그인 성공");
-			rs.addAttribute("id",id);
-			rs.addAttribute("autoLogin", autoLogin);
-			rs.addAttribute("saveId", saveId);
-			return "redirect:successLogin";
-		}else {
-			System.out.println("로그인 실패");
-			return "redirect:login";
-		}
-	}
+	
 	
 	
 	@GetMapping("/successLogin")
@@ -271,3 +257,4 @@ public class MemberController implements MemberSessionName{
 		return ms.findPwd(dto);
 	}
 }
+
