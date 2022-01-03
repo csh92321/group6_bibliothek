@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="css/search1.css?after">
 <link rel="stylesheet" href="css/footer1.css">
 <link rel="stylesheet" href="css/contents1.css">
+<link rel="stylesheet" href="css/book.css">
+
+<script src="resources/js/book.js"></script>
 <!-- 나눔고딕 폰트 적용 -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
@@ -17,116 +20,53 @@
 
 
 </head>
-<body>
+<body onload="getHit(); getNew(); getRecommend();">
 <%@ include file="header.jsp" %>
+
+
+
 <!-- 이벤트 -->
+<div class="contents">
 <section id='event'>
-	<a href="#"><img src="resources/images/event.jpg" width="1200"></a>
+	<a href="#"><img src="resources/images/event.jpg" width="1024px"></a>
 </section>	
+</div>
 
 
 <!-- 본문 -->
 
 
 <div class="contents">
+	<div class = "item-main item1">
 		<div class="title">
 			베스트셀러
 		</div>
 		<div class="more">
-			<a href="#">더보기</a>
+			<a href="${contextPath}/bestSeller">더보기</a>
 		</div>
-		<div class="bl1">	
-			<a href="#"><img src="resources/images/book01.jpg" width="100%">
-				<div class="book_name">리딩지저스</div>
-			</a>
 		</div>
-		<div class="bl1">	
-			<a href="#"><img src="resources/images/book02.JPG" width="100%">
-				<div class="book_name">불편한 편의점</div>
-			</a>
-		</div>
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book03.JPG" width="100%">
-				<div class="book_name">미드나잇 라이브러리</div>
-			</a>
-		</div>
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book04.JPG" width="100%">
-				<div class="book_name">책이름4 글쓴이-몰루</div>
-			</a>
-		</div>	
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book05.JPG" width="100%">
-				<div class="book_name">계절 산문</div>
-			</a>
-		</div>		
-</div>
+			<div class = "item-main item2">
+	<span id="best"></span>
+			</div>
 
+</div>
 <div class="contents">
 		<div class="title">
 			신간 도서
 		</div>
 		<div class="more">
-			<a href="#">더보기</a>
+			<a href="${contextPath}/newBook">더보기</a>
 		</div>
-		<div class="bl1">	
-			<a href="#"><img src="resources/images/book06.JPG" width="100%">
-				<div class="book_name">요도가와 열쇠가게의 미스터리 사건수첩 3</div>
-			</a>
-		</div>
-		<div class="bl1">	
-			<a href="#"><img src="resources/images/book07.PNG" width="100%">
-				<div class="book_name">달러구트 꿈백화점</div>
-			</a>
-		</div>
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book08.JPG" width="100%">
-				<div class="book_name">해리포터 마법의 돌</div>
-			</a>
-		</div>
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book09.JPG" width="100%">
-				<div class="book_name">방금 떠나온 세계</div>
-			</a>
-		</div>	
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book10.PNG" width="100%">
-				<div class="book_name">그녀는 돌아오지 않는다</div>
-			</a>
-		</div>		
+			<span id="new"></span>		
 </div>
 <div class="contents">
 		<div class="title">
 			MD 추천
 		</div>
 		<div class="more">
-			<a href="#">더보기</a>
+			<a href="${contextPath}/recommend">더보기</a>
 		</div>
-		<div class="bl1">	
-			<a href="#"><img src="resources/images/book11.JPG" width="100%">
-				<div class="book_name">검은 햇빛</div>
-			</a>
-		</div>
-		<div class="bl1">	
-			<a href="#"><img src="resources/images/book12.JPG" width="100%">
-				<div class="book_name">아몬드</div>
-			</a>
-		</div>
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book13.JPG" width="100%">
-				<div class="book_name">안녕 주정뱅이</div>
-			</a>
-		</div>
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book14.JPG" width="100%">
-				<div class="book_name">투명인간</div>
-			</a>
-		</div>	
-		<div class="bl1">
-			<a href="#"><img src="resources/images/book15.JPG" width="100%">
-				<div class="book_name">소년이 온다</div>
-			</a>
-		</div>
+					<span id="recommend"></span>
 		
 </div>
 

@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-body{font-family: 'Nanum Gothic', sans-serif;}
+body{font-family: 'Nanum Gothic', sans-serif;
+   width : 1024px;   margin-left: auto;
+  margin-right: auto;}
 
 *{margin: 0px; padding: 0px;}
 ul{list-style: none;} 
