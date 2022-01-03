@@ -1,22 +1,27 @@
 @charset "UTF-8";
 
-body{font-family: 'Nanum Gothic', sans-serif;}
-
-footer{
-    top:50px;
-    height: 230px;
-    padding:2% 18%;
-    margin-top: 280px;
-    text-align: left;
-    background-color: #444;
-    color:white;
-    list-style:none;
-    line-height:25px;
+body {
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
-a:visited {
-  text-decoration: none;
+footer {
+	top: 50px;
+	height: 230px;
+	padding: 2% 18%;
+	margin-top: 280px;
+	text-align: left;
+	background-color: #444;
+	color: white;
+	list-style: none;
+	line-height: 25px;
 }
+
+a{
+	color: #ffb532;
+	text-decoration: none;
+}
+
 a:hover {
-  color : #ffb532;
+	color: white;
 }
+

@@ -9,6 +9,7 @@
 <title>register</title>
 <link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
@@ -286,6 +287,7 @@ function register(){
 	</form>
 	</div>
 </div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>
 

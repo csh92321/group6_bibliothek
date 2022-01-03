@@ -17,141 +17,9 @@
 </style>
 </head>
 <body>
-<!-- 검색창--> 
-<div class="container">
-      <form action="/" method="GET" class="form">
-        <input type="search" placeholder="Search" class="search-field" />
-<!--        <button type="submit" class="search-button">
-            <img src="search.png">
-        </button>-->
-      </form>
-    </div>
-<!--  메뉴바  -->
-<header>
-    	<div id="logo">
-        	<a href="${contextPath}"><img src="resources/images/logo.png" alt="Logo"></a>
-        </div>
- 
-        <div class="top_menu">
-        	<c:choose>
-        		<c:when test="${loginUser==null }">
-	       			<a href="${contextPath}/member/login"><img src="resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
-    	   		</c:when>
-       			<c:otherwise>
-       				<a href="${contextPath}/member/mypage?id=${loginUser }"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
-       			</c:otherwise>
-       		</c:choose>
-       		<a href="#"><img src="resources/images/h_what.jpg" alt="h_what" width="50px"></a>
-       		<a href="#"><img src="resources/images/h_community.jpg" alt="h_community" width="50px"></a>
-       		<a href="#"><img src="resources/images/h_cash.jpg" alt="h_cash" width="50px"></a>
-       	</div>
-       	<div class="login">	
-       		<c:choose>
-       			<c:when test="${loginUser == null }">
-        			<a href="${contextPath}/member/login">로그인</a> | 
-            		<a href="${contextPath}/member/register_form">회원가입</a>
-            	</c:when>
-            	<c:otherwise>
-            		${loginUser } &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-            		<a href="${contextPath }/member/logout">로그아웃</a>
-            	</c:otherwise>
-            </c:choose>
-        </div>
 
-<!--메인 메뉴창 -->
-<div class="menu1">
+<%@ include file="default/header.jsp" %>
 
-    <ul class="main">
-
-        <li><a href="literature?literature&novel">문학</a>
-
-            <ul class="sub">
-
-                <li><a href="literature?literature&novel">소설</a></li>
-
-                <li><a href="literature?literature&poem">시</a></li>
-
-                <li><a href="literature?literature&essay">에세이</a> </li>
-
-            </ul>
-
-        </li>
-
-        <li><a href="#">자기개발</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a> </li>
-
-            </ul>
-
-        </li>
-
-        <li><a href="#">문화</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a> </li>
-
-            </ul>
-
-        </li>
-
-        <li><a href="#">교육</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a></li>
-
-            </ul>
-
-        </li>
-       <li><a href="#">생활</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a></li>
-
-            </ul>
-
-        </li>
-        
-       <li><a href="#">아동</a>
-
-            <ul class="sub">
-
-                <li><a href="#">소메뉴1</a></li>
-
-                <li><a href="#">소메뉴2</a></li>
-
-                <li><a href="#">소메뉴3</a></li>
-
-            </ul>
-
-        </li>      
-        <li><a href="bestSeller">베스트셀러</a></li> 
-        <li><a href="#">신간</a></li>
-        <li><a href="#">추천</a></li> 
-</ul>
-
-</div>
-</header>
 <!-- 이벤트 -->
 <section id='event'>
 	<a href="#"><img src="resources/images/event.jpg" width="1200"></a>
@@ -263,32 +131,7 @@
 		
 </div>
 
+<%@ include file="default/footer.jsp" %>
 		
-
-
-
-
-<!-- 푸터 -->
-
-<div class='footer'></div><!--  float속성 해제 -->
-<footer>
-	<!--  <div id="address">
-		<li><a href="#">공지사항 +</a></li>
-	</div>
-	-->
-	<div id="footer_box">
-		<ul>
-			<li><a href="#">공지사항 +</a></li>
-			<li>회사소개    |    이용약관    |   개인정보처리방침</a></li>
-			<li>(주) Bibliothek 서울시 종로구 종로 3 대표이사 : 홍준모 사업자등록번호 : 123-45-67891
-					<br>대표전화 : 1111-2222 (발신자 부담전화)
-					<br>팩스 : 0101-010-1010 (지역번호공통) 서울시
-							통신판매업신고번호 제 653호 ▶ 사업자정보확인
-					<br>COPYRIGHT(C) Bibliothek CENTER ALL RIGHTS RESERVED</li>
-			</ul>					
-		</div>
-			
-	
-</footer>
 </body>
 </html>

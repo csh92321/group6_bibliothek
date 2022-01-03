@@ -9,6 +9,7 @@
 <title>mypage </title>
 <link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 .wrap{width:1200px; margin:0 auto; text-align:center;}
@@ -42,5 +43,6 @@
 		</table>
 	</div>
 </div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>

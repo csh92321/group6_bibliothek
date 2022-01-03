@@ -83,6 +83,7 @@ body{font-family:'Nanum Gothic', sans-serif;}
 		</form>
 	</div>
 </div>
+<c:import url="../default/footer.jsp" />
 </body>
 </html>
 
