@@ -30,6 +30,8 @@
  		delete from notice_board where write_no=#{writeNo}
  	</delete>
  	
- 	<select id=""></select>
+ 	<update id="ntModify">
+ 		update notice_board set title=#{title}, content=#{content} where write_no=#{writeNo}
+ 	</update>
  	
  </mapper> 

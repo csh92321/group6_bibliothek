@@ -5,15 +5,59 @@
     
 <!DOCTYPE html>
 <html>
+<style>
+table {
+	width: 700px;
+	border: 3px solid #444444;
+	border-collapse: collapse;
+	margin-bottom: 15px;
+}
+
+th {
+	background-color: #b8371b;
+	color: white;
+}
+
+td {
+	background-color: #E7E7E7;
+	height: 30px;
+}
+
+button {
+	border-radius: 5px;
+	background-color: #b8371b;
+	color: white;
+	font-size: 15px;
+	padding: 5px;
+}
+a:hover {text-decoration: none; }
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	
+	function writeForm(){
+		var loginUser = $("#loginUser").val()
+		if(loginUser == ""){
+			alert('로그인 후 이용 가능합니다.')
+			location.href='${contextPath}/member/login'
+		}else{
+			location.href='${contextPath}/board/writeForm?id='+loginUser
+		}
+	}
+</script>
 </head>
 <body>boardList<br>
-
-<table border="1">
+${id}, ${loginUser }<br>
+<input type="hidden" name="loginUser" id="loginUser" value="${loginUser }">
+<div align="center">
+<table border="1" align="center">
 			<tr>
-				<th width="70">글 번호</th> <th width="500">제목</th> <th width="100">작성자 ID</th> <th width="100">등록 날짜</th>
+				<th width="70" height="40">글 번호</th> <th width="500">제목</th> <th width="100">작성자 ID</th> <th width="100">등록 날짜</th>
 			</tr>
 			<tr>
 			<c:if test="${allList.size() == 0 }">
@@ -32,8 +76,9 @@
 		</table>
 			
 		
-			<button type="button" onclick="location.href='${contextPath}/board/writeForm'">새 글 작성하기</button>
+			<!-- <button type="button" onclick="location.href='${contextPath}/board/writeForm'">새 글 작성하기</button>  -->
+			<button type="button" onclick="writeForm()">새글 작성하기</button>
 		
-	
+	</div>
 </body>
 </html>

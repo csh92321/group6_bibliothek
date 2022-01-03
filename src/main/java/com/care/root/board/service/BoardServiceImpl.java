@@ -1,5 +1,7 @@
 package com.care.root.board.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.board.DTO.BoardDTO;
+import com.care.root.board.DTO.BoardReDTO;
 import com.care.root.mybatis.board.BoardMapper;
 
 @Service
@@ -66,7 +69,7 @@ public class BoardServiceImpl implements BoardService{
 		model.addAttribute("detailContent", mapper.allList());
 		
 	}
-	
+
 
 //	@Override
 //	public String modify(MultipartHttpServletRequest mul, 

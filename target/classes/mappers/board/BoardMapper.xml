@@ -32,6 +32,8 @@
 	</delete>
 
 	<update id="modify">
-		update meet_board set title=#{title}, content=#{content} where write_no=#{writeNo}
+		update meet_board set content=#{content} where write_no=#{writeNo}
 	</update>
+	
+	
 </mapper>

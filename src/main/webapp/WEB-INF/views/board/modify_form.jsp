@@ -9,13 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="width:300px; margin: 0 auto;">
+	<div align="center" style="width:300px; margin: 0 auto;">
 		<form action="${contextPath}/board/modify" method="post">
 			<input type="hidden" name="writeNo" value="${detailContent.writeNo }">
 			
-			제목 <input type="text" size="30" name="title" value="${detailContent.title }"><hr>
-			내용 <textarea rows="5" cols="30" name="content">${detailContent.content }</textarea>
-			<hr>
+			제목 <input type="text" size="30" name="title" value="${detailContent.title }">
+			<hr align="center" style="border:solid 1px #b8371b; width:100%;">
+			내용 <textarea name="content" rows="15" cols="40">${detailContent.content }</textarea>
+			<hr align="center" style="border:solid 1px #b8371b; width:100%;">
 			
 			<input type="submit" value="수정하기">
 			<input type="button" onclick="history.back()" value="돌아가기">

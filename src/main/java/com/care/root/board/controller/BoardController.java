@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,22 +18,25 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.board.DTO.BoardDTO;
 import com.care.root.board.service.BoardService;
+import com.care.root.common.MemberSessionName;
 
 import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("board")
-public class BoardController {
+public class BoardController implements MemberSessionName{
 	
 	@Autowired
 	BoardService bs;
 	
 	@GetMapping("writeForm")
-	public String writeForm() {
+	public String writeForm(@RequestParam String id, Model model) {
+		model.addAttribute("id", id);
 		return "board/writeForm";
 	}
 	@GetMapping("boardList")
-	public String boardList(Model model) {
+	public String boardList(Model model, HttpSession session) { //로그인 하면 세션값이 등록 되는데 그 로그인값(세션값)을 가져오기 위함
+		model.addAttribute("sessionId", session.getAttribute(LOGIN)); //sessionId값이 로그인을 하면 agetattribute를 통해 가져와
 		bs.allList(model); //이걸로 서비스에서 불러오는거
 		return "board/boardList";
 	} 

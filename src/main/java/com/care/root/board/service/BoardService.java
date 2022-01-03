@@ -1,11 +1,13 @@
 package com.care.root.board.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.care.root.board.DTO.BoardDTO;
+import com.care.root.board.DTO.BoardReDTO;
 
 public interface BoardService {
 
@@ -20,5 +22,7 @@ public interface BoardService {
 //						HttpServletRequest request);
 
 	public int modify(BoardDTO dto);
+	
+	
 
 }
