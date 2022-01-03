@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="resources/js/bootstrap.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${contextPath}/resources/css/header1.css">
-<link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
-<link rel="stylesheet" href="${contextPath}/resources/css/search1.css">
-<link rel="stylesheet" href="${contextPath}/resources/css/contents1.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header1.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer1.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/search1.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/contents1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
@@ -29,7 +29,7 @@ function search() {
 <body>
 <!-- 검색창-->
 	<div class="container-search">
-		<input class="search-field" id="search" placeholder="Search Book"
+		<input class="search-field" id="search"
 				onKeypress="javascript:if(event.keyCode==13) {search();}"
 				type="text" size="20">
 <!--       <form action="/" method="GET" class="form"> -->
@@ -37,13 +37,13 @@ function search() {
 <!--         onKeypress="javascript:if(event.keyCode==13) {search();}" /> -->
 <!-- <!--        <button type="submit" class="search-button"> -->
 <!--             <img src="search.png"> -->
-<!--         </button>--> 
+<!--         </button>--> -->
 <!--       </form> -->
     </div>
 <!--  메뉴바  -->
 <header>
        <div id="logo">
-           <a href="/root"><img src="${contextPath }/resources/images/logo.png" alt="Logo"></a>
+           <a href="/"><img src="../resources/images/logo.png" alt="Logo"></a>
         </div>
  
         <div id="top_menu">
@@ -52,7 +52,7 @@ function search() {
                    <a href="${contextPath}/member/login"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
                 </c:when>
                 <c:otherwise>
-                   <a href="${contextPath}/member/mypage?id=${loginUser }"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+                   <a href="${contextPath}/successLogin?id=${loginUser }"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
                 </c:otherwise>
              </c:choose>
              <a href="#"><img src="${contextPath}/resources/images/h_what.jpg" alt="h_what" width="50px"></a>
@@ -66,8 +66,7 @@ function search() {
                   <a href="${contextPath}/member/register_form">회원가입</a>
                </c:when>
                <c:otherwise>
-                  ${loginUser } &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-            		<a href="${contextPath }/member/logout">로그아웃</a>
+                  ${loginUser }
                </c:otherwise>
             </c:choose>
         </div>
