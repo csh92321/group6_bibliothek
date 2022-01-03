@@ -34,7 +34,7 @@
 	<div class="footer-notice">
 		<ul>
 			<li style="text-align: center; font-size:18px">
-				<a href="${contextPath }/ntboard/ntBoardList">
+				<a href="${contextPath }/ntboard/ntBoardList" style="color:#ffb532;">
 					<b>공지 사항 바로가기 >> </b>
 				</a>
 			</li>

@@ -28,11 +28,11 @@ body {
 }
 
 a{
-	color: #ffb532;
+	
 	text-decoration: none;
 }
 
 a:hover {
-	color: white;
+	color: #ffb532;
 }
 

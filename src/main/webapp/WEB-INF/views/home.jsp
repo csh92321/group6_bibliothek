@@ -92,7 +92,5 @@
 <%@ include file="default/footer.jsp" %>
 <!-- 푸터 -->
 
-<div class='footer'></div><!--  float속성 해제 -->
-
 </body>
 </html>

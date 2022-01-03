@@ -110,6 +110,8 @@
 	    var bookNum = strArray[1];
         let id = "${loginUser}";
         let arrayL = [id, bookNum];
+        
+        if (!!id){
 		if (check==2) {
 	       	$
 			.ajax({
@@ -142,6 +144,9 @@
 				})
 
 			} 
+        } else if (!id){
+        	alert("로그인 후 이용하실 수 있는 기능입니다");
+        }
 		
 	}
 
