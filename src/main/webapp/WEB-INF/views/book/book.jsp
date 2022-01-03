@@ -87,23 +87,27 @@ function getgenre() {
 				}
 			})
 }
-	function getBooks() {
+	function getBooks(criterion) {
 		var urlString = decodeURI(window.location.href);
 	    var strArray = urlString.split('?');
 	    var genreArray = strArray[1].split('&');
 	    var genre = genreArray[1];
+	    var arrayBook = new Array();
+	    arrayBook[0] = genre;
+	    arrayBook[1] = criterion;
 		$
 				.ajax({
 					url : "books",
 					type : "post",
+					traditional : true,
 					data : {
-						genre : genre
+						arrayBook : arrayBook
 					},
-					success : function(list) {
+					success : function(range) {
 						let html = ""
 						$
 								.each(
-										list,
+										range,
 										function(index, item) {
 											html += "<div class=\"product-title\">"
 											html += "<div class=\"product-img-div\">"
@@ -119,13 +123,21 @@ function getgenre() {
 											html += "</div>"
 											html += "</div>"
 										})
-						$("#books").append(html)
+											    alert(html);
+						$("#books").html(html)
 					}
 				})
 	}
+	
+	let criterion = "popularityAsc";
+	
+	function rangePost(criterionV) {
+		alert(criterionV);
+		getBooks(criterionV);
+	}
 </script>
 </head>
-<body onload="getBooks(); getgenre(); getKoreanD(); getKorean();">
+<body onload="getBooks(criterion); getgenre(); getKoreanD(); getKorean();">
 	<%@ include file="../header.jsp" %>
 	<div class="container">
 	<div class="item item1">
@@ -146,15 +158,15 @@ function getgenre() {
 	</div>
 	<div class="item item3-box2">
 	<form>
-		<select id="range" name="range">
-		<option value="">인기순▲</option>
-		<option value="">인기순▽</option>
-		<option value="">신작순▲</option>
-		<option value="">신작순▽</option>
-		<option value="">평점순▲</option>
-		<option value="">평점순▽</option>
-		<option value="">이름순▲</option>
-		<option value="">이름순▽</option>
+		<select id="range" name="range" onchange="rangePost(this.value);">
+		<option value="popularityAsc">인기순▲</option>
+		<option value="popularityDes">인기순▽</option>
+		<option value="releaseAsc">신작순▲</option>
+		<option value="releaseDes">신작순▽</option>
+		<option value="gradeAsc">평점순▲</option>
+		<option value="gradeDes">평점순▽</option>
+		<option value="nameAsc">이름순▲</option>
+		<option value="nameDes">이름순▽</option>
 		</select>
 	</form>
 

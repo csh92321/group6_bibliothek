@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.care.root.book.dto.BookDTO;
 import com.care.root.book.dto.GenreDTO;
+import com.care.root.book.dto.LikeDTO;
 import com.care.root.book.service.BookServiceImpl.Book;
 
 @Repository
@@ -28,5 +29,6 @@ public interface BookMapper {
 	public double gradeLoad(String bookNum);
 	public void likePush(@Param("id")String id, @Param("bookNum")String bookNum);
 	public void likeCancel(@Param("id")String id, @Param("bookNum")String bookNum);
+	public LikeDTO likeCheck(@Param("id")String id, @Param("bookNum")String bookNum);
 
 }

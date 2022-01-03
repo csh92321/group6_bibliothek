@@ -70,55 +70,80 @@
     image += "<img class=\"product-img\" src=\"/resources/coverImg/"+bookNum+".jpg\" />"
      $("#image").html(image)
 	}
-	var check = 0;
+	let check = 0;
 	var urlNum = 0;
 	function originalImage() {
 		
 	}
 	
 	function like() {
-		let htmlL = "<h4>찜하기♡</h4>"
 		var urlString = window.location.href;
 	    var strArray = urlString.split('?');
 	    var bookNum = strArray[1];
-        let id = 1;
+        let id = "${loginUser}";
         let arrayL = [id, bookNum];
-		check += 1;
-		if (check==2) {
-       	$
-		.ajax({
-			url : "likePush",
+        $.ajax({			
+        	url : "likeCheck",
 			type : "post",
 			traditional : true,
 			data : {
 				arrayL : arrayL
 			},
-			success : function() {
-				htmlL = "<h4>찜하기♥</h4>"
-				$("#like").html(htmlL)
+			success : function(result) {
+				alert(result);
+				if (result==1) {
+					check=1;
+					htmlL = "<h4>찜하기♥</h4>"
+					$("#like").html(htmlL)
+				} else if (result==0) {
+					check=2;
+					htmlL = "<h4>찜하기♡</h4>"
+					$("#like").html(htmlL)
+				}
 			}
-		})
-           
-		
-		} else if(check==3) {
+			
+        })
+	}
+	
+	function likePush() {
+		var urlString = window.location.href;
+	    var strArray = urlString.split('?');
+	    var bookNum = strArray[1];
+        let id = "${loginUser}";
+        let arrayL = [id, bookNum];
+		if (check==2) {
 	       	$
 			.ajax({
-				url : "likeCancel",
+				url : "likePush",
 				type : "post",
 				traditional : true,
 				data : {
 					arrayL : arrayL
 				},
 				success : function() {
-					htmlL = "<h4>찜하기♡</h4>"
-					check = 1;
+					check=1;
+					htmlL = "<h4>찜하기♥</h4>"
 					$("#like").html(htmlL)
 				}
 			})
+			} else if(check==1) {
+		       	$
+				.ajax({
+					url : "likeCancel",
+					type : "post",
+					traditional : true,
+					data : {
+						arrayL : arrayL
+					},
+					success : function() {
+						check = 2;
+						htmlL = "<h4>찜하기♡</h4>"
+						$("#like").html(htmlL)
+					}
+				})
 
-		} else {
-		$("#like").html(htmlL)
-		}
+			} 
+		
 	}
 
 	
@@ -128,7 +153,7 @@
 		if (urlNum==1) {
 		var urlString = window.location.href;
 		html += "<div class = \"rgt\">"
-		html += "<h4> url : "+urlString+"</h4></div>"
+		html += "<p style=\"font-size:25px\"> url : "+urlString+"</p></div>"
 		} else if (urlNum==2) {
 			html += "<h3></h3>"
 			urlNum = 0;
@@ -173,11 +198,29 @@
 						array : array
 					},
 					success : function(gradeL) {
-						let htmlGrade = "<div>"
-						htmlGrade += "<progress value=\""+gradeL+"\" max=\"5\"></progress>"
-						htmlGrade += "</div>"
-					    htmlGrade += "<h3>"+gradeL+"</h3>"	
+						let htmlGrade = ""
+					    htmlGrade += "<p style=\"font-size:20px\">"+gradeL+"</p>"	
 						$("#gradeLevel").html(htmlGrade)
+					}
+				})
+	}
+	
+	function gradeOriginal() {
+		var urlString = window.location.href;
+	    var strArray = urlString.split('?');
+	    var bookNum = strArray[1];
+		$
+				.ajax({
+					url : "gradeOriginal",
+					type : "post",
+					traditional : true,
+					data : {
+						bookNum : bookNum
+					},
+					success : function(gradeO) {
+						let htmlGradeO = ""
+					    htmlGradeO += "<p style=\"font-size:20px\">"+gradeO+"</p>"	
+						$("#gradeLevel").html(htmlGradeO)
 					}
 				})
 	}
@@ -202,7 +245,7 @@
 	
     </script>
 </head>
-<body onload="detail(); like(); ">
+<body onload="detail(); like(); gradeOriginal();">
 <%@ include file="../header.jsp" %>
 <main>
 <div class = "main-container">
@@ -211,16 +254,18 @@
 	<div class="gap-box"></div>
 	<div class="container-contents">
 	<span id="detail"></span>
+	<div class="item-datail itme-detail4">
+				<span id="gradeLevel"></span>
+	</div>
 	<div class="item-detail item-detail2">
 	<a href="eBook?1"><button class="button" type="button">읽기</button></a>
-	<button class="button" onclick="like();" type="button"><span id="like"></span></button>
+	<button class="button" onclick="likePush();" type="button"><span id="like"></span></button>
 	<button class="button" onclick="url();" type="button">공유</button>
 	<button class="button" onclick="grade();" type="button">평점 주기</button>
 	</div>
 	<div class="item-detail item-detail3">
 		<span id="url"></span>
 		<span id="gradeSelect"></span>
-		<span id="gradeLevel"></span>
 	</div>
 	</div>
 	</div>
