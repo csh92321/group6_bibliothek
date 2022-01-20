@@ -31,30 +31,21 @@ function search() {
 	<div class="header-container">
 	<div class="header-item">
 	<div class="header-item-item1">
-       <div id="logo">
            <a href="/root"><img src="${contextPath }/resources/images/logo.png" alt="Logo"></a>
-        </div>
         </div>
         <div class="header-item-item3">
         <!-- 검색창-->
-		<div class="item_search">
+	<div class="item_search">
 	<div class="container-search">
 		<input class="search-field" id="search" placeholder="Search Book"
 				onKeypress="javascript:if(event.keyCode==13) {search();}"
 				type="text" size="20">
-<!--       <form action="/" method="GET" class="form"> -->
-<!--         <input type="search" placeholder="Search" class="search-field" -->
-<!--         onKeypress="javascript:if(event.keyCode==13) {search();}" /> -->
-<!-- <!--        <button type="submit" class="search-button"> -->
-<!--             <img src="search.png"> -->
-<!--         </button>--> 
-<!--       </form> -->
     </div>
     </div>
         </div>
  	<div class="header-item-item2">
  	 	<div class="header-item-item2-item1">
-        <div id="top_menu">
+        <div class="top_menu">
            <c:choose>
               <c:when test="${loginUser==null }">
                    <a href="${contextPath}/member/login"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
@@ -69,7 +60,7 @@ function search() {
           </div>
           </div>
            <div class="header-item-item2-item2">
-          <div id="login">   
+          <div class="login">   
              <c:choose>
                 <c:when test="${loginUser == null }">
                  <a href="${contextPath}/member/login">로그인</a> | 
@@ -87,8 +78,7 @@ function search() {
 
 
 <!--메인 메뉴창 -->
-	<div class="header-item">
-<div id="menu1">
+<div class="menu1">
 
     <ul class="main">
 
@@ -179,7 +169,6 @@ function search() {
 	</div>
 
 </div>
-        </div>
 
 </body>
 </html>

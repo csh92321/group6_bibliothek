@@ -30,5 +30,6 @@ public interface BookMapper {
 	public void likePush(@Param("id")String id, @Param("bookNum")String bookNum);
 	public void likeCancel(@Param("id")String id, @Param("bookNum")String bookNum);
 	public LikeDTO likeCheck(@Param("id")String id, @Param("bookNum")String bookNum);
+	public String recommendList();
 
 }

@@ -83,10 +83,9 @@ form {
 }
 .temp-box{
 	width:100%;
-	height:100%;
 	font-size:40px;
 /* 	border:1px solid #dee3eb; */
-	text-align : center;
+	text-align : left;
 }
 .box-one {
 	display : flex;
@@ -162,6 +161,10 @@ span img {
 	float: left;
 	margin : 10px;
 	border: 2px solid #b8371b;
+}
+
+.contents {
+	height : 100%;
 }
 
 #gradeBtn {

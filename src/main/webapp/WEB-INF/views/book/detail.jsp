@@ -17,6 +17,10 @@
 
 	let gradeLevel = 0;	
 	let gradeClick = 0;
+	
+	let check = 0;
+	var urlNum = 0;
+	
 
 	function detail() {
 	var urlString = window.location.href;
@@ -53,11 +57,11 @@
     										html += "</div>"
     										html += "</div>"
     			
-    										htmlBook += "<div class=\"subtitle\">"
+    										htmlBook += "<div class=\"contents\">"
     													+item.bookIntro+"</div>"
-    										htmlTable += "<div class=\"subtitle\">"
+    										htmlTable += "<div class=\"contents\">"
 														+item.contentsTable+"</div>"
-											htmlWriter += "<div class=\"subtitle\">"
+											htmlWriter += "<div class=\"contents\">"
 														+item.writerIntro+"</div>"
 									})
     									$("#detail").html(html)
@@ -70,8 +74,7 @@
     image += "<img class=\"product-img\" src=\"resources/coverImg/"+bookNum+".jpg\" />"
      $("#image").html(image)
 	}
-	let check = 0;
-	var urlNum = 0;
+
 	function originalImage() {
 		
 	}

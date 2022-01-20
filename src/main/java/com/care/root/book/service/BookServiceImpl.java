@@ -318,7 +318,7 @@ public class BookServiceImpl implements BookService {
 				 String code = dtoG.getCode().substring(0);
 				 code = code+"%";
 				 dtoL = mapper.codeGenre(code);
-				 dtoL.remove(dtoL.size()-1);
+				 dtoL.remove(0);
 				@SuppressWarnings("rawtypes")
 				Iterator it = dtoL.iterator();
 				while (it.hasNext()) {
@@ -474,6 +474,21 @@ public class BookServiceImpl implements BookService {
 				e.printStackTrace();
 			}
 	}
+	
+	@GetMapping(value = "recommendList", produces = "application/json;charset=utf-8")
+	public ArrayList<String> recommendList() {
+		ArrayList<String> list = new ArrayList<String>();
+		try {
+			String bookNum = mapper.recommendList();
+				list.add(bookNum);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		return list;
+	}
+	
+	
 	
 }
 

@@ -61,6 +61,12 @@ h3{
 			<a href="${contextPath }/ntboard/ntBoardList"><img src="${contextPath }/resources/images/adminNotice.png" width="200">
 				<div class="admin_name">공지사항</div>
 			</a>
+			<a href="${contextPath }/bookPlus"><img src="${contextPath }/resources/images/bookPlus.png" width="200">
+				<div class="admin_name">도서 추가</div>
+			</a>
+			<a href="${contextPath }/recommendBook"><img src="${contextPath }/resources/images/recommendBook.png" width="200">
+				<div class="admin_name">추천도서 변경</div>
+			</a>
 		</div>	
 	</div>
 </body>

@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>E-book, Bibliothek</title>
+<title>Bibliothek</title>
 <link rel="stylesheet" href="css/header1.css">
-<link rel="stylesheet" href="css/search1.css?after">
+<link rel="stylesheet" href="css/search1.css">
 <link rel="stylesheet" href="css/footer1.css">
 <link rel="stylesheet" href="css/contents1.css">
 <link rel="stylesheet" href="css/book.css">

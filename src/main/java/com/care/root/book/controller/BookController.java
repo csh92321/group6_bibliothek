@@ -63,6 +63,16 @@ public class BookController {
 		
 		return "book/eBook";
 	}
+	
+	@RequestMapping("recommendBook")
+	public String recommendBook() {
+		return "book/recommendBook";
+	}
+	
+	@RequestMapping("bookPlus")
+	public String bookPlus() {
+		return "book/bookPlus";
+	}
 
 
 }
