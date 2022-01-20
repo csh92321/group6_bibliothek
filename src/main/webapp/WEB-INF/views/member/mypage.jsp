@@ -24,7 +24,7 @@
 <body>
 <c:import url="../default/header.jsp" />
 <div class="wrap">
-	<hr>
+	<hr style="margin-top:30px;">
 	<div class="mypage_title"> <label>MY PAGE</label> </div>
 	<div class="mypage">
 		<table>

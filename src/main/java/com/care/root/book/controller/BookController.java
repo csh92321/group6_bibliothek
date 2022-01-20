@@ -13,9 +13,9 @@ public class BookController {
 	@Autowired BookService book;
 
 
-	@RequestMapping("literature")
+	@RequestMapping("book")
 	public String novel(BookDTO dto) {
-		return "book/literature";
+		return "book/book";
 	}
 	
 	@RequestMapping("poem")
@@ -44,6 +44,24 @@ public class BookController {
 	public String bestSeller() {
 		
 		return "book/bestSeller";
+	}
+	
+	@RequestMapping("newBook")
+	public String newBook() {
+		
+		return "book/newBook";
+	}
+	
+	@RequestMapping("recommend")
+	public String recommend() {
+		
+		return "book/recommend";
+	}
+	
+	@RequestMapping("eBook")
+	public String eBook() {
+		
+		return "book/eBook";
 	}
 
 

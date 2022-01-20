@@ -64,7 +64,7 @@
 <body>
 <c:import url="../default/header.jsp" />
 <div class="wrap">
-	<hr>
+	<hr style="margin-top:30px;">
 	<div class="dc_title"> 
 		<label>회원 탈퇴</label> 회원 탈퇴하는 이유를 선택해주세요 
 	</div>

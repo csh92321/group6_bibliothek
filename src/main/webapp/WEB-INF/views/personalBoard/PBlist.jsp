@@ -28,7 +28,7 @@
 <c:import url="../default/header.jsp" />
 
 <div class="wrap">
-	<hr>
+	<hr style="margin-top:30px;">
 	<div class="mypage_title"> <label>1:1문의</label> </div>
 	<div class="pbBoard">
 		<button type="button" onclick="location.href='PBform?id=${id}'">문의하기</button>

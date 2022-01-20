@@ -139,7 +139,7 @@ function cancel() {
 <body>
 <c:import url="../default/header.jsp" />
 <div class="wrap">
-	<hr>
+	<hr style="margin-top:30px;">
 <div class="modify_title"> <label>회원 정보 수정</label> </div>
 <div class="modify">
 	<form action="modify" method="post" id="modify_form">

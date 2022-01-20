@@ -27,7 +27,7 @@ import com.care.root.note.service.NoteService;
 import com.care.root.note.service.NoteServiceImpl;
 
 @Controller
-@RequestMapping("member")
+@RequestMapping("/member")
 public class MemberController implements MemberSessionName{
 
 	@Autowired MemberService ms;

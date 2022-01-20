@@ -4,6 +4,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header1.css">
 <head>
 <meta charset="UTF-8">
 <title>login</title>
@@ -37,10 +38,11 @@ function findPwd(){
 </script>
 </head>
 <body>
+
 <c:import url="../default/header.jsp" />
 
 <div class="wrap">
-<hr>
+<hr style="margin-top:30px;">
 	<div class="loginform">
 	<form method="post" action="user_check">
 		<table>
@@ -68,7 +70,7 @@ function findPwd(){
 			<tr>
 				<td colspan="2">
 					<label onclick="location.href='register_form'">회원가입</label> &nbsp;
-					<label onclick="findId()">아이디</label>/<label onclick="findPwd()">비밀번호</label> <b>찾기</b>
+					<label onclick="findId()">아이디</label>/<label onclick="findPwd()">비밀번호</label> 찾기
 				</td>
 			</tr>
 		</table>
@@ -77,5 +79,6 @@ function findPwd(){
 </div>
 
 <c:import url="../default/footer.jsp" />
+
 </body>
 </html>

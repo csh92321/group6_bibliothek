@@ -207,7 +207,7 @@ function register(){
 <c:import url="../default/header.jsp" />
 
 <div class="wrap">
-<hr>
+<hr style="margin-top:30px;">
 <div class="register">
 	<form action="register" method="post" id="register_form">
 	<table>

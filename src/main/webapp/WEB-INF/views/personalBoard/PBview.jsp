@@ -27,7 +27,7 @@
 <c:import url="../default/header.jsp" />
 
 <div class="wrap">
-	<hr>
+	<hr style="margin-top:30px;">
 	<div class="mypage_title"> <a href="${contextPath }/personalBoard/PBlist?id=${loginUser }" style="color:black;"> <label> 1:1문의 </label></a> </div>
 	<div class="pbBoard">
 		<table>
