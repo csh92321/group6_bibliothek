@@ -22,7 +22,7 @@
 
 <div class="wrap">
 
-	<a href="${contextPath }/personalBoard/PBlist">1:1문의</a>
+	<a href="${contextPath }/personalBoard/PBlistAll">1:1문의</a>
 
 </div>
 

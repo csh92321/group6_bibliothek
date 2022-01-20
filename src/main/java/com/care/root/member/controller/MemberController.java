@@ -93,7 +93,7 @@ public class MemberController implements MemberSessionName{
 			response.addCookie(saveIdCookie);
 		}
 		if(id.equals("group6")) {
-			return "redirect:adminSuccessLogin";
+			return "redirect:/admin/adminPage";
 		}
 		return "redirect:/";
 	}
@@ -271,18 +271,6 @@ public class MemberController implements MemberSessionName{
 		return ms.findPwd(dto);
 	}
 	
-	@GetMapping("adminSuccessLogin")
-	public String adminSuccessLogin(HttpSession session) {
-		System.out.println("관리자 페이지 진입");
-		System.out.println(session.getAttribute(LOGIN));
-		if (session.getAttribute(LOGIN)==null) {
-			return "member/wrongApproach";
-		}
-		else if (session.getAttribute(LOGIN).equals("group6")) {
-			return "member/adminSuccessLogin"; 
-		} else {
-			return "member/wrongApproach";
-		}
-		
-	}
+	
+
 }
