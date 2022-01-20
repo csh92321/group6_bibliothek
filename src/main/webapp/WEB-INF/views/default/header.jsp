@@ -59,6 +59,9 @@ function search() {
               <c:when test="${loginUser==null }">
                    <a href="${contextPath}/member/login"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
                 </c:when>
+                <c:when test="${loginUser == 'group6' }">
+                	<a  href="${contextPath}/member/adminSuccessLogin"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
+                </c:when>
                 <c:otherwise>
                    <a href="${contextPath}/member/mypage?id=${loginUser }"><img src="${contextPath}/resources/images/h_mypage.jpg" alt="h_mypage" width="50px"></a>
                 </c:otherwise>

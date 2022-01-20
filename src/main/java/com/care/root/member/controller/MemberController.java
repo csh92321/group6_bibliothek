@@ -1,5 +1,7 @@
 package com.care.root.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -24,7 +26,6 @@ import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 import com.care.root.note.service.NoteService;
-import com.care.root.note.service.NoteServiceImpl;
 
 @Controller
 @RequestMapping("/member")
@@ -90,6 +91,9 @@ public class MemberController implements MemberSessionName{
 			saveIdCookie.setPath("/");
 			saveIdCookie.setMaxAge(limitTimeId);
 			response.addCookie(saveIdCookie);
+		}
+		if(id.equals("group6")) {
+			return "redirect:adminSuccessLogin";
 		}
 		return "redirect:/";
 	}
@@ -265,5 +269,20 @@ public class MemberController implements MemberSessionName{
 	@ResponseBody
 	public int findPwd(@RequestBody MemberDTO dto) throws Exception {
 		return ms.findPwd(dto);
+	}
+	
+	@GetMapping("adminSuccessLogin")
+	public String adminSuccessLogin(HttpSession session) {
+		System.out.println("관리자 페이지 진입");
+		System.out.println(session.getAttribute(LOGIN));
+		if (session.getAttribute(LOGIN)==null) {
+			return "member/wrongApproach";
+		}
+		else if (session.getAttribute(LOGIN).equals("group6")) {
+			return "member/adminSuccessLogin"; 
+		} else {
+			return "member/wrongApproach";
+		}
+		
 	}
 }
