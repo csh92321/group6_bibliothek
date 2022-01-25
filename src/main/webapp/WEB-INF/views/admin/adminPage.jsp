@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-.wrap{width:1200px; margin:0 auto; text-align:center;}
+.wrap{width:1000px; margin:0 auto; text-align:center;}
 </style>
 </head>
 <body>
@@ -22,7 +22,11 @@
 
 <div class="wrap">
 
-	<a href="${contextPath }/personalBoard/PBlistAll">1:1문의</a>
+	<a href="${contextPath }/admin/PBlistAll">1:1문의</a> <hr>
+	<a href="${contextPath }/#">도서추가</a> <hr>
+	<a href="${contextPath }/#">추천도서 설정</a>
+
+	
 
 </div>
 
