@@ -20,7 +20,7 @@
 </style>
 <script type="text/javascript">
 	function PBlistAll() {
-		history.back();
+		location.href="${contextPath}/admin/PBlistAll";
 	}
 </script>
 </head>
