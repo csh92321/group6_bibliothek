@@ -12,4 +12,6 @@ public interface AdminMapper {
 
 	public List<PersonalBoardDTO> pbListAll(@Param("s") int start, @Param("e") int end);
 	public int PBCount();
+	public PersonalBoardDTO pbView(int writeNum);
+	public int reply(PersonalBoardDTO dto);
 }

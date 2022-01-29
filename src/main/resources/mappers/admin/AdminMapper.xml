@@ -23,4 +23,12 @@
 	select count(*) from personal_board
 </select>
 
+<select id="pbView" resultMap="list">
+	select * from personal_board where write_num=#{writeNum}
+</select>
+
+<update id="reply">
+	update personal_board set reply=#{reply}, reply_check=1 where write_num=#{writeNum}
+</update>
+
 </mapper>

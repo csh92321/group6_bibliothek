@@ -12,7 +12,12 @@
    <link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-.wrap{width:1200px; margin:0 auto; text-align:center;}
+.wrap{width:1000px; margin:0 auto; text-align:center;}
+.PBlistAll table {margin:0 auto; margin-top:20px; width:750px; text-align:center; border:0;}
+.PBlistAll table tr th{text-align:center; font-size:16px; border:2px solid black; padding:2px 0px;}
+.PBlistAll table tr td{border:0; padding:5px 0px; font-weight:bold;}
+.PBlistAll table tr td a{color:black;}
+.PBlistAll table tr td a:hover{color:#ffb532; text-decoration:none;}
 </style>
 </head>
 <body>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.care.root.mybatis.admin.AdminMapper;
+import com.care.root.personalBoard.dto.PersonalBoardDTO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -26,5 +27,22 @@ public class AdminServiceImpl implements AdminService {
 		model.addAttribute("pbListAll", mapper.pbListAll(start,end));
 		
 	}
+
+	@Override
+	public void pbView(Model model, int writeNum) {
+		model.addAttribute("pbView", mapper.pbView(writeNum));
+	}
+
+	@Override
+	public int reply(PersonalBoardDTO dto) {
+		int result=0;
+		try {
+			result=mapper.reply(dto);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 
 }
