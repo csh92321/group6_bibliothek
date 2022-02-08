@@ -104,3 +104,4 @@ hs_err_pid*
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java
 >>>>>>> 300ae8fb1021fcd624fee27d875060fdbf12387c
 >>>>>>> af15f1b238598f5aba89fe4d8f4f7384410b97a8
+.DS_Store

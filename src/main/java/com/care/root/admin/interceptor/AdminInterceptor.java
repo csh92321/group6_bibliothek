@@ -15,10 +15,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter implements Membe
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		HttpSession session = request.getSession();
-		System.out.println("admin 진입시?sessionID : " + LOGIN);
-		System.out.println(session.getValue(LOGIN));
-		
+		HttpSession session = request.getSession();		
 		if(session.getAttribute(LOGIN)==null) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
