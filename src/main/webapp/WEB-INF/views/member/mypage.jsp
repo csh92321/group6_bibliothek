@@ -32,14 +32,14 @@
 				<td><a href="beforeModify"><img src="${contextPath}/resources/images/membermodify.jpg" alt="membermodify" width="100px"><br><label class="info"> 회원정보수정 </label></a></td>
 				<td><a href="${contextPath }/note/note?id=${loginUser}"><img src="${contextPath}/resources/images/note.jpg" alt="note" width="100px"><br><label class="info"> 쪽지 </label></a></td>
 				<td><a href="${contextPath }/personalBoard/PBlist?id=${loginUser}"><img src="${contextPath}/resources/images/personalBoard.jpg" alt="personalBoard" width="100px"><br><label class="info"> 1:1문의 </label></a></td>
-			</tr>
-			<!-- 
+			</tr> 
 			<tr>
+				<!--  
 				<td><a href="">북리스트</a></td>
 				<td><a href="">찜</a></td>
-				<td><a href="">마이노트</a></td>
+				-->
+				<td><a href="${contextPath }/myNote/mynote">마이노트</a></td>
 			<tr>
-	 		-->
 		</table>
 	</div>
 </div>
