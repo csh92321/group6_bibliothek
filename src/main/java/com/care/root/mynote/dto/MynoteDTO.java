@@ -9,7 +9,21 @@ public class MynoteDTO {
 	private String bookNum;
 	private String content;
 	private Date savedate;
-	private String readingPeriod;
+	private String startDate;
+	private String endDate;
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	private int open;
 	private int hit;
 	
@@ -42,12 +56,6 @@ public class MynoteDTO {
 	}
 	public void setSavedate(Date savedate) {
 		this.savedate = savedate;
-	}
-	public String getReadingPeriod() {
-		return readingPeriod;
-	}
-	public void setReadingPeriod(String readingPeriod) {
-		this.readingPeriod = readingPeriod;
 	}
 	public int getOpen() {
 		return open;
