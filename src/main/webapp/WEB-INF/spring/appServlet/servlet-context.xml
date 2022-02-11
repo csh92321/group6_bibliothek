@@ -28,6 +28,7 @@
 	
 	<beans:bean id="memberInterceptor" class="com.care.root.member.interceptor.MemberInterceptor" />
 	<beans:bean id="autoLoginInterceptor" class="com.care.root.member.interceptor.AutoLoginInterceptor" />
+	<beans:bean id="adminInterceptor" class="com.care.root.admin.interceptor.AdminInterceptor"/>
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	 </beans:bean>
@@ -41,6 +42,12 @@
 			<mapping path="/" />
 			<beans:ref bean="autoLoginInterceptor" />
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/admin/**" />
+			<beans:ref bean="adminInterceptor" /> 
+		</interceptor>
+		
 	</interceptors>
 
 	<resources mapping="/css/**" location="/resources/css/" />

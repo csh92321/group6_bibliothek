@@ -28,12 +28,13 @@ footer {
 	 width:40%;
 }
 
-a{
-	
+
+.footer-notice a{
+	color: #ffb532;
 	text-decoration: none;
 }
 
-a:hover {
-	color: #ffb532;
+.footer-notice a:hover {
+	color: white;
 }
 

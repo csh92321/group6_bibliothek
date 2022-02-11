@@ -40,6 +40,7 @@
 <script>
 
 function receive(){
+	$("#receive").load("${contextPath}/note/receive?id=${id} #receive")
 	$("#receiver").val("");
 	$("#content").val("");	
 	$("#send").hide();
