@@ -1,9 +1,6 @@
 package com.care.root.note.controller;
 
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,12 +32,13 @@ public class NoteController implements MemberSessionName{
 //	}
 	
 	@GetMapping("note")
-	public String list(@RequestParam String id, Model model) {
+	public String note(@RequestParam String id, Model model) {
 		ns.noteList_rec(model, id);
 		ns.noteList_send(model, id);
 		model.addAttribute("id", id);
 		return "note/note";
 	}
+	
 	
 	@PostMapping("noteMsg")
 	public String msg(NoteDTO dto) {

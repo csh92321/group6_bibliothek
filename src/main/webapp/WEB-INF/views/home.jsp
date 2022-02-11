@@ -90,7 +90,9 @@
 					</div>
 </div>
 </body>
+
 <footer>
 <%@ include file="default/footer.jsp" %>
 </footer>
 </html>
+

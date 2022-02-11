@@ -12,7 +12,7 @@
    <link rel="stylesheet" href="${contextPath}/resources/css/footer1.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-.wrap{width:1200px; margin:0 auto; text-align:center;}
+.wrap{width:1000px; margin:0 auto; text-align:center;}
 .mypage_title{margin-top:40px; text-align:left; margin-left:130px;}
 .mypage_title label{border:2px solid #ffb532; background-color:#ffb532; padding:5px 7px; font-size:20px;}
 .pbBoard table{margin:0 auto; margin-top:20px; width:750px; text-align:center; border:0;}

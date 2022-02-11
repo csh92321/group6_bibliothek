@@ -1,5 +1,7 @@
 package com.care.root.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -24,7 +26,6 @@ import com.care.root.member.dto.DeleteReasonDTO;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.MemberService;
 import com.care.root.note.service.NoteService;
-import com.care.root.note.service.NoteServiceImpl;
 
 @Controller
 @RequestMapping("/member")
@@ -93,6 +94,9 @@ public class MemberController implements MemberSessionName{
 			saveIdCookie.setPath("/");
 			saveIdCookie.setMaxAge(limitTimeId);
 			response.addCookie(saveIdCookie);
+		}
+		if(id.equals("group6")) {
+			return "redirect:/admin/adminPage";
 		}
 		return "redirect:/";
 	}
@@ -269,4 +273,7 @@ public class MemberController implements MemberSessionName{
 	public int findPwd(@RequestBody MemberDTO dto) throws Exception {
 		return ms.findPwd(dto);
 	}
+	
+	
+
 }
