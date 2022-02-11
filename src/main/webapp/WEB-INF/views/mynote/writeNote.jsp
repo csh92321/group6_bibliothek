@@ -55,8 +55,7 @@
 			<tr>
 				<th> 독서 기간 </th>
 				<td>
-					<!-- 책 읽기 선택 할 때 해당 시점 저장 데이터 필요!  -->
-					<input type="date">
+					<input type="date" id="startDate"> ~ <input type="date" id="endDate">
 				</td>
 			</tr>
 			<tr>
