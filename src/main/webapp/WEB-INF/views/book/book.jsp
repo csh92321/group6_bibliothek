@@ -33,7 +33,7 @@ function getKorean() {
 							.each(
 									list,
 									function(index, item) {
-										html += "<h3 class=\"subtitle\">"+item.korean+"</h3>"	
+										html += "<h3 class=\"division\">"+item.korean+"</h3>"	
 									})			
 					$("#korean").append(html)
 				}
@@ -57,7 +57,7 @@ function getKoreanD() {
 							.each(
 									list,
 									function(index, item) {
-										html += "<h3 class=\"subtitle\">"+item.korean+"</h3>"	
+										html += "<h3 class=\"division\">"+item.korean+"</h3>"	
 									})			
 					$("#koreanD").append(html)
 				}

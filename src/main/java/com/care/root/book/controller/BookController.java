@@ -64,9 +64,9 @@ public class BookController {
 		return "book/eBook";
 	}
 	
-	@RequestMapping("recommendBook")
-	public String recommendBook() {
-		return "book/recommendBook";
+	@RequestMapping("recommendModify")
+	public String recommendModify() {
+		return "book/recommendModify";
 	}
 	
 	@RequestMapping("bookPlus")

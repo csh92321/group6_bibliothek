@@ -31,8 +31,10 @@
       <result property="bookNum" column="book_num" />
    </resultMap>
    
-   <resultMap id="recommend_book" type="com.care.root.book.dto.recommendDTO">
-   <id property="bookNum" column="book_num"/>
+   <resultMap id="book_grade" type="com.care.root.book.dto.GradeDTO">
+   <id property="id" column="id" />
+   <result property="bookNum" column="book_num"/>
+   <result property="grade" column="grade"/>
    </resultMap>
    
    <select id="bookList" resultMap="book">
@@ -84,13 +86,29 @@
       select * from book where book_num=#{bookNum}
    </select>
    
+   <select id="gradePush" resultMap="book_grade">
+      insert into book_grade (id, book_num, grade) values (#{id}, #{bookNum}, #{gradeLevel})
+   </select>
+   
+   <select id="gradeLoad" resultType="int">
+   	select grade from book_grade where book_num=#{bookNum}
+   </select>
+   
+   <select id="gradeCheck" resultMap="book_grade">
+   	select * from book_grade where book_num=#{bookNum} and id=#{id}
+   </select>
+   
+   <select id="gradeOriginal" resultType="double">
+   	select grade from book where book_num=#{bookNum}
+   </select>
+   
    <update id="gradeUpdate">
-      update book set grade=#{gradeLevel} where book_num=#{bookNum}
+      update book set grade=#{grade} where book_num=#{bookNum}
    </update>
    
-   <select id="gradeLoad" resultType="double">
-      select grade from book where book_num=#{bookNum}
-   </select>
+   <update id="gradeChange">
+      update book_grade set grade=#{gradeLevel} where book_num=#{bookNum} and id=#{id}
+   </update>
    
    <select id="likeCheck" resultMap="like_book">
       select * from like_book where id=#{id} and book_num=#{bookNum}
@@ -104,8 +122,20 @@
       delete from like_book where id=#{id} and book_num=#{bookNum}
    </select>
    
-   <select id="recommendList" resultMap="recommend_book">
-   		select * from recommend_book where book_num=#{bookNum}
+   <select id="recommendList" resultType="string">
+   		select book_num from recommend_book
    </select>
+   
+   <select id="recommendPlus">
+      insert into recommend_book (book_num) values (#{bookNum})
+   </select>
+   
+    <select id="recommendDelete">
+      delete from recommend_book where book_num=#{bookNum}
+   </select>
+   
+    <insert id="bookPlus">
+      insert into book (book_num,title,subtitle,writer,company,BOOK_INTRODUCTION,WRITER_INTRODUCTION,TABLE_OF_CONTENTS) values (#{bookNum},#{title},#{subtitle},#{writer},#{company},#{bookIntro},#{writerIntro},#{contentsTable})
+   </insert>
 
 </mapper>

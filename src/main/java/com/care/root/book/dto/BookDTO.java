@@ -1,5 +1,7 @@
 package com.care.root.book.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BookDTO {
 	
 	private String bookNum;
@@ -14,9 +16,16 @@ public class BookDTO {
 	private String bookIntro;
 	private String contentsTable;
 	private String writerIntro;
+	private MultipartFile coverImg;
+	
+	
 
-	
-	
+	public MultipartFile getCoverImg() {
+		return coverImg;
+	}
+	public void setCoverImg(MultipartFile coverImg) {
+		this.coverImg = coverImg;
+	}
 	public String getBookIntro() {
 		return bookIntro;
 	}

@@ -1,5 +1,7 @@
 package com.care.root.book.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,16 +10,20 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.care.root.book.dto.BookDTO;
 import com.care.root.book.dto.Common;
 import com.care.root.book.dto.GenreDTO;
+import com.care.root.book.dto.GradeDTO;
 import com.care.root.book.dto.LikeDTO;
 import com.care.root.mybatis.book.BookMapper;
 
@@ -359,10 +365,11 @@ public class BookServiceImpl implements BookService {
 	@GetMapping(value = "recommends", produces = "application/json;charset=utf-8")
 	public ArrayList<BookDTO> newRecommend() {
 		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
-		ArrayList<String> recommend = new ArrayList<>(Arrays.asList("LN001","LE002","LP003"));
+		ArrayList<String> listS = new ArrayList<String>();
+		listS = mapper.recommendList();
 		try {
-			for(int i=0; i<recommend.size();i++) {
-				BookDTO dto = mapper.getRecommend(recommend.get(i));
+			for(int i=0; i<listS.size();i++) {
+				BookDTO dto = mapper.getRecommend(listS.get(i));
 				list.add(dto);
 			}	
 			} catch (Exception e) {
@@ -400,24 +407,45 @@ public class BookServiceImpl implements BookService {
 	
 	@PostMapping("gradePost")
 	@ResponseBody
-	public double gradePost(@RequestParam(value = "array", required = false) ArrayList<String> array) {
+	public ArrayList<Double> gradePost(@RequestParam(value = "array", required = false) ArrayList<String> array) {
 		String bookNum = array.get(0);
-		double gradeLevel = Double.parseDouble(array.get(1));	
+		int gradeLevel = Integer.parseInt(array.get(1));	
+		String id = array.get(2);
 		double gradeL = 0;
+		double gradeSum = 0;
+		double gradeAge =0;
+		double resultCheck = 0;
+		ArrayList<Double> result = new ArrayList<Double>();
+		ArrayList<Integer> gradeList = new ArrayList<Integer>();
 		try {
-				double gradeAvg = mapper.gradeLoad(bookNum);
-				System.out.println(gradeAvg);
-				gradeLevel = (gradeAvg+gradeLevel)/2;
-				System.out.println(gradeLevel*10);
-				gradeLevel = Math.round(gradeLevel*10);
-				gradeLevel = gradeLevel/10;
-				System.out.println(gradeLevel);
-				mapper.gradeUpdate(bookNum, gradeLevel);
+			GradeDTO dto = mapper.gradeCheck(id,bookNum);
+			if (dto==null) {
+				mapper.gradePush(id,bookNum,gradeLevel);
+				resultCheck = 1;
+			}	else {
+				mapper.gradeChange(id,bookNum,gradeLevel);
+				resultCheck = 0;
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		gradeL= gradeLevel;
-		return gradeL;
+		try {
+			gradeList = mapper.gradeLoad(bookNum);
+			for (int i =0; i<gradeList.size(); i++) {
+				gradeSum = gradeSum+gradeList.get(i);
+			}
+			gradeAge = gradeSum/gradeList.size();
+			gradeAge = gradeAge*10;
+			gradeL = Math.round(gradeAge);
+			gradeAge = gradeL/10;
+			mapper.gradeUpdate(bookNum, gradeAge);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		result.add(resultCheck);
+		result.add(gradeAge);
+		
+		return result;
 	}
 	
 	@PostMapping("gradeOriginal")
@@ -425,7 +453,7 @@ public class BookServiceImpl implements BookService {
 	public double gradeOriginal(@RequestParam(value = "bookNum", required = false) String bookNum) {
 		double gradeO = 0;
 		try {
-				gradeO = mapper.gradeLoad(bookNum);
+				gradeO = mapper.gradeOriginal(bookNum);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -475,20 +503,120 @@ public class BookServiceImpl implements BookService {
 			}
 	}
 	
-	@GetMapping(value = "recommendList", produces = "application/json;charset=utf-8")
-	public ArrayList<String> recommendList() {
-		ArrayList<String> list = new ArrayList<String>();
+	@GetMapping(value = "modify", produces = "application/json;charset=utf-8")
+	public ArrayList<BookDTO> recommendModify() {
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		ArrayList<String> listS = new ArrayList<String>();
 		try {
-			String bookNum = mapper.recommendList();
-				list.add(bookNum);
+			listS = mapper.recommendList();
+			for (int i = 0; i< listS.size(); i++) {
+				BookDTO dto = mapper.getRecommend(listS.get(i));
+				list.add(dto);
+			}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+		System.out.println(list);
 		return list;
 	}
 	
+	@PostMapping(value="recommendPlus",produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String recommendPlus(@RequestParam(value = "bookNum", required = false) String bookNum) {
+		String title = null;
+		try {
+			BookDTO dto = mapper.getRecommend(bookNum);
+			if (dto!=null) {
+			title = dto.getTitle();
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return title;
+	}
 	
+	@PostMapping("recommendModify")
+	@ResponseBody
+	public ArrayList<BookDTO> recommendModify(@RequestParam(value = "bookNum", required = false) String bookNum) {
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		ArrayList<String> listS = new ArrayList<String>();
+		try {
+			mapper.recommendPlus(bookNum);
+			listS = mapper.recommendList();
+			for (int i = 0; i< listS.size(); i++) {
+				BookDTO dto = mapper.getRecommend(listS.get(i));
+				list.add(dto);
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return list;
+	}
+	
+	@PostMapping("recommendDelete")
+	@ResponseBody
+	public ArrayList<BookDTO> recommendDelete(@RequestParam(value = "bookNum", required = false) String bookNum) {
+		ArrayList<BookDTO> list = new ArrayList<BookDTO>();
+		ArrayList<String> listS = new ArrayList<String>();
+		try {
+			mapper.recommendDelete(bookNum);
+			listS = mapper.recommendList();
+			for (int i = 0; i< listS.size(); i++) {
+				BookDTO dto = mapper.getRecommend(listS.get(i));
+				list.add(dto);
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return list;
+	}
+	
+	@PostMapping("recommendCheck")
+	@ResponseBody
+	public int recommendCheck(@RequestParam(value = "bookNum", required = false) String bookNum) {
+		int result = 0;
+		ArrayList<String> listS = new ArrayList<String>();
+		try {
+			listS = mapper.recommendList();
+			for (int i = 0; i< listS.size(); i++) {
+			if (bookNum.equals(listS.get(i))) {
+				result=1;
+			}
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return result;
+	}
+	
+	@PostMapping("bookPlusForm")
+	public String bookPlusForm(BookDTO dto) {
+		int result = 0;
+		System.out.println(dto.getBookNum());
+		try {
+			fileUpload(dto.getCoverImg());
+			result = mapper.bookPlus(dto);
+			if (result==1) {
+				System.out.println("입력 성공");
+			}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return "redirect:bookPlus";
+	}
+	
+	@Autowired
+	ResourceLoader rsLoader;
+	
+	public String fileUpload(MultipartFile coverImg) throws IllegalStateException, IOException {
+	    //    System.out.println(myfile.getSize());
+	    Resource resource = rsLoader.getResource("resources/coverImg");
+	    coverImg.transferTo(
+	        new File(resource.getFile().getCanonicalPath() + 
+	                 "/" 
+	                 + coverImg.getOriginalFilename()));
+	    return "";
+	}
 	
 }
 

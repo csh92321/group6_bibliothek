@@ -62,9 +62,6 @@ hr {
 	height : 100vh;
 }
 
-.bookList {
-}
-
 #book {
 	height: 100px;
 	border: 2px solid #b8371b;
@@ -74,7 +71,7 @@ hr {
 
 #book ul li {
 	list-style-type: none; float: left; margin-top:15px; font-size: large;
-	margin-left:25px;
+	margin-left:25px; color : black;
 }
 
 #book li:not(:first-child) {
@@ -122,10 +119,20 @@ hr {
 .title-box {
 	display:inline-block;
 }
+
 .title {
 	font-size : 30px;
+	text-align : center;
 }
 .subtitle {
 	font-size:20px;
 	color:gray;
+	text-align : center;
+}
+
+.division {
+	text-align : left;
+	font-size:20px;
+	font-weight:bold;
+	color : #b8371b;
 }
