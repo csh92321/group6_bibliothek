@@ -186,7 +186,7 @@ public class BookServiceImpl implements BookService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		System.out.println(list);
 		return list;
 	}
 

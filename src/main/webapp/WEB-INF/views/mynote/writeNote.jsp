@@ -19,7 +19,8 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script>
 	function bookSearch() {
-		alert('book search')
+		var url = "bookSearch"
+		win = window.open(url, "bookSearch", "width=500, height=800, top=110,  left=50");
 	}
 	
 	function checkOnlyOne(target) {

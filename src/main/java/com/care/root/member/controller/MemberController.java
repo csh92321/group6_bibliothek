@@ -34,12 +34,6 @@ public class MemberController implements MemberSessionName{
 	@Autowired MemberService ms;
 	@Autowired NoteService ns;
 	
-	
-	@GetMapping("header")
-	public String header() {
-		return "default/header";
-	}
-	
 	@GetMapping("/login")
 	public String login(@CookieValue(value="saveIdCookie", required=false) Cookie saveIdCookie,Model model) {
 		if(saveIdCookie != null) {
@@ -62,9 +56,9 @@ public class MemberController implements MemberSessionName{
 			rs.addAttribute("id",id);
 			rs.addAttribute("autoLogin", autoLogin);
 			rs.addAttribute("saveId", saveId);
-			if(id.equals("group6")) {
-				return "member/adminSuccessLogin";
-			}
+//			if(id.equals("group6")) {
+//				return "member/adminSuccessLogin";
+//			}
 			return "redirect:successLogin";
 		} else {
 			System.out.println("로그인 실패");

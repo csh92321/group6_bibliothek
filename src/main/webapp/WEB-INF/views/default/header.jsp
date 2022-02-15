@@ -20,7 +20,7 @@
 <script type="text/javascript">
 function search() {
 	var search = $("#search").val();
-	var link = 'search?'+search
+	var link = '${contextPath}/search?'+search
 	var encode = encodeURI(link)
 	location.href = encode
 }
