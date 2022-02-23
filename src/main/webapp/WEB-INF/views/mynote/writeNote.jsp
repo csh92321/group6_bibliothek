@@ -26,7 +26,7 @@
 	function checkOnlyOne(target) {
 		document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked=false);
 		target.checked=true;
-	}
+	}	
 	
 </script>
 </head>
@@ -40,37 +40,48 @@
 	<div class="writeForm">
 		<table border="1">
 			<tr>
-				<td rowspan="4" style="border: 1px solid black;" > 이미지 들어갈 예정 </td>
+				<td rowspan="4" style="border: 1px solid black;" > 
+						<span id="imgSpace">
+						<c:if test="${bookNum eq null}">
+							이미지 없음
+						</c:if>
+						</span>
+				</td>
 				<th> 제목</th>
-				<td>
-					<input type="text" id="title" readonly="readonly">
+				<td colspan="3">
+					<input type="hidden" id="bookNum">
+					<input type="text" id="title" readonly="readonly" >
 					<button class="bookSearch" id="bookSearch" onclick="bookSearch()"> <i class="fas fa-search" ></i> </button>
 				</td>
 			</tr>
 			<tr>
-				<th> 저자/출판사 </th>
+				<th> 저자 </th>
 				<td> 
-					<input type="text" id="writer_publisher" readonly>
+					<input type="text" id="writer" readonly>
+				</td>
+				<th> 출판사</th>
+				<td>
+					<input type="text" id="company" readonly>
 				</td>
 			</tr>
 			<tr>
 				<th> 독서 기간 </th>
-				<td>
+				<td colspan="3">
 					<input type="date" id="startDate"> ~ <input type="date" id="endDate">
 				</td>
 			</tr>
 			<tr>
 				<th> 공개여부 </th>
-				<td>
+				<td colspan="3">
 					<input type="checkbox" id="openYN" name="openYN" value="openY" onclick="checkOnlyOne(this)" checked="checked"> 공개
 					<input type="checkbox" id="openYN" name="openYN" value="openN" onclick="checkOnlyOne(this)" > 비공개   
 				</td>
 			</tr>
 			<tr> 
-				<td colspan="3"> <textarea rows="50" cols="50" id="content" class="content" > </textarea></td>
+				<td colspan="6"> <textarea rows="50" cols="80" id="content" class="content" > </textarea></td>
 			</tr>
 			<tr>
-				<td colspan="3">
+				<td colspan="6">
 					<button type="button" onclick="register()">등록 </button>
 					<button type="button" onclick="cancel()"> 취소 </button>
 				</td>

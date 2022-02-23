@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .wrap{margin:0 auto;}
+.result label:hover{color:#ffb532;}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,6 +18,10 @@
 	function search() {
 		var search = $("#bookName").val();
 		
+		if (search=="") {
+			alert("검색창에 입력해주세요")
+		} else {
+		
 		$.ajax({
 			url : "search",
 			type : "post",
@@ -24,21 +29,25 @@
 			async:false,
 			success : function(list) {
 				if(Object.keys(list).length == 0){
-					debugger;
 					$("#bookList").html("검색 결과가 없습니다")
-					debugger;
 				} else {
-					debugger;
 					$
 					.each(
 							list,
 							function(index, item) {
-								debugger;
 									let html=""
-									//html += "<a href=\"detail?"+item.bookNum+"\"><img class=\"product-img\" src=\"resources/coverImg/"+item.bookNum+".jpg\" /></a>"
-									html += "<h4><a href=\"detail?"+item.bookNum+"\">" + item.title + "<br></a></h4>"
+									html += "<div class='result'>"
+									html += "<img width='100px' height='150px' src=\"${contextPath}/resources/coverImg/"+item.bookNum+".jpg\" /><br>"
+									//html += "<label style='font-size:15px; font-weight: bold;' onclick=chooseBook('"+item.bookNum+','+item.title+','+item.writer+','+item.company+"')>" + item.title + "</label><br>"
+									html += "<label style='font-size:15px; font-weight: bold;' onclick=chooseBook()>" + item.title + "</label><br>"
 									html += item.writer + "/" + item.company
-									debugger;
+									html += "</div>"
+									html += "<div class='hideen'>"
+									html += "<input type='hidden' id='bookNum' value='"+item.bookNum+"'>"
+									html += "<input type='hidden' id='title' value='"+item.title+"'>"
+									html += "<input type='hidden' id='writer' value='"+item.writer+"'>" 
+									html += "<input type='hidden' id='company' value='"+item.company+"'>" 
+									html += "</div>"
 									$("#bookList").html(html)
 							})
 				}
@@ -47,7 +56,25 @@
 				alert('error')
 			}
 		})
-		debugger;
+		
+		}
+	}
+	
+	function chooseBook(){
+		var bookNum=$("#bookNum").val();
+		var title = $("#title").val();
+		var writer = $("#writer").val();
+		var company=$("#company").val();
+		
+		window.opener.document.getElementById("bookNum").value=bookNum
+		window.opener.document.getElementById("title").value=title
+		window.opener.document.getElementById("writer").value=writer
+		window.opener.document.getElementById("company").value=company
+		//window.opener.document.getElementById("imgSpace").value="<img src=${contextPath}/resources/coverImg/"+bookNum+".jpg>"
+		//window.opener.document.getElementById("imgSpace").innerText="<img src=${contextPath}/resources/coverImg/"+bookNum+".jpg>"
+		$("#imgSpace",opener.document).html("<img width='130px' height='190px' src=${contextPath}/resources/coverImg/"+bookNum+".jpg>")
+		
+		window.close();
 	}
 </script>
 </head>
@@ -57,11 +84,9 @@
 
 		<input type="text" id="bookName" class="bookName">
 		<button class="bookSearch" id="bookSearch" onclick="search()"> <i class="fas fa-search" ></i> </button>
-	
-
 	<hr>
 	<span id="bookList"></span>
 </div>
-
+	
 </body>
 </html>
