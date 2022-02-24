@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 .wrap{margin:0 auto;}
+.top_result {display:flex;}
+.result{margin-right:30px;}
 .result label:hover{color:#ffb532;}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -28,14 +30,16 @@
 			data : { search : search },
 			async:false,
 			success : function(list) {
+			let html=""
 				if(Object.keys(list).length == 0){
-					$("#bookList").html("검색 결과가 없습니다")
+					html += "<h4>검색 결과가 없습니다</h4>"
 				} else {
+					html+="<div class='top_result'>"
 					$
 					.each(
 							list,
 							function(index, item) {
-									let html=""
+								
 									html += "<div class='result'>"
 									html += "<img width='100px' height='150px' src=\"${contextPath}/resources/coverImg/"+item.bookNum+".jpg\" /><br>"
 									//html += "<label style='font-size:15px; font-weight: bold;' onclick=chooseBook('"+item.bookNum+','+item.title+','+item.writer+','+item.company+"')>" + item.title + "</label><br>"
@@ -48,9 +52,12 @@
 									html += "<input type='hidden' id='writer' value='"+item.writer+"'>" 
 									html += "<input type='hidden' id='company' value='"+item.company+"'>" 
 									html += "</div>"
-									$("#bookList").html(html)
+								
+									
 							})
+							html+="</div>"
 				}
+				$("#bookList").html(html)
 			},
 			error : function() {
 				alert('error')
