@@ -42,8 +42,10 @@
 								
 									html += "<div class='result'>"
 									html += "<img width='100px' height='150px' src=\"${contextPath}/resources/coverImg/"+item.bookNum+".jpg\" /><br>"
-									//html += "<label style='font-size:15px; font-weight: bold;' onclick=chooseBook('"+item.bookNum+','+item.title+','+item.writer+','+item.company+"')>" + item.title + "</label><br>"
-									html += "<label style='font-size:15px; font-weight: bold;' onclick=chooseBook()>" + item.title + "</label><br>"
+									//html += "<a href=\'javascript:chooseBook("+item.bookNum+"\',\'"+item.title+"\',\'"+item.writer+"\',\'"+item.company+");\'>"+item.title+"</a><br>"
+									//html += "<label style='font-size:15px; font-weight: bold;' onclick=chooseBook()>" + item.title + "</label><br>"
+									//html += "<a href='javascript:chooseBook("+item.bookNum+","+item.title+","+item.writer+","+item.company+");'>"+item.title+"</a><br>"
+									html += "<label onclick=\"chooseBook('"+item.bookNum+"','"+item.title+"','"+item.writer+"','"+item.company+"')\">"+item.title+"</label><br>";
 									html += item.writer + "/" + item.company
 									html += "</div>"
 									html += "<div class='hideen'>"
@@ -67,11 +69,12 @@
 		}
 	}
 	
-	function chooseBook(){
-		var bookNum=$("#bookNum").val();
-		var title = $("#title").val();
-		var writer = $("#writer").val();
-		var company=$("#company").val();
+	function chooseBook(bookNum,title, writer,company){
+		
+		var bookNum_n=bookNum;
+		var title_n = title
+		var writer_n = writer
+		var company_n=company 
 		
 		window.opener.document.getElementById("bookNum").value=bookNum
 		window.opener.document.getElementById("title").value=title
