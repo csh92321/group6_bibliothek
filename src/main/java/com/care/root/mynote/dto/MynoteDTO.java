@@ -11,6 +11,8 @@ public class MynoteDTO {
 	private Date savedate;
 	private String startDate;
 	private String endDate;
+	private int open;
+	private int hit;
 	
 	public String getStartDate() {
 		return startDate;
@@ -24,8 +26,6 @@ public class MynoteDTO {
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
-	private int open;
-	private int hit;
 	
 	public int getWriteNum() {
 		return writeNum;

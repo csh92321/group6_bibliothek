@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.care.root.book.dto.BookDTO;
 import com.care.root.mybatis.book.BookMapper;
 import com.care.root.mybatis.mynote.MynoteMapper;
+import com.care.root.mynote.dto.MynoteDTO;
 
 @Service
 public class MynoteServiceImpl implements MynoteService {
@@ -42,6 +43,19 @@ public class MynoteServiceImpl implements MynoteService {
 		}
 		System.out.println(list);
 		return list;
+	}
+
+	@Override
+	public int writeNote(MynoteDTO dto) {
+		
+		int result=0;
+		try {
+			result=mapper.writeNote(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 }

@@ -3,4 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.care.root.mybatis.mynote.MynoteMapper">
+
+	<insert id="writeNote">
+		insert into mynote(write_num,id,book_num,content,open,start_date,end_date) values(mynote_seq.nextval,#{id},#{bookNum},#{content},#{open},#{startDate},#{endDate})
+	</insert>
+
+
 </mapper>
