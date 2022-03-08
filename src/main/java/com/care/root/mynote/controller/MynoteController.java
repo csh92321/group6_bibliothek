@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,8 @@ public class MynoteController {
 	@Autowired MynoteService ms;
 	
 	@GetMapping("mynote")
-	public String myNote() {
+	public String myNote(String id, Model model) {
+		ms.mnList(model,id);
 		return "mynote/mynote";
 	}
 	
@@ -48,7 +50,7 @@ public class MynoteController {
 		int result = ms.writeNote(dto);
 		if(result==1) {
 			System.out.println("작성 성공");
-			return "mynote/mynote";
+			return "redirect:mynote?id="+dto.getId();
 		} 
 			System.out.println("작성 실패");
 			return "writeNote";

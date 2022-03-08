@@ -8,5 +8,21 @@
 		insert into mynote(write_num,id,book_num,content,open,start_date,end_date) values(mynote_seq.nextval,#{id},#{bookNum},#{content},#{open},#{startDate},#{endDate})
 	</insert>
 
+	<resultMap type="com.care.root.mynote.dto.MynoteDTO" id="list">
+		<id property="writeNum" column="write_num" />
+		<result property="id" column="id" />
+		<result property="bookNum" column="book_num" />
+		<result property="content" column="content" />
+		<result property="savedate" column="savedate" />
+		<result property="open" column="open" />
+		<result property="hit" column="hit" />
+		<result property="startDate" column="start_date" />
+		<result property="endDate" column="end_date" />
+		<result property="title" column="title" />
+	</resultMap>
 
+	<select id="mnList" resultMap="list">
+		select mynote.*, book.title from mynote mynote, book book where mynote.id=#{id} and mynote.book_num=book.book_num order by mynote.write_num desc
+	</select>
+	
 </mapper>

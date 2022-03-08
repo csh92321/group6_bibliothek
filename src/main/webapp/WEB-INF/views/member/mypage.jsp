@@ -38,7 +38,7 @@
 				<td><a href="">북리스트</a></td>
 				<td><a href="">찜</a></td>
 				-->
-				<td><a href="${contextPath }/myNote/mynote">마이노트</a></td>
+				<td><a href="${contextPath }/myNote/mynote?id=${loginUser}">마이노트</a></td>
 			<tr>
 		</table>
 	</div>

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.care.root.book.dto.BookDTO;
 import com.care.root.mybatis.book.BookMapper;
@@ -56,6 +57,11 @@ public class MynoteServiceImpl implements MynoteService {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void mnList(Model model, String id) {
+		model.addAttribute("mynoteList",mapper.mnList(id));
 	}
 	
 }

@@ -29,6 +29,39 @@
 
 <hr>
 
+<table border="1">
+	<tr>
+		<th>글번호</th>
+		<th>작성일</th>
+		<th>공개여부</th>
+		<th>책 제목</th>
+		<th>조회수</th>
+	</tr>
+	<c:if test="${mynoteList.size()==0 }">
+	<tr>
+		<td colspan="5"> 작성된 마이노트가 없습니다 </td>
+	</tr>
+	</c:if>
+	<c:set var="list" value="${mynoteList.size()+1 }" />
+	<c:forEach var="mynoteList" items="${mynoteList }">
+	<c:set var="i" value="${i+1 }" />
+	<tr>
+		<td> ${list-i } </td>
+		<td> ${mynoteList.savedate }</td>
+		<td>
+			<c:if test="${mynoteList.open == 0 }"> 비공개 </c:if>
+			<c:if test="${mynoteList.open != 0 }"> 공개 </c:if> 
+		</td>
+		<td> ${mynoteList.title } </td>
+		<td>  
+			<c:if test="${mynoteList.open == 0 }"> 0 </c:if>
+			<c:if test="${mynoteList.open != 0 }"> ${mynoteList.hit } </c:if> 
+		</td>
+	</tr>
+	</c:forEach>
+</table>
+
+
 <button type="button" onclick="writeMyNote()">마이노트 작성하기</button>
 
 
